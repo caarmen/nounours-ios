@@ -21,7 +21,7 @@
 @private NSMutableDictionary *images;
 @private NSMutableDictionary *animations;
 @private AnimationHandler *animationHandler;
-@private FlingAnimation *flingAnimations;
+@private NSArray *flingAnimations;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
 -(void) displayImage:(Image*)pimage;

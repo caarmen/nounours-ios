@@ -18,7 +18,7 @@
 -(AnimationThread*) initAnimationThread:(Nounours*) pnounours withAnimation:(Animation*) panimation;
 -(void) doAnimation:(Animation*) panimation;
 -(void) stopAnimation;
-
+-(void) displayImage:(id)pimageId;
 
 @property(readonly) BOOL isRunning;
 @end

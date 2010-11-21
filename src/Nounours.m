@@ -37,9 +37,9 @@
 		}
 		ImageReader* imageReader = [[ImageReader alloc] initImageReader:@"image"];
 		NSDictionary* readImages = [imageReader images];
-		ImageFeatureReader* imageFeatureReader = [[ImageFeatureReader alloc] initImageFeatureReader:readImages andFeatures:features andFilename:@"imagefeatureassoc"];
+		ImageFeatureReader* imageFeatureReader = [[ImageFeatureReader alloc] initImageFeatureReader:(NSMutableDictionary*)readImages andFeatures:features andFilename:@"imagefeatureassoc"];
 		
-		AdjacentImageReader* adjacentImageReader = [[AdjacentImageReader alloc] initAdjacentImageReader:readImages andFilename:@"adjacentimage"];
+		AdjacentImageReader* adjacentImageReader = [[AdjacentImageReader alloc] initAdjacentImageReader:(NSMutableDictionary*)readImages andFilename:@"adjacentimage"];
 		
 		[mainView setImageFromFilename:@"defaultimg_sm.jpg"];
 		AnimationReader *animationReader = [[AnimationReader alloc]initAnimationReader:@"animation"];
@@ -61,6 +61,8 @@
 		}
 		[self setImage:defaultImage];
 		[self resizeView];
+		[imageFeatureReader release];
+		[adjacentImageReader release];
 
 	}
 	return self;

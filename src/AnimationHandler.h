@@ -22,6 +22,5 @@
 -(void) stopAnimation;
 -(BOOL) isAnimationRunning;
 -(void) doAnimation:(Animation*) panimation;
--(void) doAnimationImpl:(Animation*) panimation;
--(void) displayImage:(id)pimageId;
+
 @end
