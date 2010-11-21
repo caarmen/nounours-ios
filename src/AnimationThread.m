@@ -47,6 +47,7 @@
 }
 -(void) stopAnimation{
 	[super cancel];
+	isRunning = NO;
 }
 
 -(void) displayImage:(id)pimageId{

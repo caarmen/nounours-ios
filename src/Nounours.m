@@ -47,6 +47,9 @@
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		FlingAnimationReader* flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:@"flinganimation"];
 		flingAnimations = [flingAnimationReader flingAnimations];
+		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
+		[mainView addGestureRecognizer:panRecognizer];
+		[panRecognizer release];
 		
 		for (Image* image in [readImages allValues])
 		{
@@ -82,16 +85,19 @@
 }
 
 -(void) onPress:(CGFloat)px withY:(CGFloat)py{
+	lastLocation.x = px;
+	lastLocation.y = py;
+	[animationHandler stopAnimation];
 	CGSize imageSize = [mainView getImageSize];
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
-	[self debug:[NSString stringWithFormat:@"onPress %f,%f=>%f,%f",px,py,translatedPoint.x,translatedPoint.y]];
+	//[self debug:[NSString stringWithFormat:@"onPress %f,%f=>%f,%f",px,py,translatedPoint.x,translatedPoint.y]];
 	
 	if(curImage == nil)
 		return;
 	curFeature = [Util getClosestFeature:curImage withX:translatedPoint.x withY:translatedPoint.y];
 	if(curFeature != nil)
 	{
-		[self debug:[NSString stringWithFormat:@"clicked on feature %@",curFeature]];
+//[self debug:[NSString stringWithFormat:@"clicked on feature %@",curFeature]];
 		NSSet *adjacentImages = [curImage getAdjacentImages:curFeature.uid];
 		if([adjacentImages count] == 0)
 		{
@@ -112,16 +118,9 @@
 			[self setImage:nextImage];
 		}
 	}
-	Animation *animation = [animations objectForKey:@"11"];
+	lastLocation.x=-1;
+	lastLocation.y=-1;
 
-//	for(Animation *animation in [animations allValues])
-//	{
-		[animationHandler doAnimation:animation];
-		//while([animationHandler isAnimationRunning])
-		//{
-	//		[NSThread sleepForTimeInterval:1.0];
-	//	}
-//	}
 }
 -(void) onMove:(CGFloat)px withY:(CGFloat)py{
 	BOOL doRefresh = YES;
@@ -146,6 +145,46 @@
 	if(doRefresh)
 		[self displayImage:curImage];
 }
+
+-(void) onFling:(UIPanGestureRecognizer*) pgestureRecognizer{
+	CGPoint location = [pgestureRecognizer locationInView:mainView];
+	CGPoint velocity = [pgestureRecognizer velocityInView:mainView];
+	if(isnan(location.x))
+	{
+		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:[mainView getImageSize].width withImageHeight:[mainView getImageSize].height]; 
+		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). %velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
+		for(FlingAnimation* flingAnimation in flingAnimations )
+		{
+			[self debug:[NSString stringWithFormat:@"testing %@",flingAnimation.animationId]];
+			if(![Util isFaster:velocity.x withV2:flingAnimation.minVelX])
+			{
+				NSLog(@"X: %f not faster than %f",velocity.x,flingAnimation.minVelX);
+				continue;
+			}
+			if(![Util isFaster:velocity.y withV2:flingAnimation.minVelY]){
+				NSLog(@"Y: %f not faster than %f",velocity.y,flingAnimation.minVelY);
+				continue;
+			}
+			if(![Util pointIsInSquare:translatedPoint.x withPointY:translatedPoint.y withSquareX:flingAnimation.x withSquareY:flingAnimation.y withSquareWidth:flingAnimation.width withSquareHeight:flingAnimation.height])
+			{
+				NSLog(@"fast enough, not in square");
+				continue;
+			}
+			Animation* animation = [animations objectForKey:flingAnimation.animationId];
+			[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
+			[animationHandler doAnimation:animation];
+			
+		}
+		if(!animationHandler.isAnimationRunning)
+			 [self onRelease];
+											
+	}
+	else {
+		[self onMove:location.x withY:location.y];
+	}
+
+}
+
 -(void) setImage:(Image*) pimage{
 	BOOL doRefresh = (curImage != pimage);
 	curImage = pimage;

@@ -32,7 +32,7 @@
 		if(img != nil)
 		{
 			[imageCache setObject:img forKey:pfilename];
-			NSLog(@"Saving to cache");
+			//NSLog(@"Saving to cache");
 		}
 		else {
 			NSLog(@"Can't find image %@!",pfilename);
@@ -40,7 +40,7 @@
 
 	}
 	else {
-		NSLog(@"Loaded from cache");
+		//NSLog(@"Loaded from cache");
 	}
 
 	curImage = img;

@@ -26,20 +26,20 @@ NSString * const COL_FLING_ANIMATION_VARIABLE_SPEED = @"VariableSpeed";
 	[super initNounoursReader:pfilename];
 	if(self)
 	{
-		[self load];
 		flingAnimations = [[NSMutableArray alloc] init];
+		[self load];
 	}
 	return self;
 }
 -(void) readLine:(CSVReader*) pcsvReader{
-	NSString *uid = [pcsvReader getValue:COL_FLING_ANIMATION_ID];
+	NSString *uid = [[pcsvReader getValue:COL_FLING_ANIMATION_ID] retain];
 	CGFloat x = [[pcsvReader getValue:COL_FLING_ANIMATION_X] floatValue];
 	CGFloat y = [[pcsvReader getValue:COL_FLING_ANIMATION_Y] floatValue];
 	CGFloat width = [[pcsvReader getValue:COL_FLING_ANIMATION_WIDTH] floatValue];
 	CGFloat height = [[pcsvReader getValue:COL_FLING_ANIMATION_HEIGHT] floatValue];
 	CGFloat minVelX = [[pcsvReader getValue:COL_FLING_ANIMATION_MIN_VEL_X] floatValue];
 	CGFloat minVelY = [[pcsvReader getValue:COL_FLING_ANIMATION_MIN_VEL_Y] floatValue];
-	NSString *animationId = [pcsvReader getValue:COL_FLING_ANIMATION_ID];
+	NSString *animationId = [[pcsvReader getValue:COL_FLING_ANIMATION_ANIMATION_ID] retain];;
 	BOOL variableSpeed = [[pcsvReader getValue:COL_FLING_ANIMATION_VARIABLE_SPEED] boolValue];
 	FlingAnimation *flingAnimation = [[FlingAnimation alloc] initFlingAnimation:uid withX:x withY:y withWidth:width withHeight:height withMinVelX:minVelX withMinVelY:minVelY withAnimationId:animationId withVariableSpeed:variableSpeed];
 	[flingAnimations addObject:flingAnimation];

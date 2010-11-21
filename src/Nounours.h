@@ -21,13 +21,15 @@
 @private NSMutableDictionary *images;
 @private NSMutableDictionary *animations;
 @private AnimationHandler *animationHandler;
-@private NSArray *flingAnimations;
+@private NSMutableArray *flingAnimations;
+@private CGPoint lastLocation;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
 -(void) displayImage:(Image*)pimage;
 -(void) onPress:(CGFloat)px withY:(CGFloat)py;
 -(void) onRelease;
 -(void) onMove:(CGFloat)px withY:(CGFloat)py;
+-(void) onFling:(UIPanGestureRecognizer*) pgestureRecognizer;
 -(void) setImage:(Image*) pimage;
 -(void) setImageWithImageId:(NSString*) pimageId;
 -(void) debug:(NSObject*) po;

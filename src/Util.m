@@ -50,6 +50,7 @@
 	NSSet * adjacentImages = [pimage getAdjacentImages:pfeatureId];
 	for(Image * adjImage in adjacentImages){
 		CGFloat distance = [Util getDistance:adjImage withFeatureId:pfeatureId withX:px withY:py];
+		NSLog(@"finger: %f,%f: image %@ feature %@ distance %f",px,py,pimage,pfeatureId,distance);
 		if(distance < minDistance){
 			minDistance = distance;
 			result = adjImage;
@@ -69,11 +70,17 @@
 +(CGFloat) getDistance:(CGFloat) px1 withY1:(CGFloat) py1 withX2:(CGFloat)px2 withY2:(CGFloat)py2{
 	return (CGFloat) sqrt(powf(px1 - px2, 2.0) + powf(py2 - py1,2.0) );
 }
-+(boolean_t) pointIsInSquare:(CGFloat)ppointX withPointY:(CGFloat)ppointY withSquareX:(CGFloat) psquareX withSquareY:(CGFloat) psquareY withSquareWidth:(CGFloat) psquareWidth withSquareHeight:(CGFloat) psquareHeight{
++(BOOL) pointIsInSquare:(CGFloat)ppointX withPointY:(CGFloat)ppointY withSquareX:(CGFloat) psquareX withSquareY:(CGFloat) psquareY withSquareWidth:(CGFloat) psquareWidth withSquareHeight:(CGFloat) psquareHeight{
 	if(ppointX >= psquareX && ppointX<= (psquareX + psquareWidth) && ppointY >= psquareY
 	   && ppointY <= (psquareY + psquareHeight))
 		return YES;
 	return NO;
 }
-
++(BOOL) isFaster:(CGFloat) v1 withV2:(CGFloat) v2{
+	if(v2 <= 0 && v1 <= v2)
+		return YES;
+	if(v2>=0 && v1 >= v2)
+		return YES;
+	return NO;
+}
 @end

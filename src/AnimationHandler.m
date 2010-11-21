@@ -24,6 +24,7 @@
 -(void) stopAnimation{
 	if(animationThread == nil)
 		return;
+
 	[nounours debug:[NSString stringWithFormat:@"isRunning? %s",animationThread.isRunning? "yes" : "no"]];
 	[animationThread stopAnimation];
 	while([animationThread isRunning])
@@ -32,6 +33,7 @@
 	}
 	[nounours debug:[NSString stringWithFormat:@"isRunning now? %s",animationThread.isRunning? "yes" : "no"]];
 	[animationThread release];
+	animationThread = nil;
 	
 }
 -(BOOL) isAnimationRunning{

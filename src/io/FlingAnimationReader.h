@@ -13,5 +13,5 @@
 @private NSMutableArray* flingAnimations;
 }
 -(FlingAnimationReader*) initFlingAnimationReader:(NSString*)pfilename;
-@property(retain,readonly) NSArray* flingAnimations;
+@property(retain,readonly) NSMutableArray* flingAnimations;
 @end
