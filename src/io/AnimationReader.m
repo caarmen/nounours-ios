@@ -45,7 +45,9 @@ NSString * const COL_ANIMATION_SOUND = @"Sound";
 	for(NSString* imageId in sequence)
 	{
 		if([imageId hasPrefix:@"d="])
-			duration = [imageId floatValue];
+		{
+			duration = [[imageId substringFromIndex:2]floatValue];
+		}
 		else
 			[animation addImage:imageId withDuration:duration];
 	}

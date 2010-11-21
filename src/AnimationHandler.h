@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "data/Animation.h"
+#import "AnimationThread.h"
 
 @class Nounours;
 
 @interface AnimationHandler : NSObject {
-@private NSThread * animationThread;
+@private AnimationThread* animationThread;
 @private Nounours *nounours;
 
 }
 -(AnimationHandler*) initAnimationHandler:(Nounours*) pnounours;
+
 -(void) stopAnimation;
 -(BOOL) isAnimationRunning;
 -(void) doAnimation:(Animation*) panimation;
 -(void) doAnimationImpl:(Animation*) panimation;
+-(void) displayImage:(id)pimageId;
 @end

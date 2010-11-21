@@ -24,42 +24,26 @@
 -(void) stopAnimation{
 	if(animationThread == nil)
 		return;
-	[animationThread cancel];
+	[nounours debug:[NSString stringWithFormat:@"isRunning? %s",animationThread.isRunning? "yes" : "no"]];
+	[animationThread stopAnimation];
+	while([animationThread isRunning])
+	{
+		[NSThread sleepForTimeInterval:0.1];
+	}
+	[nounours debug:[NSString stringWithFormat:@"isRunning now? %s",animationThread.isRunning? "yes" : "no"]];
+	[animationThread release];
+	
 }
 -(BOOL) isAnimationRunning{
 	
 	if(animationThread == nil)
 		return NO;
-	if([animationThread isExecuting])
-		return YES;
-	return NO;
+	return animationThread.isRunning;
 }
 -(void) doAnimation:(Animation*) panimation{
-	if(animationThread != nil)
-	{
-		[animationThread cancel];
-		while(![animationThread isCancelled])
-		{
-			[NSThread sleepForTimeInterval:1.0];
-		}
-		[animationThread release];
-	}
-	animationThread = [[NSThread alloc] initWithTarget:self selector:@selector(doAnimationImpl:) object:panimation];
+	[self stopAnimation];
+	animationThread = [[AnimationThread alloc]initAnimationThread:nounours withAnimation:panimation];
 	[animationThread start];
 }
--(void) doAnimationImpl:(Animation*) panimation{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	NSArray *animationImages = [panimation images];
-	[nounours debug:[NSString stringWithFormat:@"Doing animation %@",panimation.uid]];
-	for(AnimationImage *animationImage in animationImages)
-	{
-//		NSString *imageId = [animationImage imageId];
-		[nounours setImageWithImageId:animationImage.imageId];
-		CGFloat frameDuration = (CGFloat) (panimation.interval * animationImage.duration)/1000.0;
-		[nounours debug:[NSString stringWithFormat:@"%@:%f*%f=%f",animationImage.imageId,panimation.interval,animationImage.duration,frameDuration]];
-		[NSThread sleepForTimeInterval:frameDuration];
-		
-	}
-	[pool release];
-}
+
 @end

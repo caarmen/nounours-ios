@@ -50,13 +50,13 @@
 		
 		for (Image* image in [readImages allValues])
 		{
+			
 			[images setValue:image forKey:image.uid];
 			if([image.uid isEqualToString:@"Default"])
 			{
 				self.defaultImage = image;
 			}
-			else
-				NSLog(@"Can't find image!");
+			
 			NSLog(@"%@",image);
 		}
 		[self setImage:defaultImage];
@@ -110,14 +110,16 @@
 			[self setImage:nextImage];
 		}
 	}
-	for(Animation *animation in [animations allValues])
-	{
+	Animation *animation = [animations objectForKey:@"11"];
+
+//	for(Animation *animation in [animations allValues])
+//	{
 		[animationHandler doAnimation:animation];
-		while([animationHandler isAnimationRunning])
-		{
-			[NSThread sleepForTimeInterval:1.0];
-		}
-	}
+		//while([animationHandler isAnimationRunning])
+		//{
+	//		[NSThread sleepForTimeInterval:1.0];
+	//	}
+//	}
 }
 -(void) onMove:(CGFloat)px withY:(CGFloat)py{
 	BOOL doRefresh = YES;

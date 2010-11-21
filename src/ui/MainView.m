@@ -19,6 +19,7 @@
 		//[image drawAtPoint:(CGPointMake(0.0, 0.0))];
 		self.userInteractionEnabled = YES;
 		self.autoresizesSubviews = NO;
+		imageCache = [[NSMutableDictionary alloc] init];
 
     }
     return self;
@@ -33,6 +34,10 @@
 			[imageCache setObject:img forKey:pfilename];
 			NSLog(@"Saving to cache");
 		}
+		else {
+			NSLog(@"Can't find image %@!",pfilename);
+		}
+
 	}
 	else {
 		NSLog(@"Loaded from cache");

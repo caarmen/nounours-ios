@@ -24,8 +24,8 @@ withSoundId:(NSString*) psoundId{
 	[super init];
 	if(self)
 	{
-		uid = puid;
-		label = plabel;
+		uid = [puid retain];
+		label = [plabel retain];
 		interval = pinterval;
 		repeat = prepeat;
 		visible = pvisible;
