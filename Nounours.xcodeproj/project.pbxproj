@@ -66,6 +66,14 @@
 		4F85E74E1298060900A012A5 /* feature.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E74A1298060900A012A5 /* feature.csv */; };
 		4F85E74F1298060900A012A5 /* image.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E74B1298060900A012A5 /* image.csv */; };
 		4F85E7501298060900A012A5 /* imagefeatureassoc.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E74C1298060900A012A5 /* imagefeatureassoc.csv */; };
+		4F85E7A512983FDF00A012A5 /* AnimationImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E7A412983FDF00A012A5 /* AnimationImage.m */; };
+		4F85E7B91298424000A012A5 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E7B81298424000A012A5 /* Animation.m */; };
+		4F85E7CE12984A8500A012A5 /* FlingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E7CD12984A8500A012A5 /* FlingAnimation.m */; };
+		4F85E8221298525000A012A5 /* AnimationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E8211298525000A012A5 /* AnimationReader.m */; };
+		4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */; };
+		4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E83712989E7E00A012A5 /* AnimationHandler.m */; };
+		4F85E8721298ACAE00A012A5 /* animation.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E8701298ACAE00A012A5 /* animation.csv */; };
+		4F85E8731298ACAE00A012A5 /* flinganimation.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F85E8711298ACAE00A012A5 /* flinganimation.csv */; };
 		4FFFF64F12965D9900CA2996 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFF64E12965D9900CA2996 /* Util.m */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +152,20 @@
 		4F85E74A1298060900A012A5 /* feature.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = feature.csv; path = res/data/feature.csv; sourceTree = "<group>"; };
 		4F85E74B1298060900A012A5 /* image.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = image.csv; path = res/data/image.csv; sourceTree = "<group>"; };
 		4F85E74C1298060900A012A5 /* imagefeatureassoc.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = imagefeatureassoc.csv; path = res/data/imagefeatureassoc.csv; sourceTree = "<group>"; };
+		4F85E7A312983FDF00A012A5 /* AnimationImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationImage.h; path = src/data/AnimationImage.h; sourceTree = SOURCE_ROOT; };
+		4F85E7A412983FDF00A012A5 /* AnimationImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationImage.m; path = src/data/AnimationImage.m; sourceTree = SOURCE_ROOT; };
+		4F85E7B71298424000A012A5 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = src/data/Animation.h; sourceTree = SOURCE_ROOT; };
+		4F85E7B81298424000A012A5 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Animation.m; path = src/data/Animation.m; sourceTree = SOURCE_ROOT; };
+		4F85E7CC12984A8500A012A5 /* FlingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlingAnimation.h; path = src/data/FlingAnimation.h; sourceTree = SOURCE_ROOT; };
+		4F85E7CD12984A8500A012A5 /* FlingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlingAnimation.m; path = src/data/FlingAnimation.m; sourceTree = SOURCE_ROOT; };
+		4F85E8201298525000A012A5 /* AnimationReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationReader.h; path = src/io/AnimationReader.h; sourceTree = SOURCE_ROOT; };
+		4F85E8211298525000A012A5 /* AnimationReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationReader.m; path = src/io/AnimationReader.m; sourceTree = SOURCE_ROOT; };
+		4F85E82B12987E0D00A012A5 /* FlingAnimationReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlingAnimationReader.h; path = src/io/FlingAnimationReader.h; sourceTree = SOURCE_ROOT; };
+		4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlingAnimationReader.m; path = src/io/FlingAnimationReader.m; sourceTree = SOURCE_ROOT; };
+		4F85E83612989E7E00A012A5 /* AnimationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationHandler.h; path = src/AnimationHandler.h; sourceTree = SOURCE_ROOT; };
+		4F85E83712989E7E00A012A5 /* AnimationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationHandler.m; path = src/AnimationHandler.m; sourceTree = SOURCE_ROOT; };
+		4F85E8701298ACAE00A012A5 /* animation.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = animation.csv; path = res/data/animation.csv; sourceTree = "<group>"; };
+		4F85E8711298ACAE00A012A5 /* flinganimation.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = flinganimation.csv; path = res/data/flinganimation.csv; sourceTree = "<group>"; };
 		4FFFF64D12965D9900CA2996 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = src/Util.h; sourceTree = SOURCE_ROOT; };
 		4FFFF64E12965D9900CA2996 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = src/Util.m; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Nounours-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nounours-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -177,6 +199,8 @@
 				4F80BAB0128FDB7200DA7722 /* Nounours.m */,
 				4FFFF64D12965D9900CA2996 /* Util.h */,
 				4FFFF64E12965D9900CA2996 /* Util.m */,
+				4F85E83612989E7E00A012A5 /* AnimationHandler.h */,
+				4F85E83712989E7E00A012A5 /* AnimationHandler.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -241,6 +265,12 @@
 				4F80B3D6128EFBCF00DA7722 /* Feature.m */,
 				4F80B3F1128F047D00DA7722 /* ImageFeature.h */,
 				4F80B3F2128F047D00DA7722 /* ImageFeature.m */,
+				4F85E7A312983FDF00A012A5 /* AnimationImage.h */,
+				4F85E7A412983FDF00A012A5 /* AnimationImage.m */,
+				4F85E7B71298424000A012A5 /* Animation.h */,
+				4F85E7B81298424000A012A5 /* Animation.m */,
+				4F85E7CC12984A8500A012A5 /* FlingAnimation.h */,
+				4F85E7CD12984A8500A012A5 /* FlingAnimation.m */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -260,6 +290,10 @@
 				4F80B994128F62D600DA7722 /* ImageFeatureReader.m */,
 				4F80BA2D128F6BE400DA7722 /* AdjacentImageReader.h */,
 				4F80BA2E128F6BE400DA7722 /* AdjacentImageReader.m */,
+				4F85E8201298525000A012A5 /* AnimationReader.h */,
+				4F85E8211298525000A012A5 /* AnimationReader.m */,
+				4F85E82B12987E0D00A012A5 /* FlingAnimationReader.h */,
+				4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */,
 			);
 			name = io;
 			sourceTree = "<group>";
@@ -319,6 +353,8 @@
 		4F85E748129805D300A012A5 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				4F85E8701298ACAE00A012A5 /* animation.csv */,
+				4F85E8711298ACAE00A012A5 /* flinganimation.csv */,
 				4F85E7491298060900A012A5 /* adjacentimage.csv */,
 				4F85E74A1298060900A012A5 /* feature.csv */,
 				4F85E74B1298060900A012A5 /* image.csv */,
@@ -418,6 +454,8 @@
 				4F85E74E1298060900A012A5 /* feature.csv in Resources */,
 				4F85E74F1298060900A012A5 /* image.csv in Resources */,
 				4F85E7501298060900A012A5 /* imagefeatureassoc.csv in Resources */,
+				4F85E8721298ACAE00A012A5 /* animation.csv in Resources */,
+				4F85E8731298ACAE00A012A5 /* flinganimation.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +481,12 @@
 				4FFFF64F12965D9900CA2996 /* Util.m in Sources */,
 				4F85E73A129803A800A012A5 /* NounoursAppDelegate.m in Sources */,
 				4F85E73B129803A800A012A5 /* NounoursViewController.m in Sources */,
+				4F85E7A512983FDF00A012A5 /* AnimationImage.m in Sources */,
+				4F85E7B91298424000A012A5 /* Animation.m in Sources */,
+				4F85E7CE12984A8500A012A5 /* FlingAnimation.m in Sources */,
+				4F85E8221298525000A012A5 /* AnimationReader.m in Sources */,
+				4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */,
+				4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

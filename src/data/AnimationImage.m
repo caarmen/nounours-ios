@@ -16,7 +16,7 @@
 	[super init];
 	if(self)
 	{
-		imageId = pimageId;
+		imageId = [pimageId retain];
 		duration=pduration;
 	}
 	return self;

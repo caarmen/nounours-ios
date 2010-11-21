@@ -31,7 +31,7 @@ withSoundId:(NSString*) psoundId{
 		visible = pvisible;
 		vibrate = pvisible;
 		soundId = psoundId;
-		images = [[NSArray alloc] init];
+		images = [[NSMutableArray alloc] init];
 	}
 	return self;
 }

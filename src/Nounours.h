@@ -10,6 +10,8 @@
 #import "ui/MainView.h";
 #import "data/Image.h";
 #import "data/Feature.h";
+#import "AnimationHandler.h"
+#import "data/FlingAnimation.h"
 
 @interface Nounours : NSObject {
 @private MainView* mainView;
@@ -17,6 +19,9 @@
 @private Image *defaultImage;
 @private Feature *curFeature;
 @private NSMutableDictionary *images;
+@private NSMutableDictionary *animations;
+@private AnimationHandler *animationHandler;
+@private FlingAnimation *flingAnimations;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
 -(void) displayImage:(Image*)pimage;
@@ -24,10 +29,11 @@
 -(void) onRelease;
 -(void) onMove:(CGFloat)px withY:(CGFloat)py;
 -(void) setImage:(Image*) pimage;
+-(void) setImageWithImageId:(NSString*) pimageId;
 -(void) debug:(NSObject*) po;
 -(CGFloat) getDeviceWidth;
 -(CGFloat) getDeviceHeight;
 -(void) resizeView;
-@property(readwrite) Image* defaultImage;
+@property(retain,readwrite) Image* defaultImage;
 
 @end

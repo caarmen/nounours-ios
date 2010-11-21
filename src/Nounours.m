@@ -13,7 +13,10 @@
 #import "ImageReader.h";
 #import "ImageFeatureReader.h"
 #import "AdjacentImageReader.h"
+#import "AnimationReader.h"
+#import "FlingAnimationReader.h"
 #import "Image.h"
+#import "Animation.h"
 
 @implementation Nounours
 @synthesize defaultImage;
@@ -39,10 +42,15 @@
 		AdjacentImageReader* adjacentImageReader = [[AdjacentImageReader alloc] initAdjacentImageReader:readImages andFilename:@"adjacentimage"];
 		
 		[mainView setImageFromFilename:@"defaultimg_sm.jpg"];
+		AnimationReader *animationReader = [[AnimationReader alloc]initAnimationReader:@"animation"];
+		animations = [animationReader animations];
+		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
+		FlingAnimationReader* flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:@"flinganimation"];
+		flingAnimations = [flingAnimationReader flingAnimations];
+		
 		for (Image* image in [readImages allValues])
 		{
 			[images setValue:image forKey:image.uid];
-			[self setImage:image];			
 			if([image.uid isEqualToString:@"Default"])
 			{
 				self.defaultImage = image;
@@ -53,7 +61,7 @@
 		}
 		[self setImage:defaultImage];
 		[self resizeView];
-		
+
 	}
 	return self;
 }
@@ -102,6 +110,14 @@
 			[self setImage:nextImage];
 		}
 	}
+	for(Animation *animation in [animations allValues])
+	{
+		[animationHandler doAnimation:animation];
+		while([animationHandler isAnimationRunning])
+		{
+			[NSThread sleepForTimeInterval:1.0];
+		}
+	}
 }
 -(void) onMove:(CGFloat)px withY:(CGFloat)py{
 	BOOL doRefresh = YES;
@@ -134,6 +150,11 @@
 		[self displayImage:curImage];
 		
 	}
+}
+-(void) setImageWithImageId:(NSString*) pimageId{
+	Image *image = [images objectForKey:pimageId];
+	if(image != nil)
+		[self setImage:image];
 }
 -(void) resizeView{
 	CGSize imageSize = [mainView getImageSize];

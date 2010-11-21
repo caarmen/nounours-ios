@@ -25,6 +25,7 @@ NSString * const COL_ANIMATION_SOUND = @"Sound";
 	[super initNounoursReader:pfileName];
 	if(self)
 	{
+		animations = [[NSMutableDictionary alloc] init];
 		[self load];
 	}
 	return self;
@@ -39,7 +40,7 @@ NSString * const COL_ANIMATION_SOUND = @"Sound";
 	NSString* soundId = [pcsvReader getValue:COL_ANIMATION_SOUND];
 	NSString* sequenceStr = [pcsvReader getValue:COL_ANIMATION_SEQUENCE];
 	NSArray *sequence = [sequenceStr componentsSeparatedByString:@";"];
-	Animation *animation = [[Animation alloc] initAnimation:uid withLabel:label withInterval:interval withRepeat:repeat withVisible:visible withVibrate:vibrate withSoundId:soundId];
+	Animation *animation = [[[Animation alloc] initAnimation:uid withLabel:label withInterval:interval withRepeat:repeat withVisible:visible withVibrate:vibrate withSoundId:soundId] retain];
 	float duration = 1.0;
 	for(NSString* imageId in sequence)
 	{
