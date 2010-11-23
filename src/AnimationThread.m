@@ -36,7 +36,7 @@
 			CGFloat frameDuration = (CGFloat) (panimation.interval * animationImage.duration)/1000.0;
 			[nounours debug:[NSString stringWithFormat:@"%@:isRunning=%s%d*%.2f=%.2f",animationImage.imageId,[self isExecuting]? "true":"false",panimation.interval,animationImage.duration,frameDuration]];
 			[NSThread sleepForTimeInterval:frameDuration];
-			
+				
 		}
 		if([self isCancelled])
 			break;

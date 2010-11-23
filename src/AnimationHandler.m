@@ -33,7 +33,7 @@
 	}
 	[nounours debug:[NSString stringWithFormat:@"isRunning now? %s",animationThread.isRunning? "yes" : "no"]];
 	[animationThread release];
-	animationThread = nil;
+	animationThread = nil;	
 	
 }
 -(BOOL) isAnimationRunning{

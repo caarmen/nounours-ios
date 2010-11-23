@@ -17,6 +17,8 @@
 #import "FlingAnimationReader.h"
 #import "Image.h"
 #import "Animation.h"
+#import "Sound.h"
+#import "io/SoundReader.h"
 
 @implementation Nounours
 @synthesize defaultImage;
@@ -44,6 +46,8 @@
 		[mainView setImageFromFilename:@"defaultimg_sm.jpg"];
 		AnimationReader *animationReader = [[AnimationReader alloc]initAnimationReader:@"animation"];
 		animations = [animationReader animations];
+		SoundReader *soundReader = [[SoundReader alloc] initSoundReader:@"sound"];
+		soundHandler = [[SoundHandler alloc] initSoundHandler:soundReader.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		FlingAnimationReader* flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:@"flinganimation"];
 		flingAnimations = [flingAnimationReader flingAnimations];
@@ -171,8 +175,7 @@
 				continue;
 			}
 			Animation* animation = [animations objectForKey:flingAnimation.animationId];
-			[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
-			[animationHandler doAnimation:animation];
+			[self doAnimation:animation.uid];
 			
 		}
 		if(!animationHandler.isAnimationRunning)
@@ -184,7 +187,16 @@
 	}
 
 }
-
+-(void) doAnimation:(NSString *)panimationId{
+	Animation* animation = [animations objectForKey:panimationId];
+	[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
+	[animationHandler doAnimation:animation];
+	[soundHandler stopSound];
+	if(animation.soundId != nil)
+	{
+		[soundHandler playSound:animation.soundId];
+	}
+}
 -(void) setImage:(Image*) pimage{
 	BOOL doRefresh = (curImage != pimage);
 	curImage = pimage;

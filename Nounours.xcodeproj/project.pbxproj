@@ -11,6 +11,23 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		4F542C74129C68D6003A9AB5 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C73129C68D6003A9AB5 /* Sound.m */; };
+		4F542C77129C69CE003A9AB5 /* SoundReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C76129C69CE003A9AB5 /* SoundReader.m */; };
+		4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C79129C6BF7003A9AB5 /* SoundHandler.m */; };
+		4F542C99129C7542003A9AB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F542C98129C7542003A9AB5 /* AVFoundation.framework */; };
+		4F542CC8129C7785003A9AB5 /* sound.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F542CC7129C7785003A9AB5 /* sound.csv */; };
+		4F542D14129C851F003A9AB5 /* boing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D08129C851F003A9AB5 /* boing.mp3 */; };
+		4F542D15129C851F003A9AB5 /* brahmswiegenlied_musicbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D09129C851F003A9AB5 /* brahmswiegenlied_musicbox.mid */; };
+		4F542D16129C851F003A9AB5 /* clap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D0A129C851F003A9AB5 /* clap.mp3 */; };
+		4F542D17129C851F003A9AB5 /* disco.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D0B129C851F003A9AB5 /* disco.mp3 */; };
+		4F542D18129C851F003A9AB5 /* excited.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D0C129C851F003A9AB5 /* excited.mp3 */; };
+		4F542D19129C851F003A9AB5 /* fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D0D129C851F003A9AB5 /* fly.mp3 */; };
+		4F542D1A129C851F003A9AB5 /* kmacleod_broll.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D0E129C851F003A9AB5 /* kmacleod_broll.mp3 */; };
+		4F542D1B129C851F003A9AB5 /* psychotoy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D0F129C851F003A9AB5 /* psychotoy.mp3 */; };
+		4F542D1C129C851F003A9AB5 /* startle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D10129C851F003A9AB5 /* startle.mp3 */; };
+		4F542D1D129C851F003A9AB5 /* swoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D11129C851F003A9AB5 /* swoosh.mp3 */; };
+		4F542D1E129C851F003A9AB5 /* wiegenlied_guitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D12129C851F003A9AB5 /* wiegenlied_guitar.mp3 */; };
+		4F542D1F129C851F003A9AB5 /* woohoo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F542D13129C851F003A9AB5 /* woohoo.mp3 */; };
 		4F80B3C1128EF57900DA7722 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F80B3C0128EF57900DA7722 /* icon.png */; };
 		4F80B3CD128EF6D400DA7722 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F80B3CC128EF6D400DA7722 /* Default.png */; };
 		4F80B3D4128EFB9700DA7722 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F80B3D3128EFB9700DA7722 /* Image.m */; };
@@ -85,6 +102,26 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Nounours_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nounours_Prefix.pch; sourceTree = "<group>"; };
+		4F542C72129C68D6003A9AB5 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = src/data/Sound.h; sourceTree = SOURCE_ROOT; };
+		4F542C73129C68D6003A9AB5 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sound.m; path = src/data/Sound.m; sourceTree = SOURCE_ROOT; };
+		4F542C75129C69CE003A9AB5 /* SoundReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundReader.h; path = src/io/SoundReader.h; sourceTree = SOURCE_ROOT; };
+		4F542C76129C69CE003A9AB5 /* SoundReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundReader.m; path = src/io/SoundReader.m; sourceTree = SOURCE_ROOT; };
+		4F542C78129C6BF7003A9AB5 /* SoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundHandler.h; path = src/SoundHandler.h; sourceTree = SOURCE_ROOT; };
+		4F542C79129C6BF7003A9AB5 /* SoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundHandler.m; path = src/SoundHandler.m; sourceTree = SOURCE_ROOT; };
+		4F542C98129C7542003A9AB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4F542CC7129C7785003A9AB5 /* sound.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sound.csv; path = res/data/sound.csv; sourceTree = "<group>"; };
+		4F542D08129C851F003A9AB5 /* boing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boing.mp3; path = res/sounds/boing.mp3; sourceTree = "<group>"; };
+		4F542D09129C851F003A9AB5 /* brahmswiegenlied_musicbox.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; name = brahmswiegenlied_musicbox.mid; path = res/sounds/brahmswiegenlied_musicbox.mid; sourceTree = "<group>"; };
+		4F542D0A129C851F003A9AB5 /* clap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = clap.mp3; path = res/sounds/clap.mp3; sourceTree = "<group>"; };
+		4F542D0B129C851F003A9AB5 /* disco.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = disco.mp3; path = res/sounds/disco.mp3; sourceTree = "<group>"; };
+		4F542D0C129C851F003A9AB5 /* excited.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = excited.mp3; path = res/sounds/excited.mp3; sourceTree = "<group>"; };
+		4F542D0D129C851F003A9AB5 /* fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fly.mp3; path = res/sounds/fly.mp3; sourceTree = "<group>"; };
+		4F542D0E129C851F003A9AB5 /* kmacleod_broll.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = kmacleod_broll.mp3; path = res/sounds/kmacleod_broll.mp3; sourceTree = "<group>"; };
+		4F542D0F129C851F003A9AB5 /* psychotoy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = psychotoy.mp3; path = res/sounds/psychotoy.mp3; sourceTree = "<group>"; };
+		4F542D10129C851F003A9AB5 /* startle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = startle.mp3; path = res/sounds/startle.mp3; sourceTree = "<group>"; };
+		4F542D11129C851F003A9AB5 /* swoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = swoosh.mp3; path = res/sounds/swoosh.mp3; sourceTree = "<group>"; };
+		4F542D12129C851F003A9AB5 /* wiegenlied_guitar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wiegenlied_guitar.mp3; path = res/sounds/wiegenlied_guitar.mp3; sourceTree = "<group>"; };
+		4F542D13129C851F003A9AB5 /* woohoo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = woohoo.mp3; path = res/sounds/woohoo.mp3; sourceTree = "<group>"; };
 		4F80B3C0128EF57900DA7722 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4F80B3CC128EF6D400DA7722 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4F80B3D2128EFB9700DA7722 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = src/data/Image.h; sourceTree = SOURCE_ROOT; };
@@ -182,6 +219,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				4F542C99129C7542003A9AB5 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +244,8 @@
 				4F85E83712989E7E00A012A5 /* AnimationHandler.m */,
 				4F85EB62129972BB00A012A5 /* AnimationThread.h */,
 				4F85EB63129972BB00A012A5 /* AnimationThread.m */,
+				4F542C78129C6BF7003A9AB5 /* SoundHandler.h */,
+				4F542C79129C6BF7003A9AB5 /* SoundHandler.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -226,6 +266,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				4F542C98129C7542003A9AB5 /* AVFoundation.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -242,6 +283,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F542D07129C8509003A9AB5 /* sounds */,
 				4F85E748129805D300A012A5 /* data */,
 				4F80BB5A128FE82500DA7722 /* images */,
 				4F80B3CC128EF6D400DA7722 /* Default.png */,
@@ -261,6 +303,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4F542D07129C8509003A9AB5 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4F542D08129C851F003A9AB5 /* boing.mp3 */,
+				4F542D09129C851F003A9AB5 /* brahmswiegenlied_musicbox.mid */,
+				4F542D0A129C851F003A9AB5 /* clap.mp3 */,
+				4F542D0B129C851F003A9AB5 /* disco.mp3 */,
+				4F542D0C129C851F003A9AB5 /* excited.mp3 */,
+				4F542D0D129C851F003A9AB5 /* fly.mp3 */,
+				4F542D0E129C851F003A9AB5 /* kmacleod_broll.mp3 */,
+				4F542D0F129C851F003A9AB5 /* psychotoy.mp3 */,
+				4F542D10129C851F003A9AB5 /* startle.mp3 */,
+				4F542D11129C851F003A9AB5 /* swoosh.mp3 */,
+				4F542D12129C851F003A9AB5 /* wiegenlied_guitar.mp3 */,
+				4F542D13129C851F003A9AB5 /* woohoo.mp3 */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
 		4F80B3FA128F075C00DA7722 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +337,8 @@
 				4F85E7B81298424000A012A5 /* Animation.m */,
 				4F85E7CC12984A8500A012A5 /* FlingAnimation.h */,
 				4F85E7CD12984A8500A012A5 /* FlingAnimation.m */,
+				4F542C72129C68D6003A9AB5 /* Sound.h */,
+				4F542C73129C68D6003A9AB5 /* Sound.m */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -299,6 +362,8 @@
 				4F85E8211298525000A012A5 /* AnimationReader.m */,
 				4F85E82B12987E0D00A012A5 /* FlingAnimationReader.h */,
 				4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */,
+				4F542C75129C69CE003A9AB5 /* SoundReader.h */,
+				4F542C76129C69CE003A9AB5 /* SoundReader.m */,
 			);
 			name = io;
 			sourceTree = "<group>";
@@ -358,6 +423,7 @@
 		4F85E748129805D300A012A5 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				4F542CC7129C7785003A9AB5 /* sound.csv */,
 				4F85E8701298ACAE00A012A5 /* animation.csv */,
 				4F85E8711298ACAE00A012A5 /* flinganimation.csv */,
 				4F85E7491298060900A012A5 /* adjacentimage.csv */,
@@ -461,6 +527,19 @@
 				4F85E7501298060900A012A5 /* imagefeatureassoc.csv in Resources */,
 				4F85E8721298ACAE00A012A5 /* animation.csv in Resources */,
 				4F85E8731298ACAE00A012A5 /* flinganimation.csv in Resources */,
+				4F542CC8129C7785003A9AB5 /* sound.csv in Resources */,
+				4F542D14129C851F003A9AB5 /* boing.mp3 in Resources */,
+				4F542D15129C851F003A9AB5 /* brahmswiegenlied_musicbox.mid in Resources */,
+				4F542D16129C851F003A9AB5 /* clap.mp3 in Resources */,
+				4F542D17129C851F003A9AB5 /* disco.mp3 in Resources */,
+				4F542D18129C851F003A9AB5 /* excited.mp3 in Resources */,
+				4F542D19129C851F003A9AB5 /* fly.mp3 in Resources */,
+				4F542D1A129C851F003A9AB5 /* kmacleod_broll.mp3 in Resources */,
+				4F542D1B129C851F003A9AB5 /* psychotoy.mp3 in Resources */,
+				4F542D1C129C851F003A9AB5 /* startle.mp3 in Resources */,
+				4F542D1D129C851F003A9AB5 /* swoosh.mp3 in Resources */,
+				4F542D1E129C851F003A9AB5 /* wiegenlied_guitar.mp3 in Resources */,
+				4F542D1F129C851F003A9AB5 /* woohoo.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +572,9 @@
 				4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */,
 				4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */,
 				4F85EB64129972BB00A012A5 /* AnimationThread.m in Sources */,
+				4F542C74129C68D6003A9AB5 /* Sound.m in Sources */,
+				4F542C77129C69CE003A9AB5 /* SoundReader.m in Sources */,
+				4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
