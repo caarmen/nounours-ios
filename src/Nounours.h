@@ -41,6 +41,7 @@
 -(CGFloat) getDeviceHeight;
 -(void) resizeView;
 -(void) doAnimation:(NSString*) panimationId;
+-(void) stopAnimation;
 @property(retain,readwrite) Image* defaultImage;
 
 @end

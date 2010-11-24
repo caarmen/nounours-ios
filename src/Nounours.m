@@ -91,7 +91,7 @@
 -(void) onPress:(CGFloat)px withY:(CGFloat)py{
 	lastLocation.x = px;
 	lastLocation.y = py;
-	[animationHandler stopAnimation];
+	[self stopAnimation];
 	CGSize imageSize = [mainView getImageSize];
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
 	//[self debug:[NSString stringWithFormat:@"onPress %f,%f=>%f,%f",px,py,translatedPoint.x,translatedPoint.y]];
@@ -188,14 +188,19 @@
 
 }
 -(void) doAnimation:(NSString *)panimationId{
+	[self stopAnimation];
 	Animation* animation = [animations objectForKey:panimationId];
 	[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
 	[animationHandler doAnimation:animation];
-	[soundHandler stopSound];
+
 	if(animation.soundId != nil)
 	{
 		[soundHandler playSound:animation.soundId];
 	}
+}
+-(void) stopAnimation{
+	[soundHandler stopSound];
+	[animationHandler stopAnimation];
 }
 -(void) setImage:(Image*) pimage{
 	BOOL doRefresh = (curImage != pimage);
