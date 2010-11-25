@@ -18,6 +18,7 @@
 #import "Image.h"
 #import "Animation.h"
 #import "Sound.h"
+#import "Theme.h"
 #import "io/SoundReader.h"
 
 @implementation Nounours
@@ -53,7 +54,7 @@
 		flingAnimations = [flingAnimationReader flingAnimations];
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
-		[panRecognizer release];
+	//	[panRecognizer release];
 		
 		for (Image* image in [readImages allValues])
 		{
@@ -70,6 +71,10 @@
 		[self resizeView];
 		[imageFeatureReader release];
 		[adjacentImageReader release];
+		
+	//	Theme *rainbowTheme = [[Theme alloc] initTheme:@"5000" withName:@"Rainbow"];
+	//	[rainbowTheme release];
+							   
 
 	}
 	return self;
@@ -153,7 +158,8 @@
 -(void) onFling:(UIPanGestureRecognizer*) pgestureRecognizer{
 	CGPoint location = [pgestureRecognizer locationInView:mainView];
 	CGPoint velocity = [pgestureRecognizer velocityInView:mainView];
-	if(isnan(location.x))
+	NSLog(@"onFling state=%d, location=%f,%f.  velocity=%f,%f",pgestureRecognizer.state,location.x,location.y,velocity.x,velocity.y);
+	if(pgestureRecognizer.state == UIGestureRecognizerStateEnded)
 	{
 		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:[mainView getImageSize].width withImageHeight:[mainView getImageSize].height]; 
 		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). %velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
@@ -182,7 +188,7 @@
 			 [self onRelease];
 											
 	}
-	else {
+	else if(pgestureRecognizer.state == UIGestureRecognizerStateChanged) {
 		[self onMove:location.x withY:location.y];
 	}
 
@@ -235,6 +241,8 @@
 	
 	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);
 	mainView.frame = newSize;
+}
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
 }
 -(void) debug:(NSObject*) po{
 	NSLog(@"%@",po);

@@ -8,17 +8,24 @@
 
 #import "NounoursAppDelegate.h"
 #import "NounoursViewController.h"
-
+#import "MainView.h"
+#import "Nounours.h"
 @implementation NounoursAppDelegate
 
-@synthesize window;
-@synthesize viewController;
+//@synthesize window;
+//@synthesize viewController;
 
 
 #pragma mark -
 #pragma mark Application lifecycle
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (void)applicationDidFinishLaunching: (UIApplication*)application
+{
+    UIWindow* window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+	NounoursViewController *viewController = [[NounoursViewController alloc] initWithNibName:nil bundle:nil];
+	[window addSubview:viewController.view];
+    [window makeKeyAndVisible];
+}
+/*- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
 
@@ -27,7 +34,7 @@
     [window makeKeyAndVisible];
 
     return YES;
-}
+}*/
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -79,8 +86,8 @@
 
 
 - (void)dealloc {
-    [viewController release];
-    [window release];
+ //   [viewController release];
+  //  [window release];
     [super dealloc];
 }
 
