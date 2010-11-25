@@ -1,0 +1,46 @@
+//
+//  Theme.h
+//  Nounours
+//
+//  Created by Carmen Alvarez on 11/25/10.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Animation.h"
+#import "Sound.h"
+#import "FlingAnimation.h"
+#import "Image.h"
+
+@interface Theme : NSObject {
+@private NSMutableDictionary *images;
+@private NSMutableDictionary *animations;
+@private NSMutableDictionary *sounds;
+@private NSArray *flingAnimations;
+@private Animation *shakeAnimation;
+@private Animation *resumeAnimation;
+@private Animation *idleAnimation;
+@private Animation *endIdleAnimation;
+@private NSMutableDictionary *properties;
+@private Image *helpImage;
+@private Image *defaultImage;
+@private NSString *uid;
+@private NSString *name;
+//@private NSURL *location;
+@private CGFloat height;
+@private CGFloat width;
+	
+@private BOOL isLoaded;
+}
+
+-(Theme*) initTheme:(NSString*) puid withName:(NSString*)pname /*withLocation:(NSString*) plocation*/;
+-(NSString*) getPath:(NSString*) pfilename;
+
+@property (readonly) CGFloat height;
+@property (readonly) CGFloat width;
+@property (retain,readonly) NSString *uid;
+@property (retain,readonly) NSString *name;
+//@property (retain,readonly) NSURL *location;
+@property (readonly) BOOL isLoaded;
+
+@end
