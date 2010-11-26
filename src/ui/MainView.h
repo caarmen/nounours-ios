@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "../Nounours.h"
+#import "AnimationMenu.h"
+
+@class AnimationMenu;
 
 @interface MainView : UIImageView {
 @private UIImage * curImage;
 @private Nounours *nounours;
 @private NSMutableDictionary *imageCache;
 @private UIMenuController *menu;
+@private AnimationMenu *animationMenu;
+
 }
 -(void) setImageFromFilename:(NSString*) pfilename;
 -(CGSize) getImageSize;

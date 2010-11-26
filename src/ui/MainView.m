@@ -26,7 +26,7 @@
 		UIMenuItem *animationMenuItem = [[UIMenuItem alloc] initWithTitle:@"Animations" action:@selector(animationMenuItemSelected:)];
 		UIMenuItem *helpMenuItem = [[UIMenuItem alloc] initWithTitle:@"Help" action:@selector(helpMenuItemSelected:)];
 		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, helpMenuItem,nil];
-		
+		animationMenu = [[AnimationMenu alloc] initAnimationMenu:self];
     }
     return self;
 }
@@ -78,13 +78,6 @@
 	{
 		NSLog(@"Could not become first responder");
 	}
-/*	
-	for(Animation * animation in [nounours.curTheme.animations allValues])
-	{
-		UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:animation.label action:@selector(animationMenuItemSelected:)];
-		[menuItems addObject:menuItem];
-	}*/
-
 	
 	[menu setTargetRect:CGRectMake(px,py,0,0) inView:self];
 	[menu setMenuVisible:YES animated:YES];
@@ -93,6 +86,7 @@
 }
 -(void) animationMenuItemSelected:(id) sender{
 	NSLog(@"Animations");
+	[animationMenu showActionSheet:sender];
 }
 -(void) helpMenuItemSelected:(id)sender{
 	NSLog(@"Help");
