@@ -14,7 +14,6 @@
 @synthesize currentLine;
 @synthesize currentLineNumber;
 NSString * const FIELD_SEPARATOR = @",";
-NSString * const LINE_SEPARATOR = @"\r\n";
 
 -(CSVReader*) initCSVReader:(NSString*) pfilename{
 	[super init];
@@ -22,7 +21,12 @@ NSString * const LINE_SEPARATOR = @"\r\n";
 	NSString *path = pfilename;//[[NSBundle mainBundle] pathForResource:pfilename ofType:@"csv"];
 	NSLog(@"path = %@",path);
 	NSString *wholeContentsStr = [NSString stringWithContentsOfFile:path encoding:NSISOLatin2StringEncoding error:NULL];
-	wholeContents = [wholeContentsStr componentsSeparatedByString:LINE_SEPARATOR];
+	lineSeparator = @"\r\n";
+	NSRange firstLineEnd = [wholeContentsStr rangeOfString:lineSeparator];
+	if(firstLineEnd.length == 0)
+		lineSeparator = @"\n";
+	wholeContents = [wholeContentsStr componentsSeparatedByString:lineSeparator];
+	
 	if([wholeContents count]>0)
 	{
 		NSString * headerStr = [wholeContents objectAtIndex:0];
@@ -32,15 +36,22 @@ NSString * const LINE_SEPARATOR = @"\r\n";
 }
 -(BOOL) next{
 	currentLineNumber++;
-	if([wholeContents count] > currentLineNumber)
+
+	while([wholeContents count] > currentLineNumber)
 	{
 		NSString *currentLineStr = [wholeContents objectAtIndex:currentLineNumber];
+		currentLineStr = [currentLineStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		if([currentLineStr length] == 0)
+		{
+			currentLineNumber++;
+			continue;
+		}
 		currentLine = [currentLineStr componentsSeparatedByString:FIELD_SEPARATOR];
 		return YES;
 	}
-	else {
-		return NO;
-	}
+	
+	return NO;
+	
 
 }
 

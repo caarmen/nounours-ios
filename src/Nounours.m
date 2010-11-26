@@ -20,17 +20,21 @@
 #import "Sound.h"
 #import "Theme.h"
 #import "io/SoundReader.h"
+#import "io/ThemeReader.h"
 
 @implementation Nounours
 @synthesize defaultImage;
 @synthesize curTheme;
-
+@synthesize themes;
 
 -(Nounours*) initNounours:(MainView*) pmainView{
 	[super init];
 	if(self)
 	{
-		curTheme = [[Theme alloc] initTheme:@"5000" withName:@"Default"];
+		NSString *themesFile = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"csv"];
+		ThemeReader *themeReader = [[ThemeReader alloc] initThemeReader:themesFile];
+		themes = themeReader.themes;
+		curTheme = [[themes allValues] objectAtIndex:0];
 		mainView = pmainView;
 		mainView.nounours = self;
 		[mainView setImageFromFilename:curTheme.defaultImage.filename];
@@ -38,6 +42,7 @@
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
+		[mainView useTheme:curTheme];
 		[self setImage:curTheme.defaultImage];
 		[self resizeView];
 
@@ -213,6 +218,19 @@
 	mainView.frame = newSize;
 }
 
+-(BOOL) useTheme:(NSString*) pthemeId
+{
+	if(curTheme != nil && [pthemeId isEqualToString:curTheme.uid])
+	{
+		NSLog(@"Already using theme %@",pthemeId);
+		return YES;
+	}
+	curTheme = [themes objectForKey:pthemeId];
+	curFeature = nil;
+	[mainView useTheme:curTheme];
+	[self setImage:curTheme.defaultImage];
+	return YES;
+}
 
 -(void) debug:(NSObject*) po{
 	NSLog(@"%@",po);

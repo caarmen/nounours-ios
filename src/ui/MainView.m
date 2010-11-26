@@ -8,6 +8,7 @@
 
 #import "MainView.h"
 #import "../data/Animation.h"
+#import "../data/Image.h"
 
 @implementation MainView
 @synthesize myImage;
@@ -25,10 +26,19 @@
 		menu = [UIMenuController sharedMenuController];
 		UIMenuItem *animationMenuItem = [[UIMenuItem alloc] initWithTitle:@"Animations" action:@selector(animationMenuItemSelected:)];
 		UIMenuItem *helpMenuItem = [[UIMenuItem alloc] initWithTitle:@"Help" action:@selector(helpMenuItemSelected:)];
-		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, helpMenuItem,nil];
+		UIMenuItem *themeMenuItem = [[UIMenuItem alloc] initWithTitle:@"Themes" action:@selector(themeMenuItemSelected:)];
+		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, themeMenuItem, helpMenuItem,nil];
 		animationMenu = [[AnimationMenu alloc] initAnimationMenu:self];
+		themeMenu = [[ThemeMenu alloc] initThemeMenu:self];
     }
     return self;
+}
+-(void) useTheme:(Theme*) ptheme{
+	[imageCache removeAllObjects];
+	for(Image *image in [ptheme.images allValues])
+	{
+		[self setImageFromFilename:image.filename];
+	}
 }
 -(void) setImageFromFilename:(NSString*) pfilename{
 	//NSLog(@"setImageFromFilename:%@",pfilename);
@@ -92,8 +102,14 @@
 	NSLog(@"Help");
 	[nounours displayImage:nounours.curTheme.helpImage];
 }
+-(void) themeMenuItemSelected:(id) sender{
+	NSLog(@"Animations");
+	[themeMenu showActionSheet:sender];
+}
 - (BOOL) canPerformAction:(SEL)selector withSender:(id) sender {
-    if (selector == @selector(animationMenuItemSelected:) || selector == @selector(helpMenuItemSelected:) ) {
+    if (selector == @selector(animationMenuItemSelected:) 
+		|| selector == @selector(helpMenuItemSelected:)
+		|| selector == @selector(themeMenuItemSelected:)) {
         return YES;
     }
     return NO;

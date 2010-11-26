@@ -1,5 +1,5 @@
 //
-//  AnimationMenu.h
+//  ThemeMenu.h
 //  Nounours
 //
 //  Created by Carmen Alvarez on 11/26/10.
@@ -10,10 +10,10 @@
 #import "../Nounours.h"
 #import "MainView.h"
 @class MainView;
-@interface AnimationMenu : UIViewController<UIActionSheetDelegate> {
+
+@interface ThemeMenu : UIViewController<UIActionSheetDelegate> {
 @private MainView *mainView;
 }
--(AnimationMenu*) initAnimationMenu:(MainView*) pmainView;
+-(ThemeMenu*) initThemeMenu:(MainView*) pmainView;
 -(IBAction)showActionSheet:(id)sender;
-
 @end

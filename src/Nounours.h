@@ -22,13 +22,10 @@
 @private MainView* mainView;
 @private Image *curImage;
 @private Theme *curTheme;
-//@private Image *defaultImage;
 @private Feature *curFeature;
-//@private NSMutableDictionary *images;
-//@private NSMutableDictionary *animations;
+@private NSMutableDictionary *themes;
 @private AnimationHandler *animationHandler;
 @private SoundHandler *soundHandler;
-//@private NSMutableArray *flingAnimations;
 @private CGPoint lastLocation;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
@@ -46,8 +43,10 @@
 -(void) resizeView;
 -(void) doAnimation:(NSString*) panimationId;
 -(void) stopAnimation;
+-(BOOL) useTheme:(NSString*) pthemeId;
 
 @property(retain,readwrite) Image* defaultImage;
 @property(retain,readonly) Theme *curTheme;
+@property(retain,readonly) NSMutableDictionary *themes;
 
 @end

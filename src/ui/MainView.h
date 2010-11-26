@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "../Nounours.h"
 #import "AnimationMenu.h"
-
+#import "../data/Theme.h"
+#import "ThemeMenu.h"
 @class AnimationMenu;
+@class ThemeMenu;
 
 @interface MainView : UIImageView {
 @private UIImage * curImage;
@@ -18,13 +20,16 @@
 @private NSMutableDictionary *imageCache;
 @private UIMenuController *menu;
 @private AnimationMenu *animationMenu;
+@private ThemeMenu *themeMenu;
 
 }
+-(void) useTheme:(Theme*) ptheme;
 -(void) setImageFromFilename:(NSString*) pfilename;
 -(CGSize) getImageSize;
 -(void) showMenu:(CGFloat) px withY:(CGFloat) py;
 -(void) animationMenuItemSelected:(id) sender;
 -(void) helpMenuItemSelected:(id) sender;
+-(void) themeMenuItemSelected:(id) sender;
 @property(retain,readwrite) UIImage* myImage;
 @property(retain,readwrite) Nounours *nounours;
 @end

@@ -14,21 +14,17 @@
 {
 	[super init];
 	mainView = pmainView;
-	animationList = nil;
 	return self;
 }
 
 -(IBAction)showActionSheet:(id)sender{
-	//if(animationList == nil)
-	//{
-		animationList = [[UIActionSheet alloc] initWithTitle:@"Animations" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-		
-		for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
-		{
-			[animationList addButtonWithTitle:animation.label];
-		}
-		animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	//}
+	UIActionSheet *animationList = [[UIActionSheet alloc] initWithTitle:@"Animations" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	
+	for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
+	{
+		[animationList addButtonWithTitle:animation.label];
+	}
+	animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[animationList addButtonWithTitle:@"Cancel"];
 	animationList.cancelButtonIndex = animationList.numberOfButtons - 1;
     [animationList showInView:mainView];

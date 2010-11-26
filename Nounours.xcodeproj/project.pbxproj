@@ -39,6 +39,10 @@
 		4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */; };
 		4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E83712989E7E00A012A5 /* AnimationHandler.m */; };
 		4F85EB64129972BB00A012A5 /* AnimationThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85EB63129972BB00A012A5 /* AnimationThread.m */; };
+		4F8AB0E212A013520087C525 /* AnimationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AB0E112A013520087C525 /* AnimationMenu.m */; };
+		4F8AB19B12A020460087C525 /* ThemeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AB19A12A020460087C525 /* ThemeReader.m */; };
+		4F8AB1F612A023E60087C525 /* theme.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F8AB1F512A023E60087C525 /* theme.csv */; };
+		4F8AB23D12A027A70087C525 /* ThemeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AB23C12A027A70087C525 /* ThemeMenu.m */; };
 		4FD80CBB129F2B2D00889D73 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F037EB8129E7ED800B00045 /* Theme.m */; };
 		4FFFF64F12965D9900CA2996 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFF64E12965D9900CA2996 /* Util.m */; };
 /* End PBXBuildFile section */
@@ -116,6 +120,13 @@
 		4F85E83712989E7E00A012A5 /* AnimationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationHandler.m; path = src/AnimationHandler.m; sourceTree = SOURCE_ROOT; };
 		4F85EB62129972BB00A012A5 /* AnimationThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationThread.h; path = src/AnimationThread.h; sourceTree = SOURCE_ROOT; };
 		4F85EB63129972BB00A012A5 /* AnimationThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationThread.m; path = src/AnimationThread.m; sourceTree = SOURCE_ROOT; };
+		4F8AB0E012A013520087C525 /* AnimationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationMenu.h; path = src/ui/AnimationMenu.h; sourceTree = SOURCE_ROOT; };
+		4F8AB0E112A013520087C525 /* AnimationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationMenu.m; path = src/ui/AnimationMenu.m; sourceTree = SOURCE_ROOT; };
+		4F8AB19912A020460087C525 /* ThemeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeReader.h; path = src/io/ThemeReader.h; sourceTree = SOURCE_ROOT; };
+		4F8AB19A12A020460087C525 /* ThemeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeReader.m; path = src/io/ThemeReader.m; sourceTree = SOURCE_ROOT; };
+		4F8AB1F512A023E60087C525 /* theme.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = theme.csv; path = res/themes/theme.csv; sourceTree = "<group>"; };
+		4F8AB23B12A027A70087C525 /* ThemeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeMenu.h; path = src/ui/ThemeMenu.h; sourceTree = SOURCE_ROOT; };
+		4F8AB23C12A027A70087C525 /* ThemeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeMenu.m; path = src/ui/ThemeMenu.m; sourceTree = SOURCE_ROOT; };
 		4FFFF64D12965D9900CA2996 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = src/Util.h; sourceTree = SOURCE_ROOT; };
 		4FFFF64E12965D9900CA2996 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = src/Util.m; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Nounours-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nounours-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -194,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				4F0EC5B2129F471B00436582 /* themes */,
+				4F8AB1F512A023E60087C525 /* theme.csv */,
 				4F80B3CC128EF6D400DA7722 /* Default.png */,
 				4F80B3C0128EF57900DA7722 /* icon.png */,
 				8D1107310486CEB800E47090 /* Nounours-Info.plist */,
@@ -257,6 +269,8 @@
 				4F542C76129C69CE003A9AB5 /* SoundReader.m */,
 				4F14D3DD129E8DA300452621 /* PropertiesReader.h */,
 				4F14D3DE129E8DA300452621 /* PropertiesReader.m */,
+				4F8AB19912A020460087C525 /* ThemeReader.h */,
+				4F8AB19A12A020460087C525 /* ThemeReader.m */,
 			);
 			name = io;
 			sourceTree = "<group>";
@@ -266,6 +280,10 @@
 			children = (
 				4F80BA80128FD74F00DA7722 /* MainView.h */,
 				4F80BA81128FD74F00DA7722 /* MainView.m */,
+				4F8AB0E012A013520087C525 /* AnimationMenu.h */,
+				4F8AB0E112A013520087C525 /* AnimationMenu.m */,
+				4F8AB23B12A027A70087C525 /* ThemeMenu.h */,
+				4F8AB23C12A027A70087C525 /* ThemeMenu.m */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -324,6 +342,7 @@
 				4F80B3C1128EF57900DA7722 /* icon.png in Resources */,
 				4F80B3CD128EF6D400DA7722 /* Default.png in Resources */,
 				4F0EC639129F471B00436582 /* themes in Resources */,
+				4F8AB1F612A023E60087C525 /* theme.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +396,9 @@
 				4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */,
 				4F14D3DF129E8DA300452621 /* PropertiesReader.m in Sources */,
 				4FD80CBB129F2B2D00889D73 /* Theme.m in Sources */,
+				4F8AB0E212A013520087C525 /* AnimationMenu.m in Sources */,
+				4F8AB19B12A020460087C525 /* ThemeReader.m in Sources */,
+				4F8AB23D12A027A70087C525 /* ThemeMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

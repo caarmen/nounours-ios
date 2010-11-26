@@ -14,6 +14,7 @@
 	@private NSArray* currentLine;
 	@private int currentLineNumber;
 	@private NSArray *wholeContents;
+@private NSString *lineSeparator;
 }
 
 -(CSVReader*) initCSVReader:(NSString*) pfilename;
