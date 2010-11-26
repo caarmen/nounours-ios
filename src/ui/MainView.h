@@ -17,7 +17,7 @@
 }
 -(void) setImageFromFilename:(NSString*) pfilename;
 -(CGSize) getImageSize;
--(void) showMenu;
+-(void) showMenu:(CGFloat) px withY:(CGFloat) py;
 -(void) animationMenuItemSelected:(id) sender;
 -(void) helpMenuItemSelected:(id) sender;
 @property(retain,readwrite) UIImage* myImage;

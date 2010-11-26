@@ -71,14 +71,14 @@
 		return;
 	
 	UITouch *touch = [[touches objectEnumerator]nextObject];
+	CGPoint point = [touch locationInView:mainView];
 	if([touch tapCount] == 1)
 	{
-		CGPoint point = [touch locationInView:mainView];
 		[nounours onPress:point.x withY:point.y];
 	}
 	else if([touch tapCount] == 2)
 	{
-		[mainView showMenu];
+		[mainView showMenu:point.x withY:point.y];
 	}
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{

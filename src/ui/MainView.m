@@ -72,7 +72,7 @@
     // Drawing code
 }
 */
--(void) showMenu{
+-(void) showMenu:(CGFloat) px withY:(CGFloat) py{
 //	NSMutableArray * menuItems = [[NSMutableArray alloc] init];
 	if(![self becomeFirstResponder])
 	{
@@ -84,7 +84,9 @@
 		UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:animation.label action:@selector(animationMenuItemSelected:)];
 		[menuItems addObject:menuItem];
 	}*/
-	[menu setTargetRect:self.frame inView:self];
+
+	
+	[menu setTargetRect:CGRectMake(px,py,0,0) inView:self];
 	[menu setMenuVisible:YES animated:YES];
 	NSLog(@"menu width %f, visible %d", menu.menuFrame.size.width, menu.menuVisible);				
 	
