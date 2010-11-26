@@ -10,8 +10,9 @@
 #import "NounoursReader.h"
 
 @interface ImageReader : NounoursReader {
-	@private NSMutableDictionary *images;
+@private NSMutableDictionary *images;
+@private NSString *imagePath;
 }
 -(ImageReader*) initImageReader: (NSString*) pfileName;
-@property(retain,readonly) NSDictionary* images;
+@property(retain,readonly) NSMutableDictionary* images;
 @end

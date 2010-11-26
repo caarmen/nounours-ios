@@ -41,7 +41,7 @@
 		if([self isCancelled])
 			break;
 	}
-	[self performSelectorOnMainThread:@selector(displayImage:) withObject:[nounours defaultImage].uid waitUntilDone:YES];
+	[self performSelectorOnMainThread:@selector(displayImage:) withObject:nounours.curTheme.defaultImage.uid waitUntilDone:YES];
 	isRunning = NO;
 	[pool release];
 }

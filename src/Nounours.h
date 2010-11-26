@@ -14,18 +14,20 @@
 #import "data/Feature.h";
 #import "data/FlingAnimation.h"
 #import "data/Sound.h"
+#import "data/Theme.h"
 
 
 @interface Nounours : NSObject {
 @private MainView* mainView;
 @private Image *curImage;
-@private Image *defaultImage;
+@private Theme *curTheme;
+//@private Image *defaultImage;
 @private Feature *curFeature;
-@private NSMutableDictionary *images;
-@private NSMutableDictionary *animations;
+//@private NSMutableDictionary *images;
+//@private NSMutableDictionary *animations;
 @private AnimationHandler *animationHandler;
 @private SoundHandler *soundHandler;
-@private NSMutableArray *flingAnimations;
+//@private NSMutableArray *flingAnimations;
 @private CGPoint lastLocation;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
@@ -43,5 +45,6 @@
 -(void) doAnimation:(NSString*) panimationId;
 -(void) stopAnimation;
 @property(retain,readwrite) Image* defaultImage;
+@property(retain,readonly) Theme *curTheme;
 
 @end

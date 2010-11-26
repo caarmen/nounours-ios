@@ -20,6 +20,7 @@ NSString * const COL_IMAGE_ONRELEASE=@"OnRelease";
 	[super initNounoursReader:pfileName];
 	if(self)
 	{
+		imagePath = [NSString stringWithFormat:@"%@/images",[[pfileName stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]];
 		images = [[NSMutableDictionary alloc] init];
 		[self load];
 	}
@@ -28,8 +29,9 @@ NSString * const COL_IMAGE_ONRELEASE=@"OnRelease";
 -(void) readLine:(CSVReader*) pcsvReader{
 	NSString *uid = [pcsvReader getValue:COL_IMAGE_ID];
 	NSString *filename = [pcsvReader getValue:COL_IMAGE_FILENAME];
+	NSString *path = [NSString stringWithFormat:@"%@/%@",imagePath,filename];
 	NSString *onReleaseImage = [pcsvReader getValue:COL_IMAGE_ONRELEASE];
-	Image *image = [[Image alloc] initImage:uid andFilename:filename];
+	Image *image = [[Image alloc] initImage:uid andFilename:path];
 	if(onReleaseImage != nil && ![onReleaseImage length]==0)
 	{
 		[image setOnReleaseImageId:onReleaseImage];

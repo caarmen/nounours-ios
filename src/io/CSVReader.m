@@ -19,7 +19,8 @@ NSString * const LINE_SEPARATOR = @"\r\n";
 -(CSVReader*) initCSVReader:(NSString*) pfilename{
 	[super init];
 	
-	NSString *path = [[NSBundle mainBundle] pathForResource:pfilename ofType:@"csv"];
+	NSString *path = pfilename;//[[NSBundle mainBundle] pathForResource:pfilename ofType:@"csv"];
+	NSLog(@"path = %@",path);
 	NSString *wholeContentsStr = [NSString stringWithContentsOfFile:path encoding:NSISOLatin2StringEncoding error:NULL];
 	wholeContents = [wholeContentsStr componentsSeparatedByString:LINE_SEPARATOR];
 	if([wholeContents count]>0)

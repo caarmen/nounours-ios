@@ -42,5 +42,14 @@
 @property (retain,readonly) NSString *name;
 //@property (retain,readonly) NSURL *location;
 @property (readonly) BOOL isLoaded;
-
+@property (retain,readonly) NSMutableDictionary *images;
+@property (retain,readonly) NSMutableDictionary *animations;
+@property (retain,readonly) NSMutableDictionary *sounds;
+@property (retain,readonly) NSArray *flingAnimations;
+@property (retain, readonly) Animation* shakeAnimation;
+@property (retain, readonly) Animation* resumeAnimation;
+@property (retain, readonly) Animation* idleAnimation;
+@property (retain, readonly) Animation* endIdleAnimation;
+@property (retain, readonly) Image *helpImage;
+@property (retain, readonly) Image *defaultImage;
 @end

@@ -23,39 +23,39 @@
 
 @implementation Nounours
 @synthesize defaultImage;
+@synthesize curTheme;
 
 
 -(Nounours*) initNounours:(MainView*) pmainView{
 	[super init];
 	if(self)
 	{
-		images = [[NSMutableDictionary alloc] init];
+		curTheme = [[Theme alloc] initTheme:@"1" withName:@"Default"];
+
+//		images = [[NSMutableDictionary alloc] init];
 		mainView = pmainView;
-		NSString *featureFile = @"feature";
+/*		NSString *featureFile = @"feature";
 		FeatureReader* featureReader = [[FeatureReader alloc] initFeatureReader:featureFile];
 		NSArray* features = [featureReader features];
-		for (Feature* feature in features)
-		{
-			NSLog(@"%@",feature);
-		}
 		ImageReader* imageReader = [[ImageReader alloc] initImageReader:@"image"];
 		NSDictionary* readImages = [imageReader images];
 		ImageFeatureReader* imageFeatureReader = [[ImageFeatureReader alloc] initImageFeatureReader:(NSMutableDictionary*)readImages andFeatures:features andFilename:@"imagefeatureassoc"];
 		
 		AdjacentImageReader* adjacentImageReader = [[AdjacentImageReader alloc] initAdjacentImageReader:(NSMutableDictionary*)readImages andFilename:@"adjacentimage"];
-		
-		[mainView setImageFromFilename:@"defaultimg_sm.jpg"];
-		AnimationReader *animationReader = [[AnimationReader alloc]initAnimationReader:@"animation"];
+	*/	
+//		[mainView setImageFromFilename:@"defaultimg_sm.jpg"];
+		[mainView setImageFromFilename:curTheme.defaultImage.filename];
+/*		AnimationReader *animationReader = [[AnimationReader alloc]initAnimationReader:@"animation"];
 		animations = [animationReader animations];
-		SoundReader *soundReader = [[SoundReader alloc] initSoundReader:@"sound"];
-		soundHandler = [[SoundHandler alloc] initSoundHandler:soundReader.sounds];
+		SoundReader *soundReader = [[SoundReader alloc] initSoundReader:@"sound"];*/
+		soundHandler = [[SoundHandler alloc] initSoundHandler:curTheme.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
-		FlingAnimationReader* flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:@"flinganimation"];
-		flingAnimations = [flingAnimationReader flingAnimations];
+		/*FlingAnimationReader* flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:@"flinganimation"];
+		flingAnimations = [flingAnimationReader flingAnimations];*/
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
 	//	[panRecognizer release];
-		
+		/*
 		for (Image* image in [readImages allValues])
 		{
 			
@@ -65,15 +65,14 @@
 				self.defaultImage = image;
 			}
 			
-			NSLog(@"%@",image);
-		}
-		[self setImage:defaultImage];
+		//	NSLog(@"%@",image);
+		}*/
+		[self setImage:curTheme.defaultImage];
 		[self resizeView];
-		[imageFeatureReader release];
-		[adjacentImageReader release];
+		//[imageFeatureReader release];
+		//[adjacentImageReader release];
 		
-	//	Theme *rainbowTheme = [[Theme alloc] initTheme:@"5000" withName:@"Rainbow"];
-	//	[rainbowTheme release];
+		//[rainbowTheme release];
 							   
 
 	}
@@ -123,7 +122,7 @@
 		NSString *nextImageId = curImage.onReleaseImageId;
 		if(nextImageId != nil)
 		{
-			Image *nextImage = [images objectForKey:nextImageId];
+			Image *nextImage = [curTheme.images objectForKey:nextImageId];
 			[self setImage:nextImage];
 		}
 	}
@@ -147,7 +146,7 @@
 			curImage = image;
 		}
 		else {
-			curImage = defaultImage;
+			curImage = curTheme.defaultImage;
 		}
 		
 	}
@@ -163,7 +162,7 @@
 	{
 		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:[mainView getImageSize].width withImageHeight:[mainView getImageSize].height]; 
 		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). %velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
-		for(FlingAnimation* flingAnimation in flingAnimations )
+		for(FlingAnimation* flingAnimation in curTheme.flingAnimations )
 		{
 			[self debug:[NSString stringWithFormat:@"testing %@",flingAnimation.animationId]];
 			if(![Util isFaster:velocity.x withV2:flingAnimation.minVelX])
@@ -180,7 +179,7 @@
 				NSLog(@"fast enough, not in square");
 				continue;
 			}
-			Animation* animation = [animations objectForKey:flingAnimation.animationId];
+			Animation* animation = [curTheme.animations objectForKey:flingAnimation.animationId];
 			[self doAnimation:animation.uid];
 			
 		}
@@ -195,7 +194,7 @@
 }
 -(void) doAnimation:(NSString *)panimationId{
 	[self stopAnimation];
-	Animation* animation = [animations objectForKey:panimationId];
+	Animation* animation = [curTheme.animations objectForKey:panimationId];
 	[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
 	[animationHandler doAnimation:animation];
 
@@ -218,7 +217,7 @@
 	}
 }
 -(void) setImageWithImageId:(NSString*) pimageId{
-	Image *image = [images objectForKey:pimageId];
+	Image *image = [curTheme.images objectForKey:pimageId];
 	if(image != nil)
 		[self setImage:image];
 }
