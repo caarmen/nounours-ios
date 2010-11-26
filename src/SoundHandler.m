@@ -21,13 +21,12 @@
 		AVAudioPlayer *audioPlayer = [audioPlayers objectForKey:sound.uid];
 		if(audioPlayer == nil)
 		{
-			NSString *urlString = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath],sound.filename];
-			NSURL *url = [NSURL fileURLWithPath:urlString];
+			NSURL *url = [NSURL fileURLWithPath:sound.filename];
 			NSError *error;
 			
 			audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
 			if(audioPlayer == nil)
-				NSLog(@"%@",[error description]);
+				NSLog(@"Could not load %@:%@",sound,[error description]);
 			else
 				[audioPlayers setObject:audioPlayer forKey:sound.uid];
 		}

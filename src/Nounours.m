@@ -30,7 +30,7 @@
 	[super init];
 	if(self)
 	{
-		curTheme = [[Theme alloc] initTheme:@"1" withName:@"Default"];
+		curTheme = [[Theme alloc] initTheme:@"5000" withName:@"Default"];
 
 //		images = [[NSMutableDictionary alloc] init];
 		mainView = pmainView;

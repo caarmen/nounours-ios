@@ -15,6 +15,7 @@ NSString * const COL_SOUND_FILENAME = @"Filename";
 @synthesize sounds;
 -(SoundReader*) initSoundReader:(NSString*)pfilename{
 	[super initNounoursReader:pfilename];
+	soundPath = [NSString stringWithFormat:@"%@/sounds",[[pfilename stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]];
 	sounds = [[NSMutableDictionary alloc] init];
 	[self load];
 	return self;
@@ -22,7 +23,9 @@ NSString * const COL_SOUND_FILENAME = @"Filename";
 -(void) readLine:(CSVReader*) pcsvReader{
 	NSString *uid = [pcsvReader getValue:COL_SOUND_ID];
 	NSString *filename = [pcsvReader getValue:COL_SOUND_FILENAME];
-	Sound * sound = [[Sound alloc] initSound:uid withFilename:filename];
+	NSString *path = [NSString stringWithFormat:@"%@/%@",soundPath,filename];
+	NSLog(@"Sound:%@",path);
+	Sound * sound = [[Sound alloc] initSound:uid withFilename:path];
 	[sounds setObject:sound forKey:uid];
 	
 }

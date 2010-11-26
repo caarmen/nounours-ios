@@ -25,7 +25,7 @@
     return self;
 }
 -(void) setImageFromFilename:(NSString*) pfilename{
-	NSLog(@"setImageFromFilename:%@",pfilename);
+	//NSLog(@"setImageFromFilename:%@",pfilename);
 	UIImage *img = [imageCache objectForKey:pfilename];
 	if(img == nil)
 	{

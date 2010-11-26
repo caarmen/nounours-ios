@@ -38,11 +38,8 @@
 		4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */; };
 		4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E83712989E7E00A012A5 /* AnimationHandler.m */; };
 		4F85EB64129972BB00A012A5 /* AnimationThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85EB63129972BB00A012A5 /* AnimationThread.m */; };
-		4FD80C06129F0C2500889D73 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 4FD80BBF129F0C2500889D73 /* data */; };
-		4FD80C07129F0C2500889D73 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 4FD80BC8129F0C2500889D73 /* images */; };
-		4FD80C08129F0C2500889D73 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 4FD80BEE129F0C2500889D73 /* sounds */; };
-		4FD80C09129F0C2500889D73 /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 4FD80BFC129F0C2500889D73 /* themes */; };
 		4FD80CBB129F2B2D00889D73 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F037EB8129E7ED800B00045 /* Theme.m */; };
+		4FD80FCF129F418A00889D73 /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 4FD80F48129F418A00889D73 /* themes */; };
 		4FFFF64F12965D9900CA2996 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFF64E12965D9900CA2996 /* Util.m */; };
 /* End PBXBuildFile section */
 
@@ -118,10 +115,7 @@
 		4F85E83712989E7E00A012A5 /* AnimationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationHandler.m; path = src/AnimationHandler.m; sourceTree = SOURCE_ROOT; };
 		4F85EB62129972BB00A012A5 /* AnimationThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationThread.h; path = src/AnimationThread.h; sourceTree = SOURCE_ROOT; };
 		4F85EB63129972BB00A012A5 /* AnimationThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationThread.m; path = src/AnimationThread.m; sourceTree = SOURCE_ROOT; };
-		4FD80BBF129F0C2500889D73 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = res/data; sourceTree = "<group>"; };
-		4FD80BC8129F0C2500889D73 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = res/images; sourceTree = "<group>"; };
-		4FD80BEE129F0C2500889D73 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sounds; path = res/sounds; sourceTree = "<group>"; };
-		4FD80BFC129F0C2500889D73 /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = themes; path = res/themes; sourceTree = "<group>"; };
+		4FD80F48129F418A00889D73 /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = themes; sourceTree = "<group>"; };
 		4FFFF64D12965D9900CA2996 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = src/Util.h; sourceTree = SOURCE_ROOT; };
 		4FFFF64E12965D9900CA2996 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = src/Util.m; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Nounours-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nounours-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -199,10 +193,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4FD80BBF129F0C2500889D73 /* data */,
-				4FD80BC8129F0C2500889D73 /* images */,
-				4FD80BEE129F0C2500889D73 /* sounds */,
-				4FD80BFC129F0C2500889D73 /* themes */,
+				4FD80F48129F418A00889D73 /* themes */,
 				4F80B3CC128EF6D400DA7722 /* Default.png */,
 				4F80B3C0128EF57900DA7722 /* icon.png */,
 				8D1107310486CEB800E47090 /* Nounours-Info.plist */,
@@ -332,10 +323,7 @@
 			files = (
 				4F80B3C1128EF57900DA7722 /* icon.png in Resources */,
 				4F80B3CD128EF6D400DA7722 /* Default.png in Resources */,
-				4FD80C06129F0C2500889D73 /* data in Resources */,
-				4FD80C07129F0C2500889D73 /* images in Resources */,
-				4FD80C08129F0C2500889D73 /* sounds in Resources */,
-				4FD80C09129F0C2500889D73 /* themes in Resources */,
+				4FD80FCF129F418A00889D73 /* themes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

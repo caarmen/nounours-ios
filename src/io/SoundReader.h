@@ -11,7 +11,7 @@
 
 @interface SoundReader : NounoursReader {
 @private NSMutableDictionary* sounds;
-	
+@private NSString *soundPath;	
 }
 -(SoundReader*) initSoundReader:(NSString*)pfilename;
 @property(retain,readonly) NSMutableDictionary* sounds;
