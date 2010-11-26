@@ -69,9 +69,17 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 	if([touches count] !=1)
 		return;
+	
 	UITouch *touch = [[touches objectEnumerator]nextObject];
-	CGPoint point = [touch locationInView:mainView];
-	[nounours onPress:point.x withY:point.y];
+	if([touch tapCount] == 1)
+	{
+		CGPoint point = [touch locationInView:mainView];
+		[nounours onPress:point.x withY:point.y];
+	}
+	else if([touch tapCount] == 2)
+	{
+		[mainView showMenu];
+	}
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	[nounours onRelease];

@@ -32,6 +32,7 @@
 	{
 		curTheme = [[Theme alloc] initTheme:@"5000" withName:@"Default"];
 		mainView = pmainView;
+		mainView.nounours = self;
 		[mainView setImageFromFilename:curTheme.defaultImage.filename];
 		soundHandler = [[SoundHandler alloc] initSoundHandler:curTheme.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
@@ -39,6 +40,7 @@
 		[mainView addGestureRecognizer:panRecognizer];
 		[self setImage:curTheme.defaultImage];
 		[self resizeView];
+
 	}
 	return self;
 }
@@ -210,8 +212,8 @@
 	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);
 	mainView.frame = newSize;
 }
--(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-}
+
+
 -(void) debug:(NSObject*) po{
 	NSLog(@"%@",po);
 };

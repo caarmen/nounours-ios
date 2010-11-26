@@ -7,10 +7,11 @@
 //
 
 #import "MainView.h"
-
+#import "../data/Animation.h"
 
 @implementation MainView
 @synthesize myImage;
+@synthesize nounours;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -20,7 +21,12 @@
 		self.userInteractionEnabled = YES;
 		self.autoresizesSubviews = NO;
 		imageCache = [[NSMutableDictionary alloc] init];
-    [self becomeFirstResponder];
+		[self becomeFirstResponder];
+		menu = [UIMenuController sharedMenuController];
+		UIMenuItem *animationMenuItem = [[UIMenuItem alloc] initWithTitle:@"Animations" action:@selector(animationMenuItemSelected:)];
+		UIMenuItem *helpMenuItem = [[UIMenuItem alloc] initWithTitle:@"Help" action:@selector(helpMenuItemSelected:)];
+		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, helpMenuItem,nil];
+		
     }
     return self;
 }
@@ -66,7 +72,39 @@
     // Drawing code
 }
 */
-
+-(void) showMenu{
+//	NSMutableArray * menuItems = [[NSMutableArray alloc] init];
+	if(![self becomeFirstResponder])
+	{
+		NSLog(@"Could not become first responder");
+	}
+/*	
+	for(Animation * animation in [nounours.curTheme.animations allValues])
+	{
+		UIMenuItem *menuItem = [[UIMenuItem alloc] initWithTitle:animation.label action:@selector(animationMenuItemSelected:)];
+		[menuItems addObject:menuItem];
+	}*/
+	[menu setTargetRect:self.frame inView:self];
+	[menu setMenuVisible:YES animated:YES];
+	NSLog(@"menu width %f, visible %d", menu.menuFrame.size.width, menu.menuVisible);				
+	
+}
+-(void) animationMenuItemSelected:(id) sender{
+	NSLog(@"Animations");
+}
+-(void) helpMenuItemSelected:(id)sender{
+	NSLog(@"Help");
+	[nounours displayImage:nounours.curTheme.helpImage];
+}
+- (BOOL) canPerformAction:(SEL)selector withSender:(id) sender {
+    if (selector == @selector(animationMenuItemSelected:) || selector == @selector(helpMenuItemSelected:) ) {
+        return YES;
+    }
+    return NO;
+}
+- (BOOL) canBecomeFirstResponder {
+    return YES;
+}
 - (void)dealloc {
     [super dealloc];
 }

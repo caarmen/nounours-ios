@@ -16,6 +16,7 @@
 #import "data/Sound.h"
 #import "data/Theme.h"
 
+@class MainView;
 
 @interface Nounours : NSObject {
 @private MainView* mainView;
@@ -45,6 +46,7 @@
 -(void) resizeView;
 -(void) doAnimation:(NSString*) panimationId;
 -(void) stopAnimation;
+
 @property(retain,readwrite) Image* defaultImage;
 @property(retain,readonly) Theme *curTheme;
 
