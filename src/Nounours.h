@@ -36,6 +36,7 @@
 -(void) onRelease;
 -(void) onMove:(CGFloat)px withY:(CGFloat)py;
 -(void) onFling:(UIPanGestureRecognizer*) pgestureRecognizer;
+-(void) onShake;
 -(void) setImage:(Image*) pimage;
 -(void) setImageWithImageId:(NSString*) pimageId;
 -(void) debug:(NSObject*) po;

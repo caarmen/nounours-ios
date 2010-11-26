@@ -156,6 +156,11 @@
 	}
 
 }
+-(void) onShake{
+	NSLog(@"Shake");
+	if(curTheme.shakeAnimation != nil)
+		[self doAnimation:curTheme.shakeAnimation.uid];
+}
 -(void) doAnimation:(NSString *)panimationId{
 	[self stopAnimation];
 	Animation* animation = [curTheme.animations objectForKey:panimationId];

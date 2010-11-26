@@ -20,7 +20,7 @@
 		self.userInteractionEnabled = YES;
 		self.autoresizesSubviews = NO;
 		imageCache = [[NSMutableDictionary alloc] init];
-
+    [self becomeFirstResponder];
     }
     return self;
 }
@@ -70,6 +70,4 @@
 - (void)dealloc {
     [super dealloc];
 }
-
-
 @end
