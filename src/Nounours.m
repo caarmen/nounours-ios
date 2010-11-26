@@ -31,50 +31,14 @@
 	if(self)
 	{
 		curTheme = [[Theme alloc] initTheme:@"5000" withName:@"Default"];
-
-//		images = [[NSMutableDictionary alloc] init];
 		mainView = pmainView;
-/*		NSString *featureFile = @"feature";
-		FeatureReader* featureReader = [[FeatureReader alloc] initFeatureReader:featureFile];
-		NSArray* features = [featureReader features];
-		ImageReader* imageReader = [[ImageReader alloc] initImageReader:@"image"];
-		NSDictionary* readImages = [imageReader images];
-		ImageFeatureReader* imageFeatureReader = [[ImageFeatureReader alloc] initImageFeatureReader:(NSMutableDictionary*)readImages andFeatures:features andFilename:@"imagefeatureassoc"];
-		
-		AdjacentImageReader* adjacentImageReader = [[AdjacentImageReader alloc] initAdjacentImageReader:(NSMutableDictionary*)readImages andFilename:@"adjacentimage"];
-	*/	
-//		[mainView setImageFromFilename:@"defaultimg_sm.jpg"];
 		[mainView setImageFromFilename:curTheme.defaultImage.filename];
-/*		AnimationReader *animationReader = [[AnimationReader alloc]initAnimationReader:@"animation"];
-		animations = [animationReader animations];
-		SoundReader *soundReader = [[SoundReader alloc] initSoundReader:@"sound"];*/
 		soundHandler = [[SoundHandler alloc] initSoundHandler:curTheme.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
-		/*FlingAnimationReader* flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:@"flinganimation"];
-		flingAnimations = [flingAnimationReader flingAnimations];*/
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
-	//	[panRecognizer release];
-		/*
-		for (Image* image in [readImages allValues])
-		{
-			
-			[images setValue:image forKey:image.uid];
-			if([image.uid isEqualToString:@"Default"])
-			{
-				self.defaultImage = image;
-			}
-			
-		//	NSLog(@"%@",image);
-		}*/
 		[self setImage:curTheme.defaultImage];
 		[self resizeView];
-		//[imageFeatureReader release];
-		//[adjacentImageReader release];
-		
-		//[rainbowTheme release];
-							   
-
 	}
 	return self;
 }
