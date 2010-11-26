@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>4FD80FDB129F41E700889D73</string>
+						<string>4FD8100F129F46A000889D73</string>
 						<key>history</key>
 						<array>
 							<string>4FD80E76129F3D5B00889D73</string>
@@ -256,7 +256,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>4FD80FDC129F41E700889D73</string>
+						<string>4FD81010129F46A000889D73</string>
 						<key>history</key>
 						<array>
 							<string>4FD80DA0129F369500889D73</string>
@@ -312,6 +312,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -349,9 +351,6 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>4FD80F48129F418A00889D73</string>
-								<string>4FD80F4B129F418A00889D73</string>
-								<string>4FD80F8D129F418A00889D73</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -359,8 +358,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
-									<integer>1</integer>
+									<integer>20</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -412,7 +410,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4FD80FD6129F41E700889D73</string>
+										<string>4FD8100D129F46A000889D73</string>
 										<key>history</key>
 										<array>
 											<string>4F80B70A128F499B00DA7722</string>
@@ -497,8 +495,6 @@
 							<string>266pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -516,7 +512,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4FD80FDA129F41E700889D73</string>
+										<string>4FD8100E129F46A000889D73</string>
 										<key>history</key>
 										<array>
 											<string>4F80B70A128F499B00DA7722</string>
@@ -580,7 +576,7 @@
 											<string>4FD80E9A129F3DEA00889D73</string>
 											<string>4FD80FD7129F41E700889D73</string>
 											<string>4FD80FD8129F41E700889D73</string>
-											<string>4FD80FD9129F41E700889D73</string>
+											<string>4FD80FF0129F459700889D73</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -785,9 +781,9 @@
 		<string>4F08BCDC129EB62400BE7B29</string>
 		<string>4F80B3B0128EF4E200DA7722</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4FD80E81129F3D7A00889D73</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/calvarez/dev/projects/ios/NounoursIOS/trunk/Nounours.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
