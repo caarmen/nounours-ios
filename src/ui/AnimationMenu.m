@@ -7,7 +7,7 @@
 //
 
 #import "AnimationMenu.h"
-
+#include <stdlib.h>
 
 @implementation AnimationMenu
 -(AnimationMenu*) initAnimationMenu:(MainView*) pmainView
@@ -19,7 +19,7 @@
 
 -(IBAction)showActionSheet:(id)sender{
 	UIActionSheet *animationList = [[UIActionSheet alloc] initWithTitle:@"Animations" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-	
+	[animationList addButtonWithTitle:@"Random"];
 	for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
 	{
 		[animationList addButtonWithTitle:animation.label];
@@ -35,7 +35,12 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex == actionSheet.cancelButtonIndex)
 		return;
-	NSString *animationLabel = [actionSheet buttonTitleAtIndex:(buttonIndex)];
+	int animationIndex = [buttonIndex intValue];
+	if(animationIndex == 0)
+	{
+		animationIndex = (arc4random() %(actionSheet.numberOfButtons - 2)) +1;
+	}
+	NSString *animationLabel = [actionSheet buttonTitleAtIndex:(animationIndex)];
 	[self performSelectorInBackground:@selector(doAnimation:) withObject:animationLabel];
 	
 }
