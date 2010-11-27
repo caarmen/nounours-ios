@@ -28,10 +28,7 @@ NSString * const PROPERTIES_LINE_SEPARATOR = @"\r\n";
 		[data setObject:value forKey:key];
 		
 	}
-	for(NSString *key in [data allKeys])
-	{
-		NSString *value = [data objectForKey:key];
-	}
+
 	return self;
 	
 	
