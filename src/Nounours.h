@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AnimationHandler.h"
 #import "SoundHandler.h"
+#import "VibrateHandler.h"
 #import "ui/MainView.h";
 #import "data/Image.h";
 #import "data/Feature.h";
@@ -26,6 +27,7 @@
 @private NSMutableDictionary *themes;
 @private AnimationHandler *animationHandler;
 @private SoundHandler *soundHandler;
+@private VibrateHandler *vibrateHandler;
 @private CGPoint lastLocation;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
@@ -47,5 +49,6 @@
 @property(retain,readwrite) Image* defaultImage;
 @property(retain,readonly) Theme *curTheme;
 @property(retain,readonly) NSMutableDictionary *themes;
+@property(retain,readonly) VibrateHandler* vibrateHandler;
 
 @end

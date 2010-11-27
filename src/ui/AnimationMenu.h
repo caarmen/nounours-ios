@@ -14,6 +14,7 @@
 @private MainView *mainView;
 }
 -(AnimationMenu*) initAnimationMenu:(MainView*) pmainView;
+-(void) doAnimation:(NSString*)panimationLabel;
 -(IBAction)showActionSheet:(id)sender;
 
 @end

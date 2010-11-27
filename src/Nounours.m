@@ -26,6 +26,7 @@
 @synthesize defaultImage;
 @synthesize curTheme;
 @synthesize themes;
+@synthesize vibrateHandler;
 
 -(Nounours*) initNounours:(MainView*) pmainView{
 	[super init];
@@ -38,8 +39,9 @@
 		mainView = pmainView;
 		mainView.nounours = self;
 		[mainView setImageFromFilename:initialTheme.defaultImage.filename];
-		soundHandler = [[SoundHandler alloc] initSoundHandler:curTheme.sounds];
+		soundHandler = [[SoundHandler alloc] initSoundHandler:initialTheme.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
+		vibrateHandler = [[VibrateHandler alloc] initVibrateHandler];
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
 		[self performSelectorOnMainThread:@selector(useTheme:) withObject:initialTheme.uid waitUntilDone:NO];
@@ -94,6 +96,7 @@
 		{
 			Image *nextImage = [curTheme.images objectForKey:nextImageId];
 			[self setImage:nextImage];
+			[vibrateHandler doVibrate:nil];
 		}
 	}
 	lastLocation.x=-1;

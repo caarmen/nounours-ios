@@ -29,7 +29,7 @@ withSoundId:(NSString*) psoundId{
 		interval = pinterval;
 		repeat = prepeat;
 		visible = pvisible;
-		vibrate = pvisible;
+		vibrate = pvibrate;
 		soundId = [psoundId retain];
 		images = [[NSMutableArray alloc] init];
 	}

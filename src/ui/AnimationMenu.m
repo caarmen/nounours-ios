@@ -36,17 +36,23 @@
 	if(buttonIndex == actionSheet.cancelButtonIndex)
 		return;
 	NSString *animationLabel = [actionSheet buttonTitleAtIndex:(buttonIndex)];
+	[self performSelectorInBackground:@selector(doAnimation:) withObject:animationLabel];
+	
+}
+-(void) doAnimation:(NSString*)panimationLabel{
 	Animation *selectedAnimation = nil;
 	for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
 	{
-		if([animationLabel isEqualToString:animation.label])
+		if([panimationLabel isEqualToString:animation.label])
 		{
 			selectedAnimation = animation;
 			break;
 		}
 	}
 	if(selectedAnimation != nil)
+	{
 		[mainView.nounours doAnimation:selectedAnimation.uid];
+	}
 	
 }
 @end

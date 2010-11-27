@@ -9,6 +9,7 @@
 #import "AnimationThread.h"
 #import "data/AnimationImage.h"
 #import "Nounours.h"
+#import "VibrateHandler.h"
 
 @implementation AnimationThread
 @synthesize isRunning;
@@ -26,6 +27,10 @@
 	NSArray *animationImages = [panimation images];
 	isRunning = YES;
 	[nounours debug:[NSString stringWithFormat:@"Doing animation %@ - %@",panimation.uid,panimation.label]];
+	if(panimation.vibrate)
+	{
+		[nounours.vibrateHandler doVibrate:[panimation getDuration] withInterval:1];
+	}
 	for(int i=0; i < panimation.repeat; i++)
 	{
 		for(AnimationImage *animationImage in animationImages)

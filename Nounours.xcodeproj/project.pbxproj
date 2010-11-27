@@ -17,6 +17,8 @@
 		4F542C77129C69CE003A9AB5 /* SoundReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C76129C69CE003A9AB5 /* SoundReader.m */; };
 		4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C79129C6BF7003A9AB5 /* SoundHandler.m */; };
 		4F542C99129C7542003A9AB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F542C98129C7542003A9AB5 /* AVFoundation.framework */; };
+		4F5E15E212A15E9D0092B1DA /* VibrateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5E15E112A15E9D0092B1DA /* VibrateHandler.m */; };
+		4F5E15FB12A164DB0092B1DA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F5E15FA12A164DB0092B1DA /* AudioToolbox.framework */; };
 		4F80B3C1128EF57900DA7722 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F80B3C0128EF57900DA7722 /* icon.png */; };
 		4F80B3CD128EF6D400DA7722 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F80B3CC128EF6D400DA7722 /* Default.png */; };
 		4F80B3D4128EFB9700DA7722 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F80B3D3128EFB9700DA7722 /* Image.m */; };
@@ -78,6 +80,9 @@
 		4F542C78129C6BF7003A9AB5 /* SoundHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundHandler.h; path = src/SoundHandler.h; sourceTree = SOURCE_ROOT; };
 		4F542C79129C6BF7003A9AB5 /* SoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundHandler.m; path = src/SoundHandler.m; sourceTree = SOURCE_ROOT; };
 		4F542C98129C7542003A9AB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4F5E15E012A15E9D0092B1DA /* VibrateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VibrateHandler.h; path = src/VibrateHandler.h; sourceTree = SOURCE_ROOT; };
+		4F5E15E112A15E9D0092B1DA /* VibrateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VibrateHandler.m; path = src/VibrateHandler.m; sourceTree = SOURCE_ROOT; };
+		4F5E15FA12A164DB0092B1DA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4F80B3C0128EF57900DA7722 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		4F80B3CC128EF6D400DA7722 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4F80B3D2128EFB9700DA7722 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = src/data/Image.h; sourceTree = SOURCE_ROOT; };
@@ -141,6 +146,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				4F542C99129C7542003A9AB5 /* AVFoundation.framework in Frameworks */,
+				4F5E15FB12A164DB0092B1DA /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +173,8 @@
 				4F85EB63129972BB00A012A5 /* AnimationThread.m */,
 				4F542C78129C6BF7003A9AB5 /* SoundHandler.h */,
 				4F542C79129C6BF7003A9AB5 /* SoundHandler.m */,
+				4F5E15E012A15E9D0092B1DA /* VibrateHandler.h */,
+				4F5E15E112A15E9D0092B1DA /* VibrateHandler.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				4F542C98129C7542003A9AB5 /* AVFoundation.framework */,
+				4F5E15FA12A164DB0092B1DA /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -399,6 +408,7 @@
 				4F8AB0E212A013520087C525 /* AnimationMenu.m in Sources */,
 				4F8AB19B12A020460087C525 /* ThemeReader.m in Sources */,
 				4F8AB23D12A027A70087C525 /* ThemeMenu.m in Sources */,
+				4F5E15E212A15E9D0092B1DA /* VibrateHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
