@@ -40,7 +40,6 @@
 -(void) debug:(NSObject*) po;
 -(CGFloat) getDeviceWidth;
 -(CGFloat) getDeviceHeight;
--(void) resizeView;
 -(void) doAnimation:(NSString*) panimationId;
 -(void) stopAnimation;
 -(BOOL) useTheme:(NSString*) pthemeId;

@@ -67,16 +67,18 @@
     [super dealloc];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	[super touchesBegan:touches withEvent:event];
+	
 	if([touches count] !=1)
 		return;
 	
 	UITouch *touch = [[touches objectEnumerator]nextObject];
 	CGPoint point = [touch locationInView:mainView];
-	if([touch tapCount] == 1)
+	if(touch.view == mainView)
 	{
 		[nounours onPress:point.x withY:point.y];
 	}
-	else if([touch tapCount] == 2)
+	else if(touch.view == mainView.menuIconView)
 	{
 		[mainView showMenu:point.x withY:point.y];
 	}

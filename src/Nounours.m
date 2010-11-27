@@ -34,17 +34,16 @@
 		NSString *themesFile = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"csv"];
 		ThemeReader *themeReader = [[ThemeReader alloc] initThemeReader:themesFile];
 		themes = themeReader.themes;
-		curTheme = [[themes allValues] objectAtIndex:0];
+		Theme *initialTheme = [[themes allValues] objectAtIndex:0];
 		mainView = pmainView;
 		mainView.nounours = self;
-		[mainView setImageFromFilename:curTheme.defaultImage.filename];
+		[mainView setImageFromFilename:initialTheme.defaultImage.filename];
 		soundHandler = [[SoundHandler alloc] initSoundHandler:curTheme.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
-		[mainView useTheme:curTheme];
-		[self setImage:curTheme.defaultImage];
-		[self resizeView];
+		[self performSelectorOnMainThread:@selector(useTheme:) withObject:initialTheme.uid waitUntilDone:NO];
+
 
 	}
 	return self;
@@ -197,26 +196,6 @@
 	if(image != nil)
 		[self setImage:image];
 }
--(void) resizeView{
-	CGSize imageSize = [mainView getImageSize];
-	CGRect deviceSize = [[UIScreen mainScreen ]bounds] ;
-	CGFloat widthRatio = deviceSize.size.width / imageSize.width;
-	CGFloat heightRatio = deviceSize.size.height / imageSize.height;
-	CGFloat ratioToUse = widthRatio > heightRatio ? heightRatio : widthRatio;
-	CGFloat width = ratioToUse*imageSize.width;
-	CGFloat height = ratioToUse*imageSize.height;
-	CGFloat offsetX = 0;
-	CGFloat offsetY = 0;
-	if(heightRatio > widthRatio) {file://localhost/Users/calvarez/dev/projects/ios/Nounours/res/images/rotate430_sm.jpg
-		offsetY = (CGFloat) ((deviceSize.size.height - ratioToUse*imageSize.height)/2);
-	}
-	else {
-		offsetX = (CGFloat) ((deviceSize.size.width - ratioToUse * imageSize.width) / 2);
-	}
-	
-	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);
-	mainView.frame = newSize;
-}
 
 -(BOOL) useTheme:(NSString*) pthemeId
 {
@@ -229,6 +208,7 @@
 	curFeature = nil;
 	[mainView useTheme:curTheme];
 	[self setImage:curTheme.defaultImage];
+	[mainView resizeView];
 	return YES;
 }
 

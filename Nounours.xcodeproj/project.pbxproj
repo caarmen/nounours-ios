@@ -445,15 +445,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "iPhone Developer: christophe de Courson (L23H662Y98)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: christophe de Courson (L23H662Y98)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "5CA4017E-6A5F-4063-93A8-2EA5DD6EDBDC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5CA4017E-6A5F-4063-93A8-2EA5DD6EDBDC";
 				SDKROOT = iphoneos4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

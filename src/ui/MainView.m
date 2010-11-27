@@ -13,12 +13,9 @@
 @implementation MainView
 @synthesize myImage;
 @synthesize nounours;
-
+@synthesize menuIconView;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
-        // Initialization code
-		//image = [UIImage imageNamed:@"Default.png"];
-		//[image drawAtPoint:(CGPointMake(0.0, 0.0))];
 		self.userInteractionEnabled = YES;
 		self.autoresizesSubviews = NO;
 		imageCache = [[NSMutableDictionary alloc] init];
@@ -39,9 +36,24 @@
 	{
 		[self setImageFromFilename:image.filename];
 	}
+    NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
+	NSString *menuIconImagePath = [NSString stringWithFormat:@"%@/themes/%@/icons/%@",bundlePath,ptheme.uid,@"menu.png"];
+	NSLog(@"icon path=%@",menuIconImagePath);
+	UIImage *menuIcon = [UIImage imageWithContentsOfFile:menuIconImagePath];
+	if(menuIconView == nil)
+	{
+		menuIconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,0,0)];
+		menuIconView.userInteractionEnabled = YES;
+		[self addSubview:menuIconView];
+		[self bringSubviewToFront:menuIconView];
+
+	}
+	[menuIconView setImage:menuIcon];
+	
+	NSLog(@"menu icon at %f,%f  %f,%f",(curImage.size.width - menuIcon.size.width),0,menuIcon.size.width, menuIcon.size.height);
+	
 }
 -(void) setImageFromFilename:(NSString*) pfilename{
-	//NSLog(@"setImageFromFilename:%@",pfilename);
 	UIImage *img = [imageCache objectForKey:pfilename];
 	if(img == nil)
 	{
@@ -49,25 +61,16 @@
 		if(img != nil)
 		{
 			[imageCache setObject:img forKey:pfilename];
-			//NSLog(@"Saving to cache");
 		}
 		else {
 			NSLog(@"Can't find image %@!",pfilename);
 		}
 
 	}
-	else {
-		//NSLog(@"Loaded from cache");
-	}
 
 	curImage = img;
 	if(curImage != nil)
-	{
 		[self setImage:curImage];
-		//[image drawAtPoint:(CGPointMake(0.0, 0.0))];
-		//[self setNeedsDisplay];
-
-	}
 }
 
 -(CGSize) getImageSize{
@@ -117,6 +120,36 @@
 - (BOOL) canBecomeFirstResponder {
     return YES;
 }
+
+-(void) resizeView{
+	CGRect statusBarRect = [[UIApplication sharedApplication] statusBarFrame];
+	CGSize imageSize = [self getImageSize];
+	CGRect wholeDeviceSize = [[UIScreen mainScreen ]bounds] ;
+	CGRect deviceSize = CGRectMake(0, statusBarRect.size.height, wholeDeviceSize.size.width, wholeDeviceSize.size.height - statusBarRect.size.height);
+	NSLog(@"Status bar: %fx%f %fx%f",statusBarRect.origin.x,statusBarRect.origin.y,statusBarRect.size.width,statusBarRect.size.height);
+	CGFloat widthRatio = deviceSize.size.width / imageSize.width;
+	CGFloat heightRatio = deviceSize.size.height / imageSize.height;
+	CGFloat ratioToUse = widthRatio > heightRatio ? heightRatio : widthRatio;
+	CGFloat width = ratioToUse*imageSize.width;
+	CGFloat height = ratioToUse*imageSize.height;
+	CGFloat offsetX = deviceSize.origin.x;
+	CGFloat offsetY = deviceSize.origin.y;
+	if(heightRatio > widthRatio) {
+		offsetY += 0;//(CGFloat) ((deviceSize.size.height - ratioToUse*imageSize.height)/2);
+	}
+	else {
+		offsetX += (CGFloat) ((deviceSize.size.width - ratioToUse * imageSize.width) / 2);
+	}
+	
+	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);
+	self.frame = newSize;
+	CGFloat iconWidth = menuIconView.image.size.width;
+	CGFloat iconHeight = menuIconView.image.size.height;
+	CGRect menuIconSize = CGRectMake(width-iconWidth, 0, iconWidth, iconHeight);
+	menuIconView.frame = menuIconSize;
+	NSLog(@"icon: %f,%f %f,%f",menuIconView.bounds.origin.x,menuIconView.bounds.origin.y,menuIconView.image.size.width,menuIconView.image.size.height);
+}
+
 - (void)dealloc {
     [super dealloc];
 }
