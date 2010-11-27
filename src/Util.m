@@ -50,7 +50,6 @@
 	NSSet * adjacentImages = [pimage getAdjacentImages:pfeatureId];
 	for(Image * adjImage in adjacentImages){
 		CGFloat distance = [Util getDistance:adjImage withFeatureId:pfeatureId withX:px withY:py];
-		NSLog(@"finger: %f,%f: image %@ feature %@ distance %f",px,py,pimage,pfeatureId,distance);
 		if(distance < minDistance){
 			minDistance = distance;
 			result = adjImage;

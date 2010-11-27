@@ -33,9 +33,12 @@
 	if(self)
 	{
 		NSString *themesFile = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"csv"];
+		NSLog(@"Reading themes..." );
 		ThemeReader *themeReader = [[ThemeReader alloc] initThemeReader:themesFile];
+		NSLog(@"Read themes.");
 		themes = themeReader.themes;
 		Theme *initialTheme = [[themes allValues] objectAtIndex:0];
+		[initialTheme load:self];
 		mainView = pmainView;
 		mainView.nounours = self;
 		[mainView setImageFromFilename:initialTheme.defaultImage.filename];
@@ -130,7 +133,6 @@
 -(void) onFling:(UIPanGestureRecognizer*) pgestureRecognizer{
 	CGPoint location = [pgestureRecognizer locationInView:mainView];
 	CGPoint velocity = [pgestureRecognizer velocityInView:mainView];
-	NSLog(@"onFling state=%d, location=%f,%f.  velocity=%f,%f",pgestureRecognizer.state,location.x,location.y,velocity.x,velocity.y);
 	if(pgestureRecognizer.state == UIGestureRecognizerStateEnded)
 	{
 		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:[mainView getImageSize].width withImageHeight:[mainView getImageSize].height]; 
@@ -140,16 +142,13 @@
 			[self debug:[NSString stringWithFormat:@"testing %@",flingAnimation.animationId]];
 			if(![Util isFaster:velocity.x withV2:flingAnimation.minVelX])
 			{
-				NSLog(@"X: %f not faster than %f",velocity.x,flingAnimation.minVelX);
 				continue;
 			}
 			if(![Util isFaster:velocity.y withV2:flingAnimation.minVelY]){
-				NSLog(@"Y: %f not faster than %f",velocity.y,flingAnimation.minVelY);
 				continue;
 			}
 			if(![Util pointIsInSquare:translatedPoint.x withPointY:translatedPoint.y withSquareX:flingAnimation.x withSquareY:flingAnimation.y withSquareWidth:flingAnimation.width withSquareHeight:flingAnimation.height])
 			{
-				NSLog(@"fast enough, not in square");
 				continue;
 			}
 			Animation* animation = [curTheme.animations objectForKey:flingAnimation.animationId];
@@ -166,7 +165,6 @@
 
 }
 -(void) onShake{
-	NSLog(@"Shake");
 	if(curTheme.shakeAnimation != nil)
 		[self doAnimation:curTheme.shakeAnimation.uid];
 }
@@ -208,6 +206,7 @@
 		return YES;
 	}
 	curTheme = [themes objectForKey:pthemeId];
+	[curTheme load:self];
 	curFeature = nil;
 	[mainView useTheme:curTheme];
 	[self setImage:curTheme.defaultImage];

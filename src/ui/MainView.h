@@ -13,7 +13,7 @@
 #import "ThemeMenu.h"
 @class AnimationMenu;
 @class ThemeMenu;
-
+@class Theme;
 @interface MainView : UIImageView {
 @private UIImage * curImage;
 @private Nounours *nounours;

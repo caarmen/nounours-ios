@@ -31,7 +31,6 @@ NSString * const PROPERTIES_LINE_SEPARATOR = @"\r\n";
 	for(NSString *key in [data allKeys])
 	{
 		NSString *value = [data objectForKey:key];
-		NSLog(@"%@=%@",key,value);
 	}
 	return self;
 	

@@ -11,6 +11,7 @@
 #import "Sound.h"
 #import "FlingAnimation.h"
 #import "Image.h"
+#import "Nounours.h"
 
 @interface Theme : NSObject {
 @private NSMutableDictionary *images;
@@ -33,9 +34,9 @@
 @private BOOL isLoaded;
 }
 
--(Theme*) initTheme:(NSString*) puid withName:(NSString*)pname /*withLocation:(NSString*) plocation*/;
+-(Theme*) initTheme:(NSString*) puid withName:(NSString*)pname/*withLocation:(NSString*) plocation*/;
 -(NSString*) getPath:(NSString*) pfilename;
-
+-(void) load:(Nounours*) pnounours;
 @property (readonly) CGFloat height;
 @property (readonly) CGFloat width;
 @property (retain,readonly) NSString *uid;

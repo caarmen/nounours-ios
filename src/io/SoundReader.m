@@ -24,7 +24,6 @@ NSString * const COL_SOUND_FILENAME = @"Filename";
 	NSString *uid = [pcsvReader getValue:COL_SOUND_ID];
 	NSString *filename = [pcsvReader getValue:COL_SOUND_FILENAME];
 	NSString *path = [NSString stringWithFormat:@"%@/%@",soundPath,filename];
-	NSLog(@"Sound:%@",path);
 	Sound * sound = [[Sound alloc] initSound:uid withFilename:path];
 	[sounds setObject:sound forKey:uid];
 	

@@ -41,12 +41,18 @@ NSString * const PROP_WIDTH = @"resolution.width";
 @synthesize endIdleAnimation;
 @synthesize helpImage;
 @synthesize defaultImage;
+@synthesize isLoaded;
 -(Theme*) initTheme:(NSString*) puid withName:(NSString*) pname /*withLocation(NSString*) plocation*/{
 	[super init];
 	uid = puid;
 	name = pname;
+	isLoaded = NO;
  //   NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
-	
+	return self;
+}
+-(void) load:(Nounours*) pnounours {
+	if(isLoaded)
+		return;
 	//location = plocation;
 	NSString *propertiesPath = [self getPath:@"nounours.properties"];//[NSString stringWithFormat:@"%@/themes/%@/nounours.properties",bundlePath,uid];
 	PropertiesReader *propReader = [[PropertiesReader alloc] initPropertiesReader:propertiesPath];
@@ -63,17 +69,9 @@ NSString * const PROP_WIDTH = @"resolution.width";
 	width = [[properties objectForKey:PROP_WIDTH] floatValue];
 
 	FeatureReader *featureReader = [[FeatureReader alloc] initFeatureReader:[self getPath:@"feature.csv"]];
-	for (Feature* feature in featureReader.features)
-	{
-		NSLog(@"%@",feature);
-	}
 	
 	ImageReader *imageReader = [[ImageReader alloc] initImageReader:[self getPath:@"image.csv"]];
 	images = imageReader.images;
-	for (Image* image in [images allValues])
-	{
-		NSLog(@"%@",image);
-	}	
 	SoundReader *soundReader = [[SoundReader alloc] initSoundReader:[self getPath:@"sound.csv"]];
 	sounds = soundReader.sounds;
 	
@@ -105,8 +103,7 @@ NSString * const PROP_WIDTH = @"resolution.width";
 		else if ([image.uid isEqualToString:helpImageId])
 			helpImage = image;
 	}
-	return self;
-	
+	isLoaded = YES;	
 }
 -(NSString*) description{
 	return [NSString stringWithFormat:@"%@,%@,%@",uid,name/*,location*/];

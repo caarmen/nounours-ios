@@ -18,8 +18,7 @@ NSString * const FIELD_SEPARATOR = @",";
 -(CSVReader*) initCSVReader:(NSString*) pfilename{
 	[super init];
 	
-	NSString *path = pfilename;//[[NSBundle mainBundle] pathForResource:pfilename ofType:@"csv"];
-	NSLog(@"path = %@",path);
+	NSString *path = pfilename;
 	NSString *wholeContentsStr = [NSString stringWithContentsOfFile:path encoding:NSISOLatin2StringEncoding error:NULL];
 	lineSeparator = @"\r\n";
 	NSRange firstLineEnd = [wholeContentsStr rangeOfString:lineSeparator];
