@@ -14,6 +14,7 @@
 @synthesize myImage;
 @synthesize nounours;
 @synthesize menuIconView;
+@synthesize aboutView;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		NSLog(@"MainView init begin");
@@ -27,9 +28,11 @@
 		UIMenuItem *animationMenuItem = [[UIMenuItem alloc] initWithTitle:@"Animations" action:@selector(animationMenuItemSelected:)];
 		UIMenuItem *helpMenuItem = [[UIMenuItem alloc] initWithTitle:@"Help" action:@selector(helpMenuItemSelected:)];
 		UIMenuItem *themeMenuItem = [[UIMenuItem alloc] initWithTitle:@"Themes" action:@selector(themeMenuItemSelected:)];
-		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, themeMenuItem, helpMenuItem,nil];
+		UIMenuItem *aboutMenuItem = [[UIMenuItem alloc] initWithTitle:@"About" action:@selector(aboutMenuItemSelected:)];
+		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, themeMenuItem, helpMenuItem,aboutMenuItem,nil];
 		animationMenu = [[AnimationMenu alloc] initAnimationMenu:self];
 		themeMenu = [[ThemeMenu alloc] initThemeMenu:self];
+		//aboutView = [[AboutView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 		NSLog(@"MainView init end");
     }
     return self;
@@ -108,10 +111,24 @@
 -(void) themeMenuItemSelected:(id) sender{
 	[themeMenu showActionSheet:sender];
 }
+-(void) aboutMenuItemSelected:(id)sender{
+	if(aboutView == nil)
+	{
+		aboutView = [[[[NSBundle mainBundle] loadNibNamed:@"AboutView" owner:self options:nil] objectAtIndex:0] retain];
+		aboutView.parentView = self;
+		[aboutView setup];
+	//aboutView.frame = self.frame;
+	
+	}
+	[self addSubview:aboutView];
+	[self bringSubviewToFront:aboutView];
+}
 - (BOOL) canPerformAction:(SEL)selector withSender:(id) sender {
     if (selector == @selector(animationMenuItemSelected:) 
 		|| selector == @selector(helpMenuItemSelected:)
-		|| selector == @selector(themeMenuItemSelected:)) {
+		|| selector == @selector(themeMenuItemSelected:)
+		|| selector == @selector(aboutMenuItemSelected:))
+	{
         return YES;
     }
     return NO;

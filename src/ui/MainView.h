@@ -11,6 +11,9 @@
 #import "AnimationMenu.h"
 #import "../data/Theme.h"
 #import "ThemeMenu.h"
+#import "AboutView.h"
+
+@class AboutView;
 @class AnimationMenu;
 @class ThemeMenu;
 @class Theme;
@@ -22,7 +25,9 @@
 @private AnimationMenu *animationMenu;
 @private ThemeMenu *themeMenu;
 @private UIImageView *menuIconView;
+AboutView *aboutView;
 }
+
 -(void) useTheme:(Theme*) ptheme;
 -(void) setImageFromFilename:(NSString*) pfilename;
 -(CGSize) getImageSize;
@@ -30,8 +35,10 @@
 -(void) animationMenuItemSelected:(id) sender;
 -(void) helpMenuItemSelected:(id) sender;
 -(void) themeMenuItemSelected:(id) sender;
+-(void) aboutMenuItemSelected:(id) sender;
 -(void) resizeView;
 @property(retain,readwrite) UIImage* myImage;
 @property(retain,readwrite) Nounours *nounours;
 @property(retain,readwrite) UIImageView *menuIconView;
+@property (assign) IBOutlet AboutView *aboutView;
 @end
