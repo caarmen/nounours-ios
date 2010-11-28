@@ -16,17 +16,19 @@
 	UILabel *emailLabel;
 	UILabel *creditsLabel;
 	UILabel *skaLabel;
-	UIButton *dismissButton;
+	UIBarButtonItem *dismissButton;
 @private UIView *parentView;
+@private UIImage *gradientImage;
 }
 -(IBAction) onDismiss:(id) sender;
 -(void) setup;
+-(void) makeGradientImage;
 @property(assign) IBOutlet UILabel *aboutLabel;
 @property(assign) IBOutlet UILabel *appLabel;
 @property(assign) IBOutlet UILabel *authorLabel;
 @property(assign) IBOutlet UILabel *emailLabel;
 @property(assign) IBOutlet UILabel *creditsLabel;
 @property(assign) IBOutlet UILabel *skaLabel;
-@property(assign) IBOutlet UIButton *dismissButton;
+@property(assign) IBOutlet UIBarButtonItem *dismissButton;
 @property(readwrite,retain) UIView *parentView;
 @end

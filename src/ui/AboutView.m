@@ -32,15 +32,45 @@
 	[self removeFromSuperview];
 }
 -(void) setup{
+	if(gradientImage == nil)
+	{
+		[self makeGradientImage];
+//		[dismissButton setBackgroundImage:gradientImage forState:UIControlStateNormal];
+	}
+	[self setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+	//aboutLabel.title = @"About";
 	aboutLabel.text=@"About";
 	appLabel.text=@"Nounours v 1.0.0 for iPhone";
 	authorLabel.text=@"By Carmen Alvarez";
 	emailLabel.text=@"c@rmen.ca";
 	creditsLabel.text=@"Credits:";
 	skaLabel.text=@"B-Roll (Macarenous action): Kevin MacLeod (incompetech.com)";
-	dismissButton.titleLabel.text=@"Ok";
-	
+	//dismissButton.titleLabel.text=@"Ok";
 }
+
+- (void) makeGradientImage {
+    // Open image context.
+    UIGraphicsBeginImageContext(CGSizeMake(1, 2));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+	
+    // Create gradient.
+    CGColorRef colorRefs[2] = {
+        [[UIColor grayColor] CGColor], 
+        [[UIColor lightGrayColor] CGColor]
+    };
+    CFArrayRef colors = CFArrayCreate(NULL, (const void **)colorRefs, 2, NULL);
+    CGGradientRef gradient = CGGradientCreateWithColors(NULL, colors, NULL);
+    
+    // Create image.
+    CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, 1), 0);
+    gradientImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Clean up.
+    CFRelease(colors);
+    CGGradientRelease(gradient);
+    UIGraphicsEndImageContext();
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
