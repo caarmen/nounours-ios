@@ -18,11 +18,12 @@
 }
 
 -(IBAction)showActionSheet:(id)sender{
-	UIActionSheet *animationList = [[UIActionSheet alloc] initWithTitle:@"Animations" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-	[animationList addButtonWithTitle:@"Random"];
+	UIActionSheet *animationList = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"actions",@"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	[animationList addButtonWithTitle:NSLocalizedString(@"random",@"")];
 	for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
 	{
-		[animationList addButtonWithTitle:animation.label];
+		if(animation.visible)
+			[animationList addButtonWithTitle:animation.label];
 	}
 	animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[animationList addButtonWithTitle:@"Cancel"];

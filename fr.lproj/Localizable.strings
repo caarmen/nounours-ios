@@ -1,0 +1,61 @@
+/* 
+   nounours.strings
+   Nounours
+
+   Created by Carmen Alvarez on 11/28/10.
+   Copyright 2010 __MyCompanyName__. All rights reserved.
+ */
+
+"hello" = "Hello World, NounoursActivity";
+"app_name" = "Nounours v 1.0.0 for iPhone";
+"spin" = "Tourniquet";
+"cartwheel" = "La roue";
+"headbang" = "Hardos";
+"disco" = "Disco";
+"clap" = "Bravo";
+"sleepsound" = "Dodo";
+"shake" = "Trembler";
+"reverseSpin" = "Tourniquet à l\'envers";
+"ska" = "Macarenours";
+"boing" = "Boing !";
+"fly" = "Voler";
+"excited" = "Excité";
+"random" = "Aléatoire";
+"actions" = "Animations";
+"about" = "À propos";
+"themes" = "Thèmes";
+"predownload" = "Je cherche mon thème %s";
+"downloading" = "Je télécharge mon thème %s...";
+"loading" = "Je charge mon thème %s";
+"defaultTheme" = "Standard";
+"rainbow" = "Fond arc-en-ciel";
+"halloween" = "Halloween";
+"greenshirtbluebkg" = "Pull vert, fond bleu";
+"abouttextversion" = "Nounours v 1.0.0";
+"abouttextauthor" = "Par Carmen Alvarez";
+"abouttextemail" = "c@rmen.ca";
+"abouttextcredits" = "Musique:";
+"abouttextmacarenours" = "B-Roll (Animation Macarenours): Kevin MacLeod (incompetech.com)";
+"ok" = "Ok";
+"help" = "Aide";
+"disablesound" = "Désactiver son/vibreur";
+"enablesound" = "Activer son/vibreur";
+"startle" = "Sursaut";
+"wakeup" = "Effrayer";
+"toast_remindMenuButton" = "Appuyez sur le bouton MENU pour plus d\'options\u2026";
+"themeLoadError" = "Oups, je n\'ai pas pu charger ce thème ! Essaie de nouveau. Vérifie ta connexion internet.";
+"loadMoreThemes" = "Chercher des nouveaux thèmes...";
+"loadMoreThemesInProgress" = "Je télécharge la liste des thèmes...";
+"newThemesAvailable" = "Des nouveaux thèmes sont disponibles. Redemarrer pour les utiliser";
+"noNewThemes" = "Desolé, il n\'y a pas de nouveau thème en ce moment!";
+"errorLoadingThemeList" = "Oups! Je n\'ai pas pu charger la liste des thèmes ! Vérifie ta connexion internet";
+"upateCurrentTheme" = "Mise à jour de ce thème";
+"updatingCurrentTheme" = "Téléchargement des fichiers pour le thème %s...";
+"updateCurrentThemeComplete" = "Téléchargement des fichiers pour le thème %s terminé !";
+"updateCurrentThemeError" = "Je n\'ai pas pu télécharger tous les fichiers.  Vérifie ta connexion internet";
+"updates" = "Mises à jour";
+"enableRandomAnimations" = "Activer les animations aléatoires";
+"disableRandomAnimations" = "Désactiver les animations aléatoires";
+"options" = "Options";
+"idleTimeout" = "Temps avant de m\'endormir";
+;

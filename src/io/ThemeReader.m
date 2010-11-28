@@ -21,7 +21,8 @@ NSString * const COL_THEME_NAME=@"Name";
 }
 -(void) readLine:(CSVReader *)pcsvReader{
 	NSString *uid = [[pcsvReader getValue:COL_THEME_ID] retain];
-	NSString *name = [[pcsvReader getValue:COL_THEME_NAME] retain];
+	NSString *nameId = [[pcsvReader getValue:COL_THEME_NAME] retain];
+	NSString *name = NSLocalizedString(nameId,@"");
 	Theme *theme = [[Theme alloc] initTheme:uid withName:name];
 	[themes setObject:theme forKey:uid];
 }

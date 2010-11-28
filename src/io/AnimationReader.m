@@ -32,7 +32,8 @@ NSString * const COL_ANIMATION_SOUND = @"Sound";
 }
 -(void) readLine:(CSVReader*) pcsvReader{
 	NSString* uid = [pcsvReader getValue:COL_ANIMATION_ID];
-	NSString* label = [pcsvReader getValue:COL_ANIMATION_LABEL];
+	NSString* labelId = [pcsvReader getValue:COL_ANIMATION_LABEL];
+	NSString* label = NSLocalizedString(labelId,@"");
 	int interval = [[pcsvReader getValue:COL_ANIMATION_INTERVAL] intValue];
 	int repeat = [[pcsvReader getValue:COL_ANIMATION_REPEAT] intValue];
 	BOOL visible = [[pcsvReader getValue:COL_ANIMATION_VISIBLE] boolValue];

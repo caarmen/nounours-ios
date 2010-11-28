@@ -25,10 +25,10 @@
 		imageCache = [[NSMutableDictionary alloc] init];
 		[self becomeFirstResponder];
 		menu = [UIMenuController sharedMenuController];
-		UIMenuItem *animationMenuItem = [[UIMenuItem alloc] initWithTitle:@"Animations" action:@selector(animationMenuItemSelected:)];
-		UIMenuItem *helpMenuItem = [[UIMenuItem alloc] initWithTitle:@"Help" action:@selector(helpMenuItemSelected:)];
-		UIMenuItem *themeMenuItem = [[UIMenuItem alloc] initWithTitle:@"Themes" action:@selector(themeMenuItemSelected:)];
-		UIMenuItem *aboutMenuItem = [[UIMenuItem alloc] initWithTitle:@"About" action:@selector(aboutMenuItemSelected:)];
+		UIMenuItem *animationMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"actions",@"") action:@selector(animationMenuItemSelected:)];
+		UIMenuItem *helpMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"help",@"") action:@selector(helpMenuItemSelected:)];
+		UIMenuItem *themeMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"themes",@"") action:@selector(themeMenuItemSelected:)];
+		UIMenuItem *aboutMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"about",@"") action:@selector(aboutMenuItemSelected:)];
 		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, themeMenuItem, helpMenuItem,aboutMenuItem,nil];
 		animationMenu = [[AnimationMenu alloc] initAnimationMenu:self];
 		themeMenu = [[ThemeMenu alloc] initThemeMenu:self];

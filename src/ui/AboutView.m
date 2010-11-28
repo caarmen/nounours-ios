@@ -39,12 +39,12 @@
 	}
 	[self setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
 	//aboutLabel.title = @"About";
-	aboutLabel.text=@"About";
-	appLabel.text=@"Nounours v 1.0.0 for iPhone";
-	authorLabel.text=@"By Carmen Alvarez";
-	emailLabel.text=@"c@rmen.ca";
-	creditsLabel.text=@"Credits:";
-	skaLabel.text=@"B-Roll (Macarenous action): Kevin MacLeod (incompetech.com)";
+	aboutLabel.text=NSLocalizedString(@"about",@"");
+	appLabel.text=NSLocalizedString(@"abouttextversion",@"");
+	authorLabel.text=NSLocalizedString(@"abouttextauthor",@"");
+	emailLabel.text=NSLocalizedString(@"abouttextemail",@"");
+	creditsLabel.text=NSLocalizedString(@"abouttextcredits",@"");
+	skaLabel.text=NSLocalizedString(@"abouttextmacarenours",@"");
 	//dismissButton.titleLabel.text=@"Ok";
 }
 
