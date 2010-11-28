@@ -46,6 +46,8 @@
 		4F8AB1F612A023E60087C525 /* theme.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F8AB1F512A023E60087C525 /* theme.csv */; };
 		4F8AB23D12A027A70087C525 /* ThemeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AB23C12A027A70087C525 /* ThemeMenu.m */; };
 		4FD80CBB129F2B2D00889D73 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F037EB8129E7ED800B00045 /* Theme.m */; };
+		4FEE6CC112A29FE70055E8D2 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE6CC012A29FE70055E8D2 /* AboutView.xib */; };
+		4FEE6CC412A2A11E0055E8D2 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE6CC312A2A11E0055E8D2 /* AboutView.m */; };
 		4FFFF64F12965D9900CA2996 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFF64E12965D9900CA2996 /* Util.m */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,9 @@
 		4F8AB1F512A023E60087C525 /* theme.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = theme.csv; path = res/themes/theme.csv; sourceTree = "<group>"; };
 		4F8AB23B12A027A70087C525 /* ThemeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeMenu.h; path = src/ui/ThemeMenu.h; sourceTree = SOURCE_ROOT; };
 		4F8AB23C12A027A70087C525 /* ThemeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeMenu.m; path = src/ui/ThemeMenu.m; sourceTree = SOURCE_ROOT; };
+		4FEE6CC012A29FE70055E8D2 /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
+		4FEE6CC212A2A11E0055E8D2 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutView.h; path = src/ui/AboutView.h; sourceTree = SOURCE_ROOT; };
+		4FEE6CC312A2A11E0055E8D2 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutView.m; path = src/ui/AboutView.m; sourceTree = SOURCE_ROOT; };
 		4FFFF64D12965D9900CA2996 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = src/Util.h; sourceTree = SOURCE_ROOT; };
 		4FFFF64E12965D9900CA2996 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = src/Util.m; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Nounours-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nounours-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -197,6 +202,7 @@
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				4F542C98129C7542003A9AB5 /* AVFoundation.framework */,
 				4F5E15FA12A164DB0092B1DA /* AudioToolbox.framework */,
+				4FEE6CC012A29FE70055E8D2 /* AboutView.xib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -293,6 +299,8 @@
 				4F8AB0E112A013520087C525 /* AnimationMenu.m */,
 				4F8AB23B12A027A70087C525 /* ThemeMenu.h */,
 				4F8AB23C12A027A70087C525 /* ThemeMenu.m */,
+				4FEE6CC212A2A11E0055E8D2 /* AboutView.h */,
+				4FEE6CC312A2A11E0055E8D2 /* AboutView.m */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -352,6 +360,7 @@
 				4F80B3CD128EF6D400DA7722 /* Default.png in Resources */,
 				4F0EC639129F471B00436582 /* themes in Resources */,
 				4F8AB1F612A023E60087C525 /* theme.csv in Resources */,
+				4FEE6CC112A29FE70055E8D2 /* AboutView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +418,7 @@
 				4F8AB19B12A020460087C525 /* ThemeReader.m in Sources */,
 				4F8AB23D12A027A70087C525 /* ThemeMenu.m in Sources */,
 				4F5E15E212A15E9D0092B1DA /* VibrateHandler.m in Sources */,
+				4FEE6CC412A2A11E0055E8D2 /* AboutView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
