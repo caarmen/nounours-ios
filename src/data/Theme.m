@@ -15,6 +15,7 @@
 #import "../io/AdjacentImageReader.h"
 #import "../io/AnimationReader.h"
 #import "../io/FlingAnimationReader.h"
+#import "../io/OrientationImageReader.h"
 
 @implementation Theme
 NSString * const PROP_SHAKE_ANIMATION = @"animation.shake";
@@ -34,6 +35,7 @@ NSString * const PROP_WIDTH = @"resolution.width";
 @synthesize images;
 @synthesize animations;
 @synthesize sounds;
+@synthesize orientationImages;
 @synthesize flingAnimations;
 @synthesize shakeAnimation;
 @synthesize resumeAnimation;
@@ -95,6 +97,9 @@ NSString * const PROP_WIDTH = @"resolution.width";
 	
 	FlingAnimationReader *flingAnimationReader = [[FlingAnimationReader alloc] initFlingAnimationReader:[self getPath:@"flinganimation.csv"]];
 	flingAnimations = flingAnimationReader.flingAnimations;
+	
+	OrientationImageReader *orientationImageReader = [[OrientationImageReader alloc] initOrientationImageReader:[self getPath:@"orientationimage.csv"]];
+	orientationImages = orientationImageReader.orientationImages;
 	
 	for(Image *image in [images allValues])
 	{

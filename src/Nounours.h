@@ -16,8 +16,10 @@
 #import "data/FlingAnimation.h"
 #import "data/Sound.h"
 #import "data/Theme.h"
+#import "OrientationHandler.h"
 
 @class MainView;
+@class OrientationHandler;
 
 @interface Nounours : NSObject {
 @private MainView* mainView;
@@ -28,6 +30,7 @@
 @private AnimationHandler *animationHandler;
 @private SoundHandler *soundHandler;
 @private VibrateHandler *vibrateHandler;
+@private OrientationHandler *orientationHandler;
 @private CGPoint lastLocation;
 }
 -(Nounours*) initNounours:(MainView*) pmainView;

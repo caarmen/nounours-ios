@@ -45,6 +45,7 @@
 		soundHandler = [[SoundHandler alloc] initSoundHandler:initialTheme.sounds];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		vibrateHandler = [[VibrateHandler alloc] initVibrateHandler];
+		orientationHandler = [[OrientationHandler alloc] initOrientationHandler:self];
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
 		[self performSelectorOnMainThread:@selector(useTheme:) withObject:initialTheme.uid waitUntilDone:NO];

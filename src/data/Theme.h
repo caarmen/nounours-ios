@@ -12,12 +12,14 @@
 #import "FlingAnimation.h"
 #import "Image.h"
 #import "Nounours.h"
+#import "OrientationImage.h"
 
 @interface Theme : NSObject {
 @private NSMutableDictionary *images;
 @private NSMutableDictionary *animations;
 @private NSMutableDictionary *sounds;
 @private NSArray *flingAnimations;
+@private NSMutableSet *orientationImages;
 @private Animation *shakeAnimation;
 @private Animation *resumeAnimation;
 @private Animation *idleAnimation;
@@ -46,7 +48,8 @@
 @property (retain,readonly) NSMutableDictionary *images;
 @property (retain,readonly) NSMutableDictionary *animations;
 @property (retain,readonly) NSMutableDictionary *sounds;
-@property (retain,readonly) NSArray *flingAnimations;
+@property (retain, readonly) NSMutableSet *orientationImages;
+@property (retain, readonly) NSArray *flingAnimations;
 @property (retain, readonly) Animation* shakeAnimation;
 @property (retain, readonly) Animation* resumeAnimation;
 @property (retain, readonly) Animation* idleAnimation;
