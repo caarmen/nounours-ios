@@ -35,7 +35,7 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if(buttonIndex == actionSheet.cancelButtonIndex)
 		return;
-	int animationIndex = [buttonIndex intValue];
+	NSInteger animationIndex = buttonIndex;
 	if(animationIndex == 0)
 	{
 		animationIndex = (arc4random() %(actionSheet.numberOfButtons - 2)) +1;

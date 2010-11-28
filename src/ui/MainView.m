@@ -16,6 +16,9 @@
 @synthesize menuIconView;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
+		NSLog(@"MainView init begin");
+		NSString *defaultImage = [[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"];
+		[self setImageFromFilename:defaultImage];
 		self.userInteractionEnabled = YES;
 		self.autoresizesSubviews = NO;
 		imageCache = [[NSMutableDictionary alloc] init];
@@ -27,6 +30,7 @@
 		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, themeMenuItem, helpMenuItem,nil];
 		animationMenu = [[AnimationMenu alloc] initAnimationMenu:self];
 		themeMenu = [[ThemeMenu alloc] initThemeMenu:self];
+		NSLog(@"MainView init end");
     }
     return self;
 }

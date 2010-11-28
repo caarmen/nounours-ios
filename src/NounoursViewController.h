@@ -12,7 +12,8 @@
 @interface NounoursViewController : UIViewController {
 @private MainView* mainView; 
 @private Nounours* nounours;
+@private UIActivityIndicatorView *activityView;
 }
-
+-(void) doLoad:(id) sender;
 @end
 

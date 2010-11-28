@@ -34,14 +34,30 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	NSLog(@"viewDidLoad begin");
     [super viewDidLoad];
+	CGRect screenBounds = [UIScreen mainScreen].bounds;
+	CGFloat activityViewSize = 32;
+	activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(screenBounds.size.width/2 - activityViewSize/2, screenBounds.size.height/2 - activityViewSize, activityViewSize,activityViewSize)];
 	mainView = [[MainView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-	self.view = mainView;
+	self.view =mainView;
+	[self.view setAlpha:0.5];
+	[self.view addSubview:activityView];
+	[self.view bringSubviewToFront:activityView];
+	[activityView startAnimating];
+	[self performSelector:@selector(doLoad:) withObject:self afterDelay:0];
+	NSLog(@"viewDidLoad end");
+
+}
+
+
+-(void) doLoad:(id) sender{
 	nounours = [[Nounours alloc] initNounours:mainView];
- }
-
-
-
+	[activityView stopAnimating];
+	[self.view setAlpha:1.0];
+	[activityView removeFromSuperview];
+	[activityView release];
+}
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
