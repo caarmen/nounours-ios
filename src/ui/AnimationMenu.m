@@ -18,18 +18,21 @@
 }
 
 -(IBAction)showActionSheet:(id)sender{
-	UIActionSheet *animationList = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"actions",@"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-	[animationList addButtonWithTitle:NSLocalizedString(@"random",@"")];
-	for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
+	if(animationList == nil)
 	{
-		if(animation.visible)
-			[animationList addButtonWithTitle:animation.label];
+		animationList = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"actions",@"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+		[animationList addButtonWithTitle:NSLocalizedString(@"random",@"")];
+		for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
+		{
+			if(animation.visible)
+				[animationList addButtonWithTitle:animation.label];
+		}
+		animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+		[animationList addButtonWithTitle:@"Cancel"];
+		animationList.cancelButtonIndex = animationList.numberOfButtons - 1;
 	}
-	animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[animationList addButtonWithTitle:@"Cancel"];
-	animationList.cancelButtonIndex = animationList.numberOfButtons - 1;
     [animationList showInView:mainView];
-    [animationList release];
+	//    [animationList release];
 	
 }
 
@@ -46,6 +49,7 @@
 	
 }
 -(void) doAnimation:(NSString*)panimationLabel{
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	Animation *selectedAnimation = nil;
 	for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
 	{
@@ -59,6 +63,6 @@
 	{
 		[mainView.nounours doAnimation:selectedAnimation.uid];
 	}
-	
+	[pool release];
 }
 @end

@@ -12,6 +12,7 @@
 @class MainView;
 @interface AnimationMenu : UIViewController<UIActionSheetDelegate> {
 @private MainView *mainView;
+@private UIActionSheet *animationList;
 }
 -(AnimationMenu*) initAnimationMenu:(MainView*) pmainView;
 -(void) doAnimation:(NSString*)panimationLabel;
