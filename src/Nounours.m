@@ -122,11 +122,9 @@
 			}
 			curImage = image;
 		}
-		else {
-			curImage = curTheme.defaultImage;
-		}
-		
 	}
+	if(curImage == nil)
+		curImage = curTheme.defaultImage;
 	if(doRefresh)
 		[self displayImage:curImage];
 }
@@ -173,12 +171,12 @@
 	[self stopAnimation];
 	Animation* animation = [curTheme.animations objectForKey:panimationId];
 	[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
-	[animationHandler doAnimation:animation];
-
 	if(animation.soundId != nil)
 	{
 		[soundHandler playSound:animation.soundId];
 	}
+	[animationHandler doAnimation:animation];
+
 }
 -(void) stopAnimation{
 	[soundHandler stopSound];
