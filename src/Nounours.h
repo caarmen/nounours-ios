@@ -53,5 +53,6 @@
 @property(retain,readonly) Theme *curTheme;
 @property(retain,readonly) NSMutableDictionary *themes;
 @property(retain,readonly) VibrateHandler* vibrateHandler;
+@property(retain,readonly) MainView *mainView;
 
 @end

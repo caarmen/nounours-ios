@@ -13,7 +13,6 @@
 @class Nounours;
 
 @interface AnimationHandler : NSObject {
-@private AnimationThread* animationThread;
 @private Nounours *nounours;
 
 }
@@ -22,5 +21,6 @@
 -(void) stopAnimation;
 -(BOOL) isAnimationRunning;
 -(void) doAnimation:(Animation*) panimation;
+-(void) doAnimationImpl:(Animation*) panimation;
 
 @end

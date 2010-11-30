@@ -22,30 +22,43 @@
 	return self;
 }
 -(void) stopAnimation{
-	if(animationThread == nil)
-		return;
-
-	[nounours debug:[NSString stringWithFormat:@"isRunning? %s",animationThread.isRunning? "yes" : "no"]];
-	[animationThread stopAnimation];
-	while([animationThread isRunning])
-	{
-		[NSThread sleepForTimeInterval:0.1];
-	}
-	[nounours debug:[NSString stringWithFormat:@"isRunning now? %s",animationThread.isRunning? "yes" : "no"]];
-	[animationThread release];
-	animationThread = nil;	
-	
+	[nounours.mainView stopAnimating];
 }
 -(BOOL) isAnimationRunning{
-	
-	if(animationThread == nil)
-		return NO;
-	return animationThread.isRunning;
+	return [nounours.mainView isAnimating];
 }
 -(void) doAnimation:(Animation*) panimation{
 	[self stopAnimation];
-	animationThread = [[AnimationThread alloc]initAnimationThread:nounours withAnimation:panimation];
-	[animationThread start];
+	[self performSelectorInBackground:@selector(doAnimationImpl:) withObject:panimation];
+}
+-(void) doAnimationImpl:(Animation*) panimation{
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	CGFloat baseFrameDuration = 1.0f/30;
+	NSMutableArray *animationArray = [[NSMutableArray alloc] init];
+	NSArray *animationImages = [panimation images];
+	for(AnimationImage *animationImage in animationImages)
+	{
+		CGFloat frameDuration = (CGFloat) (panimation.interval * animationImage.duration)/1000.0;
+		NSInteger frameRepeat = frameDuration / baseFrameDuration;
+		Image *image = [nounours.curTheme.images objectForKey:animationImage.imageId];
+		UIImage *uiImage = [nounours.mainView.imageCache objectForKey:image.filename];
+		if(uiImage == nil)
+			NSLog(@"Can't find animation image %@: %@",animationImage.imageId,image);
+		else {
+			for(int j=0; j<frameRepeat; j++)
+			{
+				[animationArray addObject:uiImage];
+			}
+		}
+
+	}
+	nounours.mainView.animationImages = animationArray;
+	nounours.mainView.animationRepeatCount = panimation.repeat;
+	nounours.mainView.animationDuration = baseFrameDuration * [animationArray count];
+	[nounours.mainView performSelectorOnMainThread:@selector(startAnimating) withObject:nil waitUntilDone:NO];
+	NSLog(@"launched animation");
+	[animationArray release];
+	[pool release];
 }
 
 @end

@@ -41,4 +41,5 @@ AboutView *aboutView;
 @property(retain,readwrite) Nounours *nounours;
 @property(retain,readwrite) UIImageView *menuIconView;
 @property (assign) IBOutlet AboutView *aboutView;
+@property (retain, readonly) NSMutableDictionary *imageCache;
 @end

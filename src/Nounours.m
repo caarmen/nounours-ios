@@ -27,6 +27,7 @@
 @synthesize curTheme;
 @synthesize themes;
 @synthesize vibrateHandler;
+@synthesize mainView;
 
 -(Nounours*) initNounours:(MainView*) pmainView{
 	[super init];
@@ -176,7 +177,7 @@
 		[soundHandler playSound:animation.soundId];
 	}
 	[animationHandler doAnimation:animation];
-
+	
 }
 -(void) stopAnimation{
 	[soundHandler stopSound];

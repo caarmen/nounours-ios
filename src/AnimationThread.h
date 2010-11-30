@@ -13,7 +13,7 @@
 
 @interface AnimationThread : NSThread {
 @private Nounours *nounours;
-@private BOOL isRunning;
+
 }
 -(AnimationThread*) initAnimationThread:(Nounours*) pnounours withAnimation:(Animation*) panimation;
 -(void) doAnimation:(Animation*) panimation;

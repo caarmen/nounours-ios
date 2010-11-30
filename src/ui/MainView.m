@@ -15,6 +15,7 @@
 @synthesize nounours;
 @synthesize menuIconView;
 @synthesize aboutView;
+@synthesize imageCache;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
 		NSLog(@"MainView init begin");
