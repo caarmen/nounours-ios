@@ -43,7 +43,7 @@
 		mainView = pmainView;
 		mainView.nounours = self;
 		[mainView setImageFromFilename:initialTheme.defaultImage.filename];
-		soundHandler = [[SoundHandler alloc] initSoundHandler:initialTheme.sounds];
+		soundHandler = [[SoundHandler alloc] initSoundHandler];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		vibrateHandler = [[VibrateHandler alloc] initVibrateHandler];
 		orientationHandler = [[OrientationHandler alloc] initOrientationHandler:self];
@@ -205,10 +205,12 @@
 		NSLog(@"Already using theme %@",pthemeId);
 		return YES;
 	}
+	[self stopAnimation];
 	curTheme = [themes objectForKey:pthemeId];
 	[curTheme load:self];
 	curFeature = nil;
 	[mainView useTheme:curTheme];
+	[soundHandler loadSounds:curTheme.sounds];
 	[self setImage:curTheme.defaultImage];
 	[mainView resizeView];
 	return YES;

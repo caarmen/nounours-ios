@@ -13,7 +13,8 @@
 @private NSMutableDictionary* sounds;
 @private NSMutableDictionary* audioPlayers;
 }
--(SoundHandler*) initSoundHandler:(NSMutableDictionary*) psounds;
+-(SoundHandler*) initSoundHandler;
+-(void) loadSounds:(NSMutableDictionary*) psounds;
 -(void) playSound:(NSString*) psoundId;
 -(void) stopSound;
 @end

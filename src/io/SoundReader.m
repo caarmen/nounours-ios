@@ -24,6 +24,17 @@ NSString * const COL_SOUND_FILENAME = @"Filename";
 	NSString *uid = [pcsvReader getValue:COL_SOUND_ID];
 	NSString *filename = [pcsvReader getValue:COL_SOUND_FILENAME];
 	NSString *path = [NSString stringWithFormat:@"%@/%@",soundPath,filename];
+	NSData *soundContents = [[NSFileManager defaultManager] contentsAtPath:path];
+	if(soundContents == nil || [soundContents length] == 0)
+	{
+		NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
+		path = [NSString stringWithFormat:@"%@/themes/common/sounds/%@",bundlePath,filename];
+	}
+	if(soundContents == nil){
+		[soundContents release];
+		[soundContents dealloc];
+	}
+
 	Sound * sound = [[Sound alloc] initSound:uid withFilename:path];
 	[sounds setObject:sound forKey:uid];
 	

@@ -12,13 +12,16 @@
 
 @implementation SoundHandler
 
--(SoundHandler*) initSoundHandler:(NSMutableDictionary*) psounds{
+-(SoundHandler*) initSoundHandler{
 	[super init];
-	sounds = psounds;
 	audioPlayers = [[NSMutableDictionary alloc] init];
+	return self;
+}
+-(void) loadSounds:(NSMutableDictionary*) psounds{
+	sounds = psounds;	
 	for (Sound *sound in [psounds allValues])
 	{
-		AVAudioPlayer *audioPlayer = [audioPlayers objectForKey:sound.uid];
+		AVAudioPlayer *audioPlayer = [audioPlayers objectForKey:sound.filename];
 		if(audioPlayer == nil)
 		{
 			NSURL *url = [NSURL fileURLWithPath:sound.filename];
@@ -28,15 +31,14 @@
 			if(audioPlayer == nil)
 				NSLog(@"Could not load %@:%@",sound,[error description]);
 			else
-				[audioPlayers setObject:audioPlayer forKey:sound.uid];
+				[audioPlayers setObject:audioPlayer forKey:sound.filename];
 		}
 		
 	}
-	return self;
 }
 -(void) playSound:(NSString*) psoundId{
 	Sound *sound = [sounds objectForKey:psoundId];
-	AVAudioPlayer *audioPlayer = [audioPlayers objectForKey:sound.uid];
+	AVAudioPlayer *audioPlayer = [audioPlayers objectForKey:sound.filename];
 	if(audioPlayer != nil)
 		[audioPlayer play];
 }
@@ -45,6 +47,7 @@
 	for(AVAudioPlayer* audioPlayer in [audioPlayers allValues])
 	{
 		[audioPlayer stop];
+		audioPlayer.currentTime = 0;
 	}
 }
 

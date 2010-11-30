@@ -44,7 +44,6 @@
 		4F85E8221298525000A012A5 /* AnimationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E8211298525000A012A5 /* AnimationReader.m */; };
 		4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */; };
 		4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E83712989E7E00A012A5 /* AnimationHandler.m */; };
-		4F85EB64129972BB00A012A5 /* AnimationThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85EB63129972BB00A012A5 /* AnimationThread.m */; };
 		4F8AB0E212A013520087C525 /* AnimationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AB0E112A013520087C525 /* AnimationMenu.m */; };
 		4F8AB19B12A020460087C525 /* ThemeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8AB19A12A020460087C525 /* ThemeReader.m */; };
 		4F8AB1F612A023E60087C525 /* theme.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4F8AB1F512A023E60087C525 /* theme.csv */; };
@@ -137,8 +136,6 @@
 		4F85E82C12987E0D00A012A5 /* FlingAnimationReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlingAnimationReader.m; path = src/io/FlingAnimationReader.m; sourceTree = SOURCE_ROOT; };
 		4F85E83612989E7E00A012A5 /* AnimationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationHandler.h; path = src/AnimationHandler.h; sourceTree = SOURCE_ROOT; };
 		4F85E83712989E7E00A012A5 /* AnimationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationHandler.m; path = src/AnimationHandler.m; sourceTree = SOURCE_ROOT; };
-		4F85EB62129972BB00A012A5 /* AnimationThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationThread.h; path = src/AnimationThread.h; sourceTree = SOURCE_ROOT; };
-		4F85EB63129972BB00A012A5 /* AnimationThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationThread.m; path = src/AnimationThread.m; sourceTree = SOURCE_ROOT; };
 		4F8AB0E012A013520087C525 /* AnimationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationMenu.h; path = src/ui/AnimationMenu.h; sourceTree = SOURCE_ROOT; };
 		4F8AB0E112A013520087C525 /* AnimationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationMenu.m; path = src/ui/AnimationMenu.m; sourceTree = SOURCE_ROOT; };
 		4F8AB19912A020460087C525 /* ThemeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeReader.h; path = src/io/ThemeReader.h; sourceTree = SOURCE_ROOT; };
@@ -189,8 +186,6 @@
 				4FFFF64E12965D9900CA2996 /* Util.m */,
 				4F85E83612989E7E00A012A5 /* AnimationHandler.h */,
 				4F85E83712989E7E00A012A5 /* AnimationHandler.m */,
-				4F85EB62129972BB00A012A5 /* AnimationThread.h */,
-				4F85EB63129972BB00A012A5 /* AnimationThread.m */,
 				4F542C78129C6BF7003A9AB5 /* SoundHandler.h */,
 				4F542C79129C6BF7003A9AB5 /* SoundHandler.m */,
 				4F5E15E012A15E9D0092B1DA /* VibrateHandler.h */,
@@ -434,7 +429,6 @@
 				4F85E8221298525000A012A5 /* AnimationReader.m in Sources */,
 				4F85E82D12987E0D00A012A5 /* FlingAnimationReader.m in Sources */,
 				4F85E83812989E7E00A012A5 /* AnimationHandler.m in Sources */,
-				4F85EB64129972BB00A012A5 /* AnimationThread.m in Sources */,
 				4F542C74129C68D6003A9AB5 /* Sound.m in Sources */,
 				4F542C77129C69CE003A9AB5 /* SoundReader.m in Sources */,
 				4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */,
