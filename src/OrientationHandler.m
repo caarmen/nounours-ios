@@ -22,7 +22,6 @@
 	}
 	NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 	CMAccelerometerHandler motionHandler = Block_copy(^(CMAccelerometerData *accelerometerData, NSError *error) {
-		NSLog(@"motion handler");
 		[self performSelectorOnMainThread:@selector(doDeviceMotion:) withObject:accelerometerData waitUntilDone:NO];
 	});
 	[motionManager startAccelerometerUpdatesToQueue:queue withHandler:motionHandler]; 
