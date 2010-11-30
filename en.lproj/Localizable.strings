@@ -37,6 +37,7 @@
 "abouttextmacarenours" = "B-Roll (Macarenours animation): Kevin MacLeod (incompetech.com)";
 "ok" = "Ok";
 "help" = "Help";
+"cancel" = "Cancel";
 "disablesound" = "Turn sound/vibrate off";
 "enablesound" = "Turn sound/vibrate on";
 "startle" = "Startle";

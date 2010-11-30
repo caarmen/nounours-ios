@@ -17,14 +17,14 @@
 	return self;
 }
 -(IBAction)showActionSheet:(id)sender{
-	UIActionSheet *themeList = [[UIActionSheet alloc] initWithTitle:@"Themes" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	UIActionSheet *themeList = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"themes",@"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
 	
 	for(Theme* theme in [mainView.nounours.themes allValues])
 	{
 		[themeList addButtonWithTitle:theme.name];
 	}
 	themeList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[themeList addButtonWithTitle:@"Cancel"];
+	[themeList addButtonWithTitle:NSLocalizedString(@"cancel",@"")];
 	themeList.cancelButtonIndex = themeList.numberOfButtons - 1;
     [themeList showInView:mainView];
     [themeList release];

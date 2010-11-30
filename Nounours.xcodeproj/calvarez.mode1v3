@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -290,13 +292,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>60</integer>
+									<integer>10</integer>
+									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 675}, {259, 807}}</string>
+							<string>{{0, 2}, {259, 807}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -326,14 +329,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Nounours.m</string>
+								<string>Localizable.strings</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -341,14 +342,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Nounours.m</string>
+										<string>Localizable.strings</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4FFE702212A59F02001376CE</string>
+										<string>4FFE702A12A5A095001376CE</string>
 										<key>history</key>
 										<array>
-											<string>4F2ED7E712A075CC00CC6DCA</string>
 											<string>4F5E150912A14F670092B1DA</string>
 											<string>4F5E16B112A171410092B1DA</string>
 											<string>4F5E176012A187C90092B1DA</string>
@@ -362,8 +362,6 @@
 											<string>4F813EE412A2F66400A9CFF7</string>
 											<string>4F813EE512A2F66400A9CFF7</string>
 											<string>4F813EF512A2F7A300A9CFF7</string>
-											<string>4F813EF912A2F7B200A9CFF7</string>
-											<string>4F813F0612A2F89A00A9CFF7</string>
 											<string>4F813F4C12A3023700A9CFF7</string>
 											<string>4F813F9612A30BBB00A9CFF7</string>
 											<string>4F813F9712A30BBB00A9CFF7</string>
@@ -391,7 +389,10 @@
 											<string>4FFE701412A59E37001376CE</string>
 											<string>4FFE701A12A59ECB001376CE</string>
 											<string>4FFE702012A59F02001376CE</string>
-											<string>4FFE702112A59F02001376CE</string>
+											<string>4FFE702612A5A095001376CE</string>
+											<string>4FFE702712A5A095001376CE</string>
+											<string>4FFE702812A5A095001376CE</string>
+											<string>4FFE702912A5A095001376CE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -418,7 +419,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>sound.csv</string>
+								<string>AnimationMenu.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -426,14 +427,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>sound.csv</string>
+										<string>AnimationMenu.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4FFE702312A59F02001376CE</string>
+										<string>4FFE702F12A5A095001376CE</string>
 										<key>history</key>
 										<array>
-											<string>4F2ED7E712A075CC00CC6DCA</string>
 											<string>4F5E150912A14F670092B1DA</string>
 											<string>4F5E16B112A171410092B1DA</string>
 											<string>4F5E176012A187C90092B1DA</string>
@@ -462,8 +462,6 @@
 											<string>4F81405512A448C400A9CFF7</string>
 											<string>4F93855712A4526C00F7778C</string>
 											<string>4F93855812A4526C00F7778C</string>
-											<string>4F93856412A452FF00F7778C</string>
-											<string>4F93856912A4533200F7778C</string>
 											<string>4F93858F12A454DA00F7778C</string>
 											<string>4F9386C812A46C9400F7778C</string>
 											<string>4F93873212A471DA00F7778C</string>
@@ -478,7 +476,10 @@
 											<string>4FFE6FB412A59A1A001376CE</string>
 											<string>4FFE6FC212A59AB5001376CE</string>
 											<string>4FFE700112A59DBF001376CE</string>
-											<string>4FFE700212A59DBF001376CE</string>
+											<string>4FFE702B12A5A095001376CE</string>
+											<string>4FFE702C12A5A095001376CE</string>
+											<string>4FFE702D12A5A095001376CE</string>
+											<string>4FFE702E12A5A095001376CE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
