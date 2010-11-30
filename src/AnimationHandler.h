@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "data/Animation.h"
-#import "AnimationThread.h"
 
 @class Nounours;
 
