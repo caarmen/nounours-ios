@@ -13,6 +13,8 @@
 
 @interface AnimationHandler : NSObject {
 @private Nounours *nounours;
+@private NSTimeInterval timeLastAnimationLaunched;
+@private CGFloat curAnimationDuration;
 
 }
 -(AnimationHandler*) initAnimationHandler:(Nounours*) pnounours;
@@ -21,5 +23,6 @@
 -(BOOL) isAnimationRunning;
 -(void) doAnimation:(Animation*) panimation;
 -(void) doAnimationImpl:(Animation*) panimation;
+
 
 @end

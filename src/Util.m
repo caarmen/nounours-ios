@@ -82,4 +82,12 @@
 		return YES;
 	return NO;
 }
++(CGFloat) getTimeIntervalProperty:(NSMutableDictionary*) pproperties withKey:(NSString*) pkey withDefaultValue:(CGFloat) defaultValue{
+	NSString *value = [pproperties objectForKey:pkey];
+	if(value == nil)
+		return defaultValue;
+	NSInteger intValue = [value intValue];
+	CGFloat floatValue = (CGFloat) intValue / 1000.0f;
+	return floatValue;
+}
 @end

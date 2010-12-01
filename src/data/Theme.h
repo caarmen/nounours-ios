@@ -56,4 +56,5 @@
 @property (retain, readonly) Animation* endIdleAnimation;
 @property (retain, readonly) Image *helpImage;
 @property (retain, readonly) Image *defaultImage;
+@property (retain, readonly) NSMutableDictionary *properties;
 @end

@@ -44,6 +44,7 @@ NSString * const PROP_WIDTH = @"resolution.width";
 @synthesize helpImage;
 @synthesize defaultImage;
 @synthesize isLoaded;
+@synthesize properties;
 -(Theme*) initTheme:(NSString*) puid withName:(NSString*) pname /*withLocation(NSString*) plocation*/{
 	[super init];
 	uid = puid;

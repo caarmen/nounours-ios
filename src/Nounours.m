@@ -33,6 +33,10 @@
 	[super init];
 	if(self)
 	{
+		isLoading = YES;
+		lastActionTimestamp = -1.0;
+		curAnimation = nil;
+		curImage = nil;
 		NSString *themesFile = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"csv"];
 		NSLog(@"Reading themes..." );
 		ThemeReader *themeReader = [[ThemeReader alloc] initThemeReader:themesFile];
@@ -40,6 +44,10 @@
 		themes = themeReader.themes;
 		Theme *initialTheme = [[themes allValues] objectAtIndex:0];
 		[initialTheme load:self];
+		
+		idleTimeout = [Util getTimeIntervalProperty:initialTheme.properties withKey:@"idle.time" withDefaultValue:60.0f];
+		pingInterval = [Util getTimeIntervalProperty:initialTheme.properties withKey:@"idle.ping.interval" withDefaultValue:5.0f];
+		
 		mainView = pmainView;
 		mainView.nounours = self;
 		[mainView setImageFromFilename:initialTheme.defaultImage.filename];
@@ -50,8 +58,11 @@
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
 		[self performSelectorOnMainThread:@selector(useTheme:) withObject:initialTheme.uid waitUntilDone:NO];
-
-
+		
+		[self resetIdle];
+		nounoursIdlePinger = [[NounoursIdlePinger alloc] initNounoursIdlePinger:self withPingInterval:pingInterval];
+		[nounoursIdlePinger performSelectorInBackground:@selector(run:) withObject:nil];
+		
 	}
 	return self;
 }
@@ -72,6 +83,8 @@
 -(void) onPress:(CGFloat)px withY:(CGFloat)py{
 	lastLocation.x = px;
 	lastLocation.y = py;
+	BOOL wasIdle = ([animationHandler isAnimationRunning] && curAnimation != nil
+					&& curAnimation == curTheme.idleAnimation);
 	[self stopAnimation];
 	CGSize imageSize = [mainView getImageSize];
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
@@ -79,19 +92,29 @@
 	
 	if(curImage == nil)
 		return;
-	curFeature = [Util getClosestFeature:curImage withX:translatedPoint.x withY:translatedPoint.y];
-	if(curFeature != nil)
+ 	
+	if(wasIdle && curTheme.endIdleAnimation != nil)
 	{
-//[self debug:[NSString stringWithFormat:@"clicked on feature %@",curFeature]];
-		NSSet *adjacentImages = [curImage getAdjacentImages:curFeature.uid];
-		if([adjacentImages count] == 0)
+		[self doAnimation:curTheme.endIdleAnimation.uid];
+	}
+	else
+	{
+		curFeature = [Util getClosestFeature:curImage withX:translatedPoint.x withY:translatedPoint.y];
+		if(curFeature != nil)
 		{
-			curImage = defaultImage;
+			//[self debug:[NSString stringWithFormat:@"clicked on feature %@",curFeature]];
+			NSSet *adjacentImages = [curImage getAdjacentImages:curFeature.uid];
+			if([adjacentImages count] == 0)
+			{
+				curImage = defaultImage;
+			}
 		}
 	}
+	[self resetIdle];
 	
 }
 -(void) onRelease{
+	[self resetIdle];
 	curFeature = nil;
 	[self debug:@"onRelease"];
 	if(curImage != nil)
@@ -106,7 +129,7 @@
 	}
 	lastLocation.x=-1;
 	lastLocation.y=-1;
-
+	
 }
 -(void) onMove:(CGFloat)px withY:(CGFloat)py{
 	BOOL doRefresh = YES;
@@ -156,32 +179,49 @@
 			
 		}
 		if(!animationHandler.isAnimationRunning)
-			 [self onRelease];
-											
+			[self onRelease];
+		
 	}
 	else if(pgestureRecognizer.state == UIGestureRecognizerStateChanged) {
 		[self onMove:location.x withY:location.y];
 	}
-
+	
 }
 -(void) onShake{
 	if(curTheme.shakeAnimation != nil)
 		[self doAnimation:curTheme.shakeAnimation.uid];
 }
+
 -(void) doAnimation:(NSString *)panimationId{
+	Animation *animation = [curTheme.animations objectForKey:panimationId];
+	[self doAnimation:animation withIsDynamicAction:NO];
+}
+-(void) doAnimation:(Animation*) panimation withIsDynamicAction:(BOOL) pisDynamicAction{
+	if(isLoading)
+		return;
 	[self stopAnimation];
-	Animation* animation = [curTheme.animations objectForKey:panimationId];
-	[self debug:[NSString stringWithFormat:@"Animation %@ matches",animation.label]];
-	if(animation.soundId != nil)
+	curAnimation = panimation;
+	[self debug:[NSString stringWithFormat:@"Animation %@ matches",panimation.label]];
+	NSLog(@"animation duration: %d",[panimation getDuration]);
+	if(panimation.soundId != nil)
 	{
-		[soundHandler playSound:animation.soundId];
+		[soundHandler playSound:panimation.soundId];
 	}
-	[animationHandler doAnimation:animation];
+	[animationHandler doAnimation:panimation];
+	if(!pisDynamicAction)
+	{
+		[self resetIdle];
+	}
+	else {
+		[panimation release];
+	}
+	
 	
 }
 -(void) stopAnimation{
 	[soundHandler stopSound];
 	[animationHandler stopAnimation];
+	curAnimation = nil;
 }
 -(void) setImage:(Image*) pimage{
 	BOOL doRefresh = (curImage != pimage);
@@ -205,6 +245,7 @@
 		NSLog(@"Already using theme %@",pthemeId);
 		return YES;
 	}
+	isLoading = YES;
 	[self stopAnimation];
 	curTheme = [themes objectForKey:pthemeId];
 	[curTheme load:self];
@@ -213,6 +254,7 @@
 	[soundHandler loadSounds:curTheme.sounds];
 	[self setImage:curTheme.defaultImage];
 	[mainView resizeView];
+	isLoading = NO;
 	return YES;
 }
 
@@ -220,4 +262,85 @@
 	NSLog(@"%@",po);
 };
 
+-(Animation*) createRandomAnimation{
+	if(isLoading)
+		return nil;
+	int interval = 100+ (arc4random() % 400);
+	NSInteger numberFrames = 2 + arc4random() % 8;
+	NSString *uid = [NSString stringWithFormat:@"random%d",[NSDate timeIntervalSinceReferenceDate]];
+	NSLog(@"Created animation %@",uid);
+	Animation *result = [[[Animation alloc] initAnimation:uid withLabel:@"random" withInterval:(int)interval withRepeat:1 withVisible:NO withVibrate:NO withSoundId:nil] retain];
+	Image *curAnimationImage = curImage;
+	for(int i=0; i < numberFrames; i++)
+	{
+		Image *nextAnimationImage = [[self getRandomImage:curAnimationImage] retain];
+		if(nextAnimationImage == nil)
+			continue;
+		CGFloat duration = 0.5f + (arc4random() %2);
+		[result addImage:nextAnimationImage.uid withDuration:duration];
+		curAnimationImage = nextAnimationImage;
+	}
+	return result;
+}
+-(Image*) getRandomImage:(Image*) pfromImage{
+	NSArray *allAdjacentImages = [pfromImage getAllAdjacentImages];
+	if([allAdjacentImages count] == 0)
+		return nil;
+	NSInteger toImageNumber = arc4random() % [allAdjacentImages count];
+	Image *toImage = [allAdjacentImages objectAtIndex:toImageNumber];
+	return toImage;
+}
+-(void) onIdle{
+	[self resetIdle];
+	NSLog(@"onIdle");
+	if(curTheme != nil && curTheme.idleAnimation != nil)
+	{
+		if(![animationHandler isAnimationRunning])
+			[self doAnimation:curTheme.idleAnimation.uid];
+	}
+}
+-(BOOL) isIdleForSleepAnimation{
+	if(lastActionTimestamp > 0)
+	{
+		return [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp > idleTimeout;
+	}
+	return NO;
+}
+-(BOOL) isIdleForRandomAnimation{
+	if(lastActionTimestamp > 0)
+	{
+		return [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp > pingInterval;
+	}
+	return NO;
+}
+-(void) ping{
+	if(isLoading)
+		return;
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	CGFloat idleTime = [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp;
+	NSLog(@"ping: idle for %.2f seconds. Animation running? %s. duration=%.2f, animation images=%d, image=%@, repeat=%d", idleTime, [animationHandler isAnimationRunning]? "true" : "false",mainView.animationDuration, (mainView.animationImages == nil ? -1 :[mainView.animationImages count]), mainView.image, mainView.animationRepeatCount);
+	
+	if([self isIdleForSleepAnimation])
+	{
+		[self onIdle];
+	}
+	else {
+		if([self isIdleForRandomAnimation] && ![animationHandler isAnimationRunning])
+		{
+			Animation *randomAnimation = [self createRandomAnimation];
+			if(randomAnimation != nil)
+				[self doAnimation:randomAnimation withIsDynamicAction:YES];
+		}
+		
+	}
+	[pool release];
+}
+-(void) reset{
+	[self resetIdle];
+	[self setImage:curTheme.defaultImage];
+}
+-(void) resetIdle{
+	lastActionTimestamp = [NSDate timeIntervalSinceReferenceDate];
+}
 @end

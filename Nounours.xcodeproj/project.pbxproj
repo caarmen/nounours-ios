@@ -52,6 +52,8 @@
 		4FEE6CC112A29FE70055E8D2 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEE6CC012A29FE70055E8D2 /* AboutView.xib */; };
 		4FEE6CC412A2A11E0055E8D2 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEE6CC312A2A11E0055E8D2 /* AboutView.m */; };
 		4FFE1C3112A2F21D00CAB62F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE1C2F12A2F21D00CAB62F /* Localizable.strings */; };
+		4FFE704812A5A9E3001376CE /* NounoursIdlePinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE704712A5A9E3001376CE /* NounoursIdlePinger.m */; };
+		4FFE723912A5D4A3001376CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFE723812A5D4A3001376CE /* QuartzCore.framework */; };
 		4FFFF64F12965D9900CA2996 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFFF64E12965D9900CA2996 /* Util.m */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +150,9 @@
 		4FEE6CC312A2A11E0055E8D2 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutView.m; path = src/ui/AboutView.m; sourceTree = SOURCE_ROOT; };
 		4FFE1C3012A2F21D00CAB62F /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4FFE1C3212A2F22C00CAB62F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4FFE704612A5A9E3001376CE /* NounoursIdlePinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NounoursIdlePinger.h; path = src/NounoursIdlePinger.h; sourceTree = SOURCE_ROOT; };
+		4FFE704712A5A9E3001376CE /* NounoursIdlePinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NounoursIdlePinger.m; path = src/NounoursIdlePinger.m; sourceTree = SOURCE_ROOT; };
+		4FFE723812A5D4A3001376CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4FFFF64D12965D9900CA2996 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = src/Util.h; sourceTree = SOURCE_ROOT; };
 		4FFFF64E12965D9900CA2996 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = src/Util.m; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Nounours-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Nounours-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -164,6 +169,7 @@
 				4F542C99129C7542003A9AB5 /* AVFoundation.framework in Frameworks */,
 				4F5E15FB12A164DB0092B1DA /* AudioToolbox.framework in Frameworks */,
 				4F813F7A12A308F200A9CFF7 /* CoreMotion.framework in Frameworks */,
+				4FFE723912A5D4A3001376CE /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +198,8 @@
 				4F5E15E112A15E9D0092B1DA /* VibrateHandler.m */,
 				4F813F6812A3077300A9CFF7 /* OrientationHandler.h */,
 				4F813F6912A3077300A9CFF7 /* OrientationHandler.m */,
+				4FFE704612A5A9E3001376CE /* NounoursIdlePinger.h */,
+				4FFE704712A5A9E3001376CE /* NounoursIdlePinger.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 				4F5E15FA12A164DB0092B1DA /* AudioToolbox.framework */,
 				4FEE6CC012A29FE70055E8D2 /* AboutView.xib */,
 				4F813F7912A308F200A9CFF7 /* CoreMotion.framework */,
+				4FFE723812A5D4A3001376CE /* QuartzCore.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -442,6 +451,7 @@
 				4F813F3D12A2FFCE00A9CFF7 /* OrientationImage.m in Sources */,
 				4F813F5312A3027200A9CFF7 /* OrientationImageReader.m in Sources */,
 				4F813F6A12A3077300A9CFF7 /* OrientationHandler.m in Sources */,
+				4FFE704812A5A9E3001376CE /* NounoursIdlePinger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,15 +510,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: christophe de Courson (L23H662Y98)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: christophe de Courson (L23H662Y98)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Recherche Developpement Mobile";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Recherche Developpement Mobile";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "5CA4017E-6A5F-4063-93A8-2EA5DD6EDBDC";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5CA4017E-6A5F-4063-93A8-2EA5DD6EDBDC";
+				PROVISIONING_PROFILE = "4958F648-1540-453A-B08F-B8463DD3A316";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4958F648-1540-453A-B08F-B8463DD3A316";
 				SDKROOT = iphoneos4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

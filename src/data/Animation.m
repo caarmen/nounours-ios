@@ -57,8 +57,8 @@ withSoundId:(NSString*) psoundId{
 	return dup;
 }
 - (NSString *)description{
-	return [NSString stringWithFormat:@"%@: %@ms %d times: %@",
-			NSStringFromClass(self.class),interval, repeat, images];
+	return [NSString stringWithFormat:@"%@: %@: %dms %d times: %@",
+			NSStringFromClass(self.class),uid,interval, repeat, images];
 }
 
 

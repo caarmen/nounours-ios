@@ -13,25 +13,43 @@
 #import "Nounours.h"
 
 @implementation AnimationHandler
+
 -(AnimationHandler*) initAnimationHandler:(Nounours*) pnounours{
 	[super init];
 	if(self)
 	{
 		nounours = pnounours;
+		curAnimationDuration = -1.0f;
+		timeLastAnimationLaunched = -1.0f;
 	}
 	return self;
 }
 -(void) stopAnimation{
 	[nounours.mainView stopAnimating];
+	curAnimationDuration = -1.0f;
+	timeLastAnimationLaunched = -1.0f;
 }
 -(BOOL) isAnimationRunning{
-	return [nounours.mainView isAnimating];
+	if((![nounours.mainView isAnimating]) || curAnimationDuration <0 || timeLastAnimationLaunched < 0)
+		return NO;
+	else{
+		NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+		NSTimeInterval timeSinceAnimationLaunched = now - timeLastAnimationLaunched;
+		NSLog(@"%.2f - %.2f = %.2f: %.2f ",now, timeLastAnimationLaunched, timeSinceAnimationLaunched, curAnimationDuration);
+		if(timeSinceAnimationLaunched < curAnimationDuration)
+			return YES;
+		else {
+			return NO;
+		}
+
+	}
 }
 -(void) doAnimation:(Animation*) panimation{
 	[self stopAnimation];
 	[self performSelectorInBackground:@selector(doAnimationImpl:) withObject:panimation];
 }
 -(void) doAnimationImpl:(Animation*) panimation{
+
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	CGFloat baseFrameDuration = 1.0f/30;
 	NSMutableArray *animationArray = [[NSMutableArray alloc] init];
@@ -52,11 +70,18 @@
 		}
 
 	}
+	if(panimation.vibrate)
+	{
+		[nounours.vibrateHandler doVibrate:[panimation getDuration] withInterval:1];
+	}
 	nounours.mainView.animationImages = animationArray;
 	nounours.mainView.animationRepeatCount = panimation.repeat;
-	nounours.mainView.animationDuration = baseFrameDuration * [animationArray count];
+	CGFloat oneLoopAnimationDuration =  baseFrameDuration * [animationArray count];
+	nounours.mainView.animationDuration = oneLoopAnimationDuration;
 	[nounours.mainView performSelectorOnMainThread:@selector(startAnimating) withObject:nil waitUntilDone:NO];
-	NSLog(@"launched animation");
+	timeLastAnimationLaunched = [NSDate timeIntervalSinceReferenceDate];
+	curAnimationDuration = [panimation getDuration] / 1000.0f;
+	NSLog(@"launched animation of %.2f seconds", curAnimationDuration);
 	[animationArray release];
 	[pool release];
 }
