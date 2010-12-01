@@ -290,16 +290,16 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>117</integer>
-									<integer>109</integer>
-									<integer>108</integer>
+									<integer>87</integer>
+									<integer>80</integer>
+									<integer>79</integer>
 									<integer>78</integer>
 									<integer>74</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 1339}, {259, 794}}</string>
+							<string>{{0, 1290}, {259, 794}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -334,7 +334,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Nounours.h</string>
+								<string>Nounours.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -342,11 +342,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Nounours.h</string>
+										<string>Nounours.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4FFE736712A6EBFB001376CE</string>
+										<string>4FFE739612A6F0C7001376CE</string>
 										<key>history</key>
 										<array>
 											<string>4F5E16B112A171410092B1DA</string>
@@ -396,9 +396,9 @@
 											<string>4FFE72DF12A6DC16001376CE</string>
 											<string>4FFE732912A6E73A001376CE</string>
 											<string>4FFE733212A6E928001376CE</string>
-											<string>4FFE733312A6E928001376CE</string>
 											<string>4FFE733412A6E928001376CE</string>
-											<string>4FFE733612A6E928001376CE</string>
+											<string>4FFE738E12A6F003001376CE</string>
+											<string>4FFE738F12A6F003001376CE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -439,7 +439,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4FFE736D12A6EBFB001376CE</string>
+										<string>4FFE739A12A6F0C7001376CE</string>
 										<key>history</key>
 										<array>
 											<string>4F5E150912A14F670092B1DA</string>
@@ -494,9 +494,9 @@
 											<string>4FFE733912A6E928001376CE</string>
 											<string>4FFE733A12A6E928001376CE</string>
 											<string>4FFE736812A6EBFB001376CE</string>
-											<string>4FFE736912A6EBFB001376CE</string>
-											<string>4FFE736A12A6EBFB001376CE</string>
-											<string>4FFE736B12A6EBFB001376CE</string>
+											<string>4FFE739712A6F0C7001376CE</string>
+											<string>4FFE739812A6F0C7001376CE</string>
+											<string>4FFE739912A6F0C7001376CE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -696,13 +696,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>4FFE739B12A6F0C7001376CE</string>
 		<string>4FFE6F4612A594F9001376CE</string>
 		<string>4FFE6F4912A594F9001376CE</string>
 		<string>4FFE6F4A12A594F9001376CE</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>4F80B3B0128EF4E200DA7722</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>4F80B3B0128EF4E200DA7722</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/calvarez/dev/projects/ios/NounoursIOS/trunk/Nounours.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -798,7 +799,7 @@
 			<key>WindowToolGUID</key>
 			<string>4F80B3B0128EF4E200DA7722</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -924,7 +925,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
