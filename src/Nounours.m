@@ -201,8 +201,8 @@
 		return;
 	[self stopAnimation];
 	curAnimation = panimation;
+	[self setImage:curTheme.defaultImage];
 	[self debug:[NSString stringWithFormat:@"Animation %@ matches",panimation.label]];
-	NSLog(@"animation duration: %d",[panimation getDuration]);
 	if(panimation.soundId != nil)
 	{
 		[soundHandler playSound:panimation.soundId];
@@ -268,7 +268,6 @@
 	int interval = 100+ (arc4random() % 400);
 	NSInteger numberFrames = 2 + arc4random() % 8;
 	NSString *uid = [NSString stringWithFormat:@"random%d",[NSDate timeIntervalSinceReferenceDate]];
-	NSLog(@"Created animation %@",uid);
 	Animation *result = [[[Animation alloc] initAnimation:uid withLabel:@"random" withInterval:(int)interval withRepeat:1 withVisible:NO withVibrate:NO withSoundId:nil] retain];
 	Image *curAnimationImage = curImage;
 	for(int i=0; i < numberFrames; i++)
