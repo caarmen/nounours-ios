@@ -40,6 +40,7 @@
 }
 -(void) useTheme:(Theme*) ptheme{
 	[imageCache removeAllObjects];
+	[animationMenu reset];
 	for(Image *image in [ptheme.images allValues])
 	{
 		[self setImageFromFilename:image.filename];

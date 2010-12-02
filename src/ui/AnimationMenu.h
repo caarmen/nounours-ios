@@ -17,5 +17,6 @@
 -(AnimationMenu*) initAnimationMenu:(MainView*) pmainView;
 -(void) doAnimation:(NSString*)panimationLabel;
 -(IBAction)showActionSheet:(id)sender;
+-(void) reset;
 
 @end

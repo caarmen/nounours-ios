@@ -16,7 +16,13 @@
 	mainView = pmainView;
 	return self;
 }
-
+-(void) reset {
+	if(animationList != nil)
+	{
+		[animationList release];
+		animationList = nil;
+	}
+}
 -(IBAction)showActionSheet:(id)sender{
 	if(animationList == nil)
 	{
@@ -32,8 +38,6 @@
 		animationList.cancelButtonIndex = animationList.numberOfButtons - 1;
 	}
     [animationList showInView:mainView];
-	//    [animationList release];
-	
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
