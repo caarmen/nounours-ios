@@ -34,7 +34,7 @@
 				[animationList addButtonWithTitle:animation.label];
 		}
 		animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-		[animationList addButtonWithTitle:@"Cancel"];
+		[animationList addButtonWithTitle:NSLocalizedString(@"cancel",@"")];
 		animationList.cancelButtonIndex = animationList.numberOfButtons - 1;
 	}
     [animationList showInView:mainView];
