@@ -36,7 +36,6 @@
 		4F813F3D12A2FFCE00A9CFF7 /* OrientationImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F813F3C12A2FFCE00A9CFF7 /* OrientationImage.m */; };
 		4F813F5312A3027200A9CFF7 /* OrientationImageReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F813F5212A3027200A9CFF7 /* OrientationImageReader.m */; };
 		4F813F6A12A3077300A9CFF7 /* OrientationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F813F6912A3077300A9CFF7 /* OrientationHandler.m */; };
-		4F813F7A12A308F200A9CFF7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F813F7912A308F200A9CFF7 /* CoreMotion.framework */; };
 		4F85E73A129803A800A012A5 /* NounoursAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E737129803A800A012A5 /* NounoursAppDelegate.m */; };
 		4F85E73B129803A800A012A5 /* NounoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E739129803A800A012A5 /* NounoursViewController.m */; };
 		4F85E7A512983FDF00A012A5 /* AnimationImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F85E7A412983FDF00A012A5 /* AnimationImage.m */; };
@@ -124,7 +123,6 @@
 		4F813F5212A3027200A9CFF7 /* OrientationImageReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationImageReader.m; path = src/io/OrientationImageReader.m; sourceTree = SOURCE_ROOT; };
 		4F813F6812A3077300A9CFF7 /* OrientationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrientationHandler.h; path = src/OrientationHandler.h; sourceTree = SOURCE_ROOT; };
 		4F813F6912A3077300A9CFF7 /* OrientationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrientationHandler.m; path = src/OrientationHandler.m; sourceTree = SOURCE_ROOT; };
-		4F813F7912A308F200A9CFF7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		4F85E736129803A800A012A5 /* NounoursAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NounoursAppDelegate.h; path = src/NounoursAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		4F85E737129803A800A012A5 /* NounoursAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NounoursAppDelegate.m; path = src/NounoursAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		4F85E738129803A800A012A5 /* NounoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NounoursViewController.h; path = src/NounoursViewController.h; sourceTree = SOURCE_ROOT; };
@@ -171,7 +169,6 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				4F542C99129C7542003A9AB5 /* AVFoundation.framework in Frameworks */,
 				4F5E15FB12A164DB0092B1DA /* AudioToolbox.framework in Frameworks */,
-				4F813F7A12A308F200A9CFF7 /* CoreMotion.framework in Frameworks */,
 				4FFE723912A5D4A3001376CE /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +223,6 @@
 				4F542C98129C7542003A9AB5 /* AVFoundation.framework */,
 				4F5E15FA12A164DB0092B1DA /* AudioToolbox.framework */,
 				4FEE6CC012A29FE70055E8D2 /* AboutView.xib */,
-				4F813F7912A308F200A9CFF7 /* CoreMotion.framework */,
 				4FFE723812A5D4A3001376CE /* QuartzCore.framework */,
 				4F2021DF12A708F600377C0A /* Settings.bundle */,
 				4F437E5F12A7C50C006E16BB /* Entitlements.plist */,
@@ -524,7 +520,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "4958F648-1540-453A-B08F-B8463DD3A316";
@@ -544,7 +540,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
