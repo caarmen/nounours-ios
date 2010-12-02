@@ -70,7 +70,7 @@
 		}
 
 	}
-	if(panimation.vibrate)
+	if(panimation.vibrate && nounours.doVibrate)
 	{
 		[nounours.vibrateHandler doVibrate:[panimation getDuration] withInterval:1];
 	}

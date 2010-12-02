@@ -40,6 +40,9 @@
 @private CGFloat pingInterval;
 @private NSTimeInterval lastActionTimestamp;
 @private NounoursIdlePinger *nounoursIdlePinger;
+@private BOOL doVibrate;
+@private BOOL doSound;
+
 }
 -(Nounours*) initNounours:(MainView*) pmainView;
 -(void) displayImage:(Image*)pimage;
@@ -66,11 +69,15 @@
 -(void) ping;
 -(void) resetIdle;
 -(void) reset;
+-(void) loadPreferences;
+-(void) savePreferences;
 
 @property(retain,readwrite) Image* defaultImage;
 @property(retain,readonly) Theme *curTheme;
+@property(retain,readonly) Image *curImage;
 @property(retain,readonly) NSMutableDictionary *themes;
 @property(retain,readonly) VibrateHandler* vibrateHandler;
 @property(retain,readonly) MainView *mainView;
+@property(readonly) BOOL doVibrate;
 
 @end

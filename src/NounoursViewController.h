@@ -11,9 +11,10 @@
 #import "Nounours.h"
 @interface NounoursViewController : UIViewController {
 @private MainView* mainView; 
-@private Nounours* nounours;
+@private Nounours *nounours;
 @private UIActivityIndicatorView *activityView;
 }
 -(void) doLoad:(id) sender;
+@property(retain,readonly) Nounours *nounours;
 @end
 

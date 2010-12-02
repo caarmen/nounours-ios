@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NounoursViewController.h"
 @interface NounoursAppDelegate : NSObject <UIApplicationDelegate> {
-
+@private NounoursViewController *viewController;
 }
 
 @end

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>DefaultValue</key>
+			<true/>
+			<key>Key</key>
+			<string>PREF_ENABLE_SOUND</string>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>TrueValue</key>
+			<true/>
+			<key>FalseValue</key>
+			<false/>
+			<key>Title</key>
+			<string>Sound</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Vibrate</string>
+			<key>Key</key>
+			<string>PREF_ENABLE_VIBRATE</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>Titles</key>
+			<array>
+				<string>15 seconds</string>
+				<string>30 seconds</string>
+				<string>1 minute</string>
+				<string>2 minutes</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<real>15</real>
+				<real>30</real>
+				<integer>60</integer>
+				<integer>120</integer>
+			</array>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Time before I fall asleep</string>
+			<key>Key</key>
+			<string>PREF_IDLE_TIMEOUT</string>
+			<key>DefaultValue</key>
+			<integer>30</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

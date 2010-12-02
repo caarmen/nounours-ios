@@ -23,11 +23,19 @@
 #import "io/ThemeReader.h"
 
 @implementation Nounours
+
+NSString * const PREF_THEME_ID = @"ThemeId";
+NSString * const PREF_IMAGE_ID = @"ImageId";
+NSString * const PREF_ENABLE_SOUND = @"PREF_ENABLE_SOUND";
+NSString * const PREF_ENABLE_VIBRATE = @"PREF_ENABLE_VIBRATE";
+NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 @synthesize defaultImage;
 @synthesize curTheme;
+@synthesize curImage;
 @synthesize themes;
 @synthesize vibrateHandler;
 @synthesize mainView;
+@synthesize doVibrate;
 
 -(Nounours*) initNounours:(MainView*) pmainView{
 	[super init];
@@ -37,16 +45,49 @@
 		lastActionTimestamp = -1.0;
 		curAnimation = nil;
 		curImage = nil;
+		doVibrate = YES;
+		doSound = YES;
 		NSString *themesFile = [[NSBundle mainBundle] pathForResource:@"theme" ofType:@"csv"];
 		NSLog(@"Reading themes..." );
 		ThemeReader *themeReader = [[ThemeReader alloc] initThemeReader:themesFile];
 		NSLog(@"Read themes.");
 		themes = themeReader.themes;
-		Theme *initialTheme = [[themes allValues] objectAtIndex:0];
+		NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+		[self loadPreferences];
+		
+		NSArray *path = NSSearchPathForDirectoriesInDomains(
+															NSLibraryDirectory, NSUserDomainMask, YES);
+		NSString *folder = [path objectAtIndex:0];
+		NSLog(@"Your NSUserDefaults are stored in this folder: %@/Preferences", folder);
+		
+		Theme *initialTheme = nil;
+		Image *initialImage = nil;
+		if(standardUserDefaults != nil)
+		{
+			NSString *savedThemeId = [standardUserDefaults objectForKey:PREF_THEME_ID];
+			initialTheme = [themes objectForKey:savedThemeId];
+		}
+		else {
+			NSLog(@"Could not retrieve user defaults");
+		}
+		
+		if(initialTheme == nil) {
+			initialTheme = [[themes allValues] objectAtIndex:0];
+		}
 		[initialTheme load:self];
 		
-		idleTimeout = [Util getTimeIntervalProperty:initialTheme.properties withKey:@"idle.time" withDefaultValue:60.0f];
+		if(idleTimeout < 1)
+			idleTimeout = [Util getTimeIntervalProperty:initialTheme.properties withKey:@"idle.time" withDefaultValue:30.0f];
 		pingInterval = [Util getTimeIntervalProperty:initialTheme.properties withKey:@"idle.ping.interval" withDefaultValue:5.0f];
+		
+		if(standardUserDefaults != nil)
+		{
+			NSString *initialImageId = [standardUserDefaults objectForKey:PREF_IMAGE_ID];
+			if(initialTheme != nil && initialImageId != nil)
+				initialImage = [[initialTheme images] objectForKey:initialImageId];
+			
+			NSLog(@"Saved image: %@",initialImage);
+		}
 		
 		mainView = pmainView;
 		mainView.nounours = self;
@@ -57,7 +98,9 @@
 		orientationHandler = [[OrientationHandler alloc] initOrientationHandler:self];
 		UIPanGestureRecognizer* panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onFling:)];
 		[mainView addGestureRecognizer:panRecognizer];
-		[self performSelectorOnMainThread:@selector(useTheme:) withObject:initialTheme.uid waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(useTheme:) withObject:initialTheme.uid waitUntilDone:YES];
+		if(initialImage != nil)
+			[self performSelectorOnMainThread:@selector(setImage:) withObject:initialImage waitUntilDone:NO];
 		
 		[self resetIdle];
 		nounoursIdlePinger = [[NounoursIdlePinger alloc] initNounoursIdlePinger:self withPingInterval:pingInterval];
@@ -124,7 +167,8 @@
 		{
 			Image *nextImage = [curTheme.images objectForKey:nextImageId];
 			[self setImage:nextImage];
-			[vibrateHandler doVibrate:nil];
+			if(doVibrate)
+				[vibrateHandler doVibrate:nil];
 		}
 	}
 	lastLocation.x=-1;
@@ -203,7 +247,7 @@
 	curAnimation = panimation;
 	[self setImage:curTheme.defaultImage];
 	[self debug:[NSString stringWithFormat:@"Animation %@ matches",panimation.label]];
-	if(panimation.soundId != nil)
+	if(panimation.soundId != nil && doSound)
 	{
 		[soundHandler playSound:panimation.soundId];
 	}
@@ -341,5 +385,39 @@
 }
 -(void) resetIdle{
 	lastActionTimestamp = [NSDate timeIntervalSinceReferenceDate];
+}
+
+-(void) loadPreferences{
+	NSLog(@"Loading preferences");
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	NSString *themeId = [standardUserDefaults stringForKey:PREF_THEME_ID];
+	if(themeId == nil)
+	{
+		NSLog(@"First time running app, setting defaults");
+		[standardUserDefaults setBool:YES forKey:PREF_ENABLE_SOUND];
+		[standardUserDefaults setBool:YES forKey:PREF_ENABLE_VIBRATE];
+		[standardUserDefaults setFloat:30.0f forKey:PREF_IDLE_TIMEOUT];
+		[standardUserDefaults synchronize];
+	}
+	doVibrate = [standardUserDefaults boolForKey:PREF_ENABLE_VIBRATE];
+	doSound = [standardUserDefaults boolForKey:PREF_ENABLE_SOUND];
+	idleTimeout = [standardUserDefaults floatForKey:PREF_IDLE_TIMEOUT];
+	NSLog(@"idle timeout: %.2f", idleTimeout);
+	NSLog(@"sound: %s",doSound? "true" : "false");
+	NSLog(@"vibrate: %s",doVibrate? "true" : "false");
+}
+
+-(void) savePreferences{
+	NSLog(@"Saving preferences");
+	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	if(standardUserDefaults != nil)
+	{
+		if(curTheme != nil)
+			[standardUserDefaults setObject:curTheme.uid forKey:PREF_THEME_ID];
+		if(curImage != nil)
+			[standardUserDefaults setObject:curImage.uid forKey:PREF_IMAGE_ID];
+		[standardUserDefaults synchronize];
+	}
+	
 }
 @end

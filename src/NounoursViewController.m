@@ -10,7 +10,7 @@
 
 #import "Nounours.h";
 @implementation NounoursViewController
-
+@synthesize nounours;
 
 
 
@@ -76,6 +76,7 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	NSLog(@"viewDidUnload");
 }
 
 
@@ -115,13 +116,19 @@
 	}
 }
 - (void)viewDidAppear:(BOOL)animated {
+	NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
     [self becomeFirstResponder];
+	if(nounours != nil)
+		[nounours loadPreferences];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"viewDidDisappear");
     [self resignFirstResponder];
     [super viewDidDisappear:animated];
+	if(nounours != nil)
+		[nounours savePreferences];
 }
 - (BOOL)canBecomeFirstResponder {
     return YES;

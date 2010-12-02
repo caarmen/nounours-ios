@@ -13,6 +13,7 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		4F0EC639129F471B00436582 /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 4F0EC5B2129F471B00436582 /* themes */; };
 		4F14D3DF129E8DA300452621 /* PropertiesReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14D3DE129E8DA300452621 /* PropertiesReader.m */; };
+		4F2021E012A708F600377C0A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F2021DF12A708F600377C0A /* Settings.bundle */; };
 		4F542C74129C68D6003A9AB5 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C73129C68D6003A9AB5 /* Sound.m */; };
 		4F542C77129C69CE003A9AB5 /* SoundReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C76129C69CE003A9AB5 /* SoundReader.m */; };
 		4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C79129C6BF7003A9AB5 /* SoundHandler.m */; };
@@ -81,6 +82,7 @@
 		4F0EC5B2129F471B00436582 /* themes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = themes; path = res/themes; sourceTree = "<group>"; };
 		4F14D3DD129E8DA300452621 /* PropertiesReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertiesReader.h; path = src/io/PropertiesReader.h; sourceTree = SOURCE_ROOT; };
 		4F14D3DE129E8DA300452621 /* PropertiesReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PropertiesReader.m; path = src/io/PropertiesReader.m; sourceTree = SOURCE_ROOT; };
+		4F2021DF12A708F600377C0A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4F542C72129C68D6003A9AB5 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = src/data/Sound.h; sourceTree = SOURCE_ROOT; };
 		4F542C73129C68D6003A9AB5 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sound.m; path = src/data/Sound.m; sourceTree = SOURCE_ROOT; };
 		4F542C75129C69CE003A9AB5 /* SoundReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundReader.h; path = src/io/SoundReader.h; sourceTree = SOURCE_ROOT; };
@@ -225,6 +227,7 @@
 				4FEE6CC012A29FE70055E8D2 /* AboutView.xib */,
 				4F813F7912A308F200A9CFF7 /* CoreMotion.framework */,
 				4FFE723812A5D4A3001376CE /* QuartzCore.framework */,
+				4F2021DF12A708F600377C0A /* Settings.bundle */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				4F8AB1F612A023E60087C525 /* theme.csv in Resources */,
 				4FEE6CC112A29FE70055E8D2 /* AboutView.xib in Resources */,
 				4FFE1C3112A2F21D00CAB62F /* Localizable.strings in Resources */,
+				4F2021E012A708F600377C0A /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
