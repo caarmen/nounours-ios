@@ -1,0 +1,7 @@
+ImageId,MinYaw,MaxYaw,MinPitch,MaxPitch,MinRoll,MaxRoll
+TiltLeft,0,360,-30,30,-105,-45
+TiltLeft,0,360,150,180,-105,-45
+TiltLeft,0,360,-180,-150,-105,-45
+TiltRight,0,360,150,180,45,105
+TiltRight,0,360,-180,-150,45,105
+TiltRight,0,360,-30,30,45,105
