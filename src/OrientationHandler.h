@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreMotion/CoreMotion.h>
 #import "Nounours.h"
 
-@interface OrientationHandler : NSObject {
+@interface OrientationHandler : NSObject<UIAccelerometerDelegate> {
 @private Nounours *nounours;
 @private BOOL isTiltImage;
 }
 -(OrientationHandler*) initOrientationHandler:(Nounours*) pnounours;
--(void) doDeviceMotion:(CMAccelerometerData*) motion;
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
 @end

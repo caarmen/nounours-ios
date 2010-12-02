@@ -14,23 +14,15 @@
 -(OrientationHandler*) initOrientationHandler:(Nounours*) pnounours{
 	[super init];
 	nounours = pnounours;
-	CMMotionManager *motionManager = [[CMMotionManager alloc] init];
-	motionManager.accelerometerUpdateInterval = 0.5f;
-	if(!motionManager.isDeviceMotionAvailable)
-	{
-		NSLog(@"No device motion available");
-	}
-	NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-	CMAccelerometerHandler motionHandler = Block_copy(^(CMAccelerometerData *accelerometerData, NSError *error) {
-		[self performSelectorOnMainThread:@selector(doDeviceMotion:) withObject:accelerometerData waitUntilDone:NO];
-	});
-	[motionManager startAccelerometerUpdatesToQueue:queue withHandler:motionHandler]; 
+	UIAccelerometer *accelerometer = [UIAccelerometer sharedAccelerometer];
+	accelerometer.updateInterval = 0.5f;
+	accelerometer.delegate = self;
 	NSLog(@"Registered for motion events");
 	isTiltImage = NO;
 	return self;
 }
--(void) doDeviceMotion:(CMAccelerometerData*) accelerometerData{
-	CMAcceleration acceleration = accelerometerData.acceleration;
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration{
+	
 	CGFloat accelX = acceleration.x;
 	CGFloat accelY = acceleration.y;
 	if(accelX > 1.0f)
