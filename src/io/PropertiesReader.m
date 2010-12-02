@@ -23,6 +23,8 @@ NSString * const PROPERTIES_LINE_SEPARATOR = @"\r\n";
 		if([line hasPrefix:@"#"])
 			continue;
 		NSRange equal = [line rangeOfString:@"="];
+		if(equal.length == 0)
+			continue;
 		NSString *key = [[line substringToIndex:equal.location] retain];
 		NSString *value = [[line substringFromIndex:(equal.location+1)] retain];
 		[data setObject:value forKey:key];
