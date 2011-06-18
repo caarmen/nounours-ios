@@ -171,7 +171,7 @@
 	
 	CGFloat settingsIconWidth = settingsIconView.image.size.width;
 	CGFloat settingsIconHeight = settingsIconView.image.size.width;
-	CGRect settingsIconSize = CGRectMake(width - menuIconWidth - settingsIconWidth, 0, settingsIconWidth, settingsIconHeight);
+	CGRect settingsIconSize = CGRectMake(0, 0, settingsIconWidth, settingsIconHeight);
 	settingsIconView.frame = settingsIconSize;
 	
 }
