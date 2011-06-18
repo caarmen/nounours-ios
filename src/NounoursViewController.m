@@ -146,7 +146,7 @@
 -(void) showSettings
 {
 	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
-	
+	[self.appSettingsViewController setShowCreditsFooter:NO];
 	self.appSettingsViewController.showDoneButton = YES;
 	[self presentModalViewController:aNavController animated:YES];
 	[aNavController release];

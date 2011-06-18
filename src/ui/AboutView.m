@@ -16,6 +16,7 @@
 @synthesize emailLabel;
 @synthesize creditsLabel;
 @synthesize skaLabel;
+@synthesize inAppSettingsLabel;
 @synthesize dismissButton;
 @synthesize parentView;
 
@@ -45,6 +46,7 @@
 	emailLabel.text=NSLocalizedString(@"abouttextemail",@"");
 	creditsLabel.text=NSLocalizedString(@"abouttextcredits",@"");
 	skaLabel.text=NSLocalizedString(@"abouttextmacarenours",@"");
+	inAppSettingsLabel.text=NSLocalizedString(@"abouttextinappsettings",@"");
 	//dismissButton.titleLabel.text=@"Ok";
 }
 

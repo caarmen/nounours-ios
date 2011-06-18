@@ -6,7 +6,7 @@
    Copyright 2010 __MyCompanyName__. All rights reserved.
  */
 "hello" = "Hello World, NounoursActivity";
-"app_name" = "Nounours v 1.0.0 for iPhone";
+"app_name" = "Nounours v 1.0.2 for iPhone";
 "spin" = "Spin";
 "cartwheel" = "Cartwheel";
 "headbang" = "Head bang";
@@ -37,11 +37,12 @@
 "downloading" = "Downloading my %s theme online...";
 "loading" = "Loading my %s theme";
 "defaultTheme" = "Default";
-"abouttextversion" = "Nounours v 1.0.0";
+"abouttextversion" = "Nounours v 1.0.2";
 "abouttextauthor" = "By Carmen Alvarez";
 "abouttextemail" = "c@rmen.ca";
 "abouttextcredits" = "Credits:";
 "abouttextmacarenours" = "B-Roll (Macarenours animation): Kevin MacLeod (incompetech.com)";
+"abouttextinappsettings" = "The settings panel uses the InAppSettingsKit library.";
 "ok" = "Ok";
 "help" = "Help";
 "cancel" = "Cancel";

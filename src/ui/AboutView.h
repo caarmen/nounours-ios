@@ -16,6 +16,7 @@
 	UILabel *emailLabel;
 	UILabel *creditsLabel;
 	UILabel *skaLabel;
+	UILabel *inAppSettingsLabel;
 	UIBarButtonItem *dismissButton;
 @private UIView *parentView;
 @private UIImage *gradientImage;
@@ -29,6 +30,7 @@
 @property(assign) IBOutlet UILabel *emailLabel;
 @property(assign) IBOutlet UILabel *creditsLabel;
 @property(assign) IBOutlet UILabel *skaLabel;
+@property(assign) IBOutlet UILabel *inAppSettingsLabel;
 @property(assign) IBOutlet UIBarButtonItem *dismissButton;
 @property(readwrite,retain) UIView *parentView;
 @end
