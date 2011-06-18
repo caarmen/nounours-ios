@@ -25,6 +25,7 @@
 @private AnimationMenu *animationMenu;
 @private ThemeMenu *themeMenu;
 @private UIImageView *menuIconView;
+@private UIImageView *settingsIconView;
 AboutView *aboutView;
 }
 
@@ -37,9 +38,12 @@ AboutView *aboutView;
 -(void) themeMenuItemSelected:(id) sender;
 -(void) aboutMenuItemSelected:(id) sender;
 -(void) resizeView;
+-(UIImageView*) setupIcon:(Theme*) ptheme withIconFilename:(NSString*) piconFilename withImageView:(UIImageView*) pimageView;
+
 @property(retain,readwrite) UIImage* myImage;
 @property(retain,readwrite) Nounours *nounours;
 @property(retain,readwrite) UIImageView *menuIconView;
+@property(retain,readwrite) UIImageView *settingsIconView;
 @property (assign) IBOutlet AboutView *aboutView;
 @property (retain, readonly) NSMutableDictionary *imageCache;
 @end

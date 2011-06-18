@@ -14,9 +14,10 @@
 @synthesize myImage;
 @synthesize nounours;
 @synthesize menuIconView;
+@synthesize settingsIconView;
 @synthesize aboutView;
 @synthesize imageCache;
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame{
     if ((self = [super initWithFrame:frame])) {
 		NSLog(@"MainView init begin");
 		NSString *defaultImage = [[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"];
@@ -45,22 +46,25 @@
 	{
 		[self setImageFromFilename:image.filename];
 	}
-    NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
-	NSString *menuIconImagePath = [NSString stringWithFormat:@"%@/themes/%@/icons/%@",bundlePath,ptheme.uid,@"menu.png"];
-
-	UIImage *menuIcon = [UIImage imageWithContentsOfFile:menuIconImagePath];
-	if(menuIconView == nil)
-	{
-		menuIconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,0,0)];
-		menuIconView.userInteractionEnabled = YES;
-		[self addSubview:menuIconView];
-		[self bringSubviewToFront:menuIconView];
-
-	}
-	[menuIconView setImage:menuIcon];
-	
-	
+	menuIconView = [self setupIcon:ptheme withIconFilename:@"menu.png" withImageView:menuIconView];
+	settingsIconView = [self setupIcon:ptheme withIconFilename:@"settings.png" withImageView:settingsIconView];
 }
+-(UIImageView*) setupIcon:(Theme*) ptheme withIconFilename:(NSString*) piconFilename withImageView:(UIImageView*) pimageView {
+    NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
+	NSString *iconImagePath = [NSString stringWithFormat:@"%@/themes/%@/icons/%@", bundlePath, ptheme.uid, piconFilename];
+	UIImage *icon = [UIImage imageWithContentsOfFile:iconImagePath];
+	UIImageView *result = pimageView;
+	if(result == nil)
+	{
+		result = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,0,0)];
+		result.userInteractionEnabled = YES;
+		[self addSubview:result];
+		[self bringSubviewToFront:result];
+	}
+	[result setImage:icon];
+	return result;
+}
+
 -(void) setImageFromFilename:(NSString*) pfilename{
 	UIImage *img = [imageCache objectForKey:pfilename];
 	if(img == nil)
@@ -160,10 +164,16 @@
 	
 	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);
 	self.frame = newSize;
-	CGFloat iconWidth = menuIconView.image.size.width;
-	CGFloat iconHeight = menuIconView.image.size.height;
-	CGRect menuIconSize = CGRectMake(width-iconWidth, 0, iconWidth, iconHeight);
+	CGFloat menuIconWidth = menuIconView.image.size.width;
+	CGFloat menuIconHeight = menuIconView.image.size.height;
+	CGRect menuIconSize = CGRectMake(width-menuIconWidth, 0, menuIconWidth, menuIconHeight);
 	menuIconView.frame = menuIconSize;
+	
+	CGFloat settingsIconWidth = settingsIconView.image.size.width;
+	CGFloat settingsIconHeight = settingsIconView.image.size.width;
+	CGRect settingsIconSize = CGRectMake(width - menuIconWidth - settingsIconWidth, 0, settingsIconWidth, settingsIconHeight);
+	settingsIconView.frame = settingsIconSize;
+	
 }
 
 - (void)dealloc {

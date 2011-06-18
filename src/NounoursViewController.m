@@ -11,7 +11,7 @@
 #import "Nounours.h";
 @implementation NounoursViewController
 @synthesize nounours;
-
+@synthesize appSettingsViewController;
 
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -53,6 +53,11 @@
 
 -(void) doLoad:(id) sender{
 	nounours = [[Nounours alloc] initNounours:mainView];
+	if (!appSettingsViewController) {
+		appSettingsViewController = [[IASKAppSettingsViewController alloc] initWithNibName:@"IASKAppSettingsView" bundle:nil];
+		nounoursSettingsDelegate = [[NounoursSettingsDelegate alloc] initNounoursSettingsDelegate:appSettingsViewController withNounours:nounours];
+									appSettingsViewController.delegate = nounoursSettingsDelegate;
+									}
 	[activityView stopAnimating];
 	[self.view setAlpha:1.0];
 	[activityView removeFromSuperview];
@@ -99,6 +104,10 @@
 	{
 		[mainView showMenu:point.x withY:point.y];
 	}
+	else if(touch.view == mainView.settingsIconView)
+	{
+		[self showSettings];
+	}
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	[nounours onRelease];
@@ -132,6 +141,15 @@
 }
 - (BOOL)canBecomeFirstResponder {
     return YES;
+}
+
+-(void) showSettings
+{
+	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
+	
+	self.appSettingsViewController.showDoneButton = YES;
+	[self presentModalViewController:aNavController animated:YES];
+	[aNavController release];
 }
 
 
