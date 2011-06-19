@@ -3,7 +3,7 @@
 //  Nounours
 //
 //  Created by Carmen Alvarez on 6/18/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Carmen Alvarez. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

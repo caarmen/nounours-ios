@@ -3,7 +3,7 @@
 //  Nounours
 //
 //  Created by Carmen Alvarez on 11/13/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Carmen Alvarez. All rights reserved.
 //
 //  This class contains information about a given feature in the context of a 
 //  given image. For now, only the position of the feature in the image is
