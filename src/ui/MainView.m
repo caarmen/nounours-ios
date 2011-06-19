@@ -3,7 +3,7 @@
 //  Nounours
 //
 //  Created by Carmen Alvarez on 11/14/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Carmen Alvarez. All rights reserved.
 //
 
 #import "MainView.h"
@@ -123,8 +123,8 @@
 		aboutView = [[[[NSBundle mainBundle] loadNibNamed:@"AboutView" owner:self options:nil] objectAtIndex:0] retain];
 		aboutView.parentView = self;
 		[aboutView setup];
-	//aboutView.frame = self.frame;
-	
+	//aboutView.frame = self.frame;	
+
 	}
 	[self addSubview:aboutView];
 	[self bringSubviewToFront:aboutView];
@@ -144,6 +144,22 @@
 }
 
 -(void) resizeView{
+	CGRect newSize = [self getFrameRect];
+	self.frame = newSize;
+	[self setNeedsDisplay];
+	CGFloat menuIconWidth = menuIconView.image.size.width;
+	CGFloat menuIconHeight = menuIconView.image.size.height;
+	CGRect menuIconSize = CGRectMake(newSize.size.width-menuIconWidth, 0, menuIconWidth, menuIconHeight);
+	menuIconView.frame = menuIconSize;
+	
+	CGFloat settingsIconWidth = settingsIconView.image.size.width;
+	CGFloat settingsIconHeight = settingsIconView.image.size.width;
+	CGRect settingsIconSize = CGRectMake(0, 0, settingsIconWidth, settingsIconHeight);
+	settingsIconView.frame = settingsIconSize;
+	
+}
+- (CGRect) getFrameRect
+{
 	CGRect statusBarRect = [[UIApplication sharedApplication] statusBarFrame];
 	CGSize imageSize = [self getImageSize];
 	CGRect wholeDeviceSize = [[UIScreen mainScreen ]bounds] ;
@@ -162,21 +178,18 @@
 		offsetX += (CGFloat) ((deviceSize.size.width - ratioToUse * imageSize.width) / 2);
 	}
 	
-	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);
-	self.frame = newSize;
-	CGFloat menuIconWidth = menuIconView.image.size.width;
-	CGFloat menuIconHeight = menuIconView.image.size.height;
-	CGRect menuIconSize = CGRectMake(width-menuIconWidth, 0, menuIconWidth, menuIconHeight);
-	menuIconView.frame = menuIconSize;
-	
-	CGFloat settingsIconWidth = settingsIconView.image.size.width;
-	CGFloat settingsIconHeight = settingsIconView.image.size.width;
-	CGRect settingsIconSize = CGRectMake(0, 0, settingsIconWidth, settingsIconHeight);
-	settingsIconView.frame = settingsIconSize;
-	
+	CGRect newSize = CGRectMake(offsetX, offsetY, width, height);	
+	return newSize;
 }
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (void) setFrame:(CGRect) frame
+{
+	CGRect frameToUse = [self getFrameRect];
+	if(CGRectEqualToRect(frameToUse, frame))
+	   [super setFrame:frame];
 }
 @end

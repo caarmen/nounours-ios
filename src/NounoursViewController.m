@@ -3,7 +3,7 @@
 //  Nounours
 //
 //  Created by Carmen Alvarez on 11/13/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010-2011 Carmen Alvarez. All rights reserved.
 //
 
 #import "NounoursViewController.h"
@@ -122,6 +122,13 @@
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
 	if(motion == UIEventSubtypeMotionShake){
 		[nounours onShake];
+	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	if(nounours != nil)
+	{
+		[mainView resizeView];
 	}
 }
 - (void)viewDidAppear:(BOOL)animated {
