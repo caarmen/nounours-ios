@@ -38,6 +38,7 @@ AboutView *aboutView;
 -(void) themeMenuItemSelected:(id) sender;
 -(void) aboutMenuItemSelected:(id) sender;
 -(void) resizeView;
+-(CGRect) getFrameRect;
 -(UIImageView*) setupIcon:(Theme*) ptheme withIconFilename:(NSString*) piconFilename withImageView:(UIImageView*) pimageView;
 
 @property(retain,readwrite) UIImage* myImage;
