@@ -179,6 +179,11 @@
 
 - (void) setFrame:(CGRect) frame
 {
+	if(nounours == nil)
+	{
+		[super setFrame:frame];
+		return;
+	}
 	CGRect frameToUse = [self getFrameRect];
 	if(CGRectEqualToRect(frameToUse, frame))
 	   [super setFrame:frame];
