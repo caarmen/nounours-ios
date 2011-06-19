@@ -66,12 +66,12 @@
 		aboutView = [[[[NSBundle mainBundle] loadNibNamed:@"AboutView" owner:self options:nil] objectAtIndex:0] retain];
 		[aboutView setup];
 		aboutViewController.view = aboutView;
-		//[aboutViewController initWithCustomV
         UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
                                                                                     target:aboutViewController 
                                                                                     action:@selector(dismissModalViewControllerAnimated:)];
         aboutViewController.navigationItem.rightBarButtonItem = buttonItem;
 		aboutViewController.navigationItem.title = NSLocalizedString(@"about",@"");
+		aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [buttonItem release];
 	}
 	[activityView stopAnimating];
