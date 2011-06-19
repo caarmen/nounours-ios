@@ -10,7 +10,6 @@
 
 
 @interface AboutView : UIView {
-	UILabel *aboutLabel;
 	UILabel *appLabel;
 	UILabel *authorLabel;
 	UILabel *emailLabel;
@@ -24,7 +23,6 @@
 -(IBAction) onDismiss:(id) sender;
 -(void) setup;
 -(void) makeGradientImage;
-@property(assign) IBOutlet UILabel *aboutLabel;
 @property(assign) IBOutlet UILabel *appLabel;
 @property(assign) IBOutlet UILabel *authorLabel;
 @property(assign) IBOutlet UILabel *emailLabel;

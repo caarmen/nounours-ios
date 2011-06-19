@@ -10,7 +10,6 @@
 
 
 @implementation AboutView
-@synthesize aboutLabel;
 @synthesize appLabel;
 @synthesize authorLabel;
 @synthesize emailLabel;
@@ -39,8 +38,6 @@
 //		[dismissButton setBackgroundImage:gradientImage forState:UIControlStateNormal];
 	}
 	[self setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-	//aboutLabel.title = @"About";
-	aboutLabel.text=NSLocalizedString(@"about",@"");
 	appLabel.text=NSLocalizedString(@"abouttextversion",@"");
 	authorLabel.text=NSLocalizedString(@"abouttextauthor",@"");
 	emailLabel.text=NSLocalizedString(@"abouttextemail",@"");
