@@ -9,10 +9,12 @@
 #import "NounoursViewController.h"
 
 #import "Nounours.h";
+#import "ui/AboutView.h";
 @implementation NounoursViewController
 @synthesize nounours;
 @synthesize appSettingsViewController;
-
+@synthesize aboutViewController;
+@synthesize aboutView;
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -39,7 +41,7 @@
 	CGRect screenBounds = [UIScreen mainScreen].bounds;
 	CGFloat activityViewSize = 32;
 	activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(screenBounds.size.width/2 - activityViewSize/2, screenBounds.size.height/2 - activityViewSize, activityViewSize,activityViewSize)];
-	mainView = [[MainView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+	mainView = [[MainView alloc]initMainView:[UIScreen mainScreen].bounds withController:self];
 	self.view =mainView;
 	[self.view setAlpha:0.5];
 	[self.view addSubview:activityView];
@@ -57,7 +59,21 @@
 		appSettingsViewController = [[IASKAppSettingsViewController alloc] initWithNibName:@"IASKAppSettingsView" bundle:nil];
 		nounoursSettingsDelegate = [[NounoursSettingsDelegate alloc] initNounoursSettingsDelegate:appSettingsViewController withNounours:nounours];
 									appSettingsViewController.delegate = nounoursSettingsDelegate;
-									}
+	}
+	if(!aboutViewController)
+	{
+		aboutViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+		aboutView = [[[[NSBundle mainBundle] loadNibNamed:@"AboutView" owner:self options:nil] objectAtIndex:0] retain];
+		[aboutView setup];
+		aboutViewController.view = aboutView;
+		//[aboutViewController initWithCustomV
+        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+                                                                                    target:aboutViewController 
+                                                                                    action:@selector(dismissModalViewControllerAnimated:)];
+        aboutViewController.navigationItem.rightBarButtonItem = buttonItem;
+		aboutViewController.navigationItem.title = NSLocalizedString(@"about",@"");
+        [buttonItem release];
+	}
 	[activityView stopAnimating];
 	[self.view setAlpha:1.0];
 	[activityView removeFromSuperview];
@@ -159,6 +175,12 @@
 	[self presentModalViewController:aNavController animated:YES];
 	[aNavController release];
 }
+-(void) showAbout
+{
 
+	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.aboutViewController];
+	[self presentModalViewController:aNavController animated:YES];
+	[aNavController release];
+}
 
 @end

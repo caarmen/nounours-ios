@@ -15,10 +15,10 @@
 @synthesize nounours;
 @synthesize menuIconView;
 @synthesize settingsIconView;
-@synthesize aboutView;
 @synthesize imageCache;
-- (id)initWithFrame:(CGRect)frame{
-    if ((self = [super initWithFrame:frame])) {
+- (id) initMainView:(CGRect) pframe withController:(NounoursViewController*) pnounoursViewController{
+    if ((self = [super initWithFrame:pframe])) {
+		nounoursViewController = pnounoursViewController;
 		NSLog(@"MainView init begin");
 		NSString *defaultImage = [[NSBundle mainBundle] pathForResource:@"Default" ofType:@"png"];
 		[self setImageFromFilename:defaultImage];
@@ -118,16 +118,7 @@
 	[themeMenu showActionSheet:sender];
 }
 -(void) aboutMenuItemSelected:(id)sender{
-	if(aboutView == nil)
-	{
-		aboutView = [[[[NSBundle mainBundle] loadNibNamed:@"AboutView" owner:self options:nil] objectAtIndex:0] retain];
-		aboutView.parentView = self;
-		[aboutView setup];
-	//aboutView.frame = self.frame;	
-
-	}
-	[self addSubview:aboutView];
-	[self bringSubviewToFront:aboutView];
+	[nounoursViewController showAbout];
 }
 - (BOOL) canPerformAction:(SEL)selector withSender:(id) sender {
     if (selector == @selector(animationMenuItemSelected:) 
