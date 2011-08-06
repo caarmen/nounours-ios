@@ -72,7 +72,10 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		}
 		
 		if(initialTheme == nil) {
-			initialTheme = [[themes allValues] objectAtIndex:0];
+			NSArray *themeIds = [themes allKeys];
+			NSArray *sortedThemeIds = [themeIds sortedArrayUsingSelector:@selector(compare:)];
+			NSString *firstThemeId = [sortedThemeIds objectAtIndex:0];
+			initialTheme = [themes valueForKey:firstThemeId];
 		}
 		[initialTheme load:self];
 		
