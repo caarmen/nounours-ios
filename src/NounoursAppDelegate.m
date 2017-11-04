@@ -20,10 +20,10 @@
 #pragma mark Application lifecycle
 - (void)applicationDidFinishLaunching: (UIApplication*)application
 {
-    UIWindow* window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
+    self.window = [[[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]] autorelease];
 	viewController = [[NounoursViewController alloc] initWithNibName:nil bundle:nil];
-	[window addSubview:viewController.view];
-    [window makeKeyAndVisible];
+    [self.window setRootViewController:viewController];
+    [self.window makeKeyAndVisible];
 }
 /*- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
  

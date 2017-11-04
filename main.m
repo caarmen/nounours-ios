@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NounoursAppDelegate.h"
 int main(int argc, char *argv[]) {
     
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, @"NounoursAppDelegate");
+    int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([NounoursAppDelegate class]));
     [pool release];
     return retVal;
 }
