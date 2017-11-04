@@ -14,6 +14,7 @@
 		4F0EC639129F471B00436582 /* themes in Resources */ = {isa = PBXBuildFile; fileRef = 4F0EC5B2129F471B00436582 /* themes */; };
 		4F14D3DF129E8DA300452621 /* PropertiesReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F14D3DE129E8DA300452621 /* PropertiesReader.m */; };
 		4F2021E012A708F600377C0A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F2021DF12A708F600377C0A /* Settings.bundle */; };
+		4F26F10C1FAE00B6007C1CF2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F26F10B1FAE00B6007C1CF2 /* Default-568h@2x.png */; };
 		4F542C74129C68D6003A9AB5 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C73129C68D6003A9AB5 /* Sound.m */; };
 		4F542C77129C69CE003A9AB5 /* SoundReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C76129C69CE003A9AB5 /* SoundReader.m */; };
 		4F542C7A129C6BF7003A9AB5 /* SoundHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F542C79129C6BF7003A9AB5 /* SoundHandler.m */; };
@@ -105,6 +106,7 @@
 		4F14D3DD129E8DA300452621 /* PropertiesReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropertiesReader.h; path = src/io/PropertiesReader.h; sourceTree = SOURCE_ROOT; };
 		4F14D3DE129E8DA300452621 /* PropertiesReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PropertiesReader.m; path = src/io/PropertiesReader.m; sourceTree = SOURCE_ROOT; };
 		4F2021DF12A708F600377C0A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		4F26F10B1FAE00B6007C1CF2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4F437E5F12A7C50C006E16BB /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		4F542C72129C68D6003A9AB5 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = src/data/Sound.h; sourceTree = SOURCE_ROOT; };
 		4F542C73129C68D6003A9AB5 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sound.m; path = src/data/Sound.m; sourceTree = SOURCE_ROOT; };
@@ -281,6 +283,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4F26F10B1FAE00B6007C1CF2 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -510,6 +513,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Nounours" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -541,6 +547,7 @@
 				4F0EC639129F471B00436582 /* themes in Resources */,
 				4F8AB1F612A023E60087C525 /* theme.csv in Resources */,
 				4FEE6CC112A29FE70055E8D2 /* AboutView.xib in Resources */,
+				4F26F10C1FAE00B6007C1CF2 /* Default-568h@2x.png in Resources */,
 				4FFE1C3112A2F21D00CAB62F /* Localizable.strings in Resources */,
 				4F2021E012A708F600377C0A /* Settings.bundle in Resources */,
 				4FD840F213AC9CA5007D6C18 /* IASKAppSettingsView.xib in Resources */,
@@ -657,6 +664,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Nounours_Prefix.pch;
 				INFOPLIST_FILE = "Nounours-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.rmen.nounours;
 				PRODUCT_NAME = Nounours;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -674,6 +682,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Nounours_Prefix.pch;
 				INFOPLIST_FILE = "Nounours-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = ca.rmen.nounours;
 				PRODUCT_NAME = Nounours;
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = NO;
@@ -683,20 +692,42 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "Don't Code Sign";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				ONLY_ACTIVE_ARCH = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphonesimulator*]" = "";
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "lib/**";
 			};
@@ -705,20 +736,41 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Carmen Alvarez Self Signed 20 years";
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "Don't Code Sign";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphonesimulator*]" = "";
-				SDKROOT = iphoneos4.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "lib/**";
 			};
