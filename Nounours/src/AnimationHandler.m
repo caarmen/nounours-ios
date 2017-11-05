@@ -36,7 +36,9 @@
 	return self;
 }
 -(void) stopAnimation{
-	[nounours.mainView stopAnimating];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [nounours.mainView stopAnimating];
+    });
 	curAnimationDuration = -1.0f;
 	timeLastAnimationLaunched = -1.0f;
 }
@@ -86,14 +88,16 @@
         {
             [nounours.vibrateHandler doVibrate:[panimation getDuration] withInterval:1];
         }
-        nounours.mainView.animationImages = animationArray;
-        nounours.mainView.animationRepeatCount = panimation.repeat;
-        CGFloat oneLoopAnimationDuration =  baseFrameDuration * [animationArray count];
-        nounours.mainView.animationDuration = oneLoopAnimationDuration;
-        [nounours.mainView performSelectorOnMainThread:@selector(startAnimating) withObject:nil waitUntilDone:NO];
-        timeLastAnimationLaunched = [NSDate timeIntervalSinceReferenceDate];
-        curAnimationDuration = [panimation getDuration] / 1000.0f;
-        NSLog(@"launched animation of %.2f seconds", curAnimationDuration);
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            nounours.mainView.animationImages = animationArray;
+            nounours.mainView.animationRepeatCount = panimation.repeat;
+            CGFloat oneLoopAnimationDuration =  baseFrameDuration * [animationArray count];
+            nounours.mainView.animationDuration = oneLoopAnimationDuration;
+            [nounours.mainView performSelectorOnMainThread:@selector(startAnimating) withObject:nil waitUntilDone:NO];
+            timeLastAnimationLaunched = [NSDate timeIntervalSinceReferenceDate];
+            curAnimationDuration = [panimation getDuration] / 1000.0f;
+            NSLog(@"launched animation of %.2f seconds", curAnimationDuration);
+        });
     }
 }
 
