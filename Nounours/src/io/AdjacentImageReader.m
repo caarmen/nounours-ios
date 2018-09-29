@@ -30,7 +30,6 @@ NSString * const COL_ADJACENT_IMAGE_ID=@"AdjacentImageId";
 	if(self)
 	{
 		imageMap = pimageMap;
-		[self load];
 	}
 	return self;
 }

@@ -90,8 +90,10 @@ NSString * const PROP_WIDTH = @"resolution.width";
 	SoundReader *soundReader = [[SoundReader alloc] initSoundReader:[self getPath:@"sound.csv"]];
 	sounds = soundReader.sounds;
 	
-	[[ImageFeatureReader alloc] initImageFeatureReader:images andFeatures:featureReader.features andFilename:[self getPath:@"imagefeatureassoc.csv"]];
-	[[AdjacentImageReader alloc] initAdjacentImageReader:images andFilename:[self getPath:@"adjacentimage.csv"]];
+	ImageFeatureReader *imageFeatureReader = [[ImageFeatureReader alloc] initImageFeatureReader:images andFeatures:featureReader.features andFilename:[self getPath:@"imagefeatureassoc.csv"]];
+	[imageFeatureReader load];
+	AdjacentImageReader *adjacentImageReader = [[AdjacentImageReader alloc] initAdjacentImageReader:images andFilename:[self getPath:@"adjacentimage.csv"]];
+	[adjacentImageReader load];
 	
 	AnimationReader *animationReader = [[AnimationReader alloc] initAnimationReader:[self getPath:@"animation.csv"]];
 	animations = animationReader.animations;
@@ -124,7 +126,7 @@ NSString * const PROP_WIDTH = @"resolution.width";
 	isLoaded = YES;	
 }
 -(NSString*) description{
-	return [NSString stringWithFormat:@"%@,%@,%@",uid,name/*,location*/];
+	return [NSString stringWithFormat:@"%@,%@",uid,name/*,location*/];
 }
 -(NSString*) getPath:(NSString*) pfilename{
     NSString* bundlePath = [[NSBundle mainBundle] bundlePath];

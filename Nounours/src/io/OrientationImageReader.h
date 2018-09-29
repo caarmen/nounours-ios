@@ -18,7 +18,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NounoursReader.h";
+#import "NounoursReader.h"
 
 @interface OrientationImageReader : NounoursReader {
 @private NSMutableSet *orientationImages;

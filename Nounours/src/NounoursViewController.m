@@ -19,8 +19,8 @@
 
 #import "NounoursViewController.h"
 
-#import "Nounours.h";
-#import "ui/AboutView.h";
+#import "Nounours.h"
+#import "ui/AboutView.h"
 @implementation NounoursViewController
 @synthesize nounours;
 @synthesize appSettingsViewController;

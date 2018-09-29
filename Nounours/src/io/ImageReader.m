@@ -43,7 +43,7 @@ NSString * const COL_IMAGE_ONRELEASE=@"OnRelease";
 	NSString *path = [NSString stringWithFormat:@"%@/%@",imagePath,filename];
 	NSString *onReleaseImage = [pcsvReader getValue:COL_IMAGE_ONRELEASE];
 	Image *image = [[Image alloc] initImage:uid andFilename:path];
-	if(onReleaseImage != nil && ![onReleaseImage length]==0)
+	if(onReleaseImage != nil && [onReleaseImage length]!=0)
 	{
 		[image setOnReleaseImageId:onReleaseImage];
 	}

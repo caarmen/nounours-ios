@@ -36,7 +36,6 @@ NSString * const COL_IMAGE_FEATURE_Y=@"Y";
 		{
 			[featureMap setObject:feature forKey:[feature uid]];
 		}
-		[self load];
 	}
 	return self;
 }

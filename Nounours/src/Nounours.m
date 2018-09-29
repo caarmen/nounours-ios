@@ -19,9 +19,9 @@
 
 #import "Nounours.h"
 #import "Util.h"
-#import "data/Feature.h";
-#import "io/FeatureReader.h";
-#import "io/ImageReader.h";
+#import "data/Feature.h"
+#import "io/FeatureReader.h"
+#import "io/ImageReader.h"
 #import "io/ImageFeatureReader.h"
 #import "io/AdjacentImageReader.h"
 #import "io/AnimationReader.h"
@@ -217,7 +217,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	if(pgestureRecognizer.state == UIGestureRecognizerStateEnded)
 	{
 		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:[mainView getImageSize].width withImageHeight:[mainView getImageSize].height]; 
-		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). %velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
+		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
 		for(FlingAnimation* flingAnimation in curTheme.flingAnimations )
 		{
 			[self debug:[NSString stringWithFormat:@"testing %@",flingAnimation.animationId]];
@@ -320,7 +320,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		return nil;
 	int interval = 100+ (arc4random() % 400);
 	NSInteger numberFrames = 2 + arc4random() % 8;
-	NSString *uid = [NSString stringWithFormat:@"random%d",[NSDate timeIntervalSinceReferenceDate]];
+	NSString *uid = [NSString stringWithFormat:@"random%f",[NSDate timeIntervalSinceReferenceDate]];
 	Animation *result = [[Animation alloc] initAnimation:uid withLabel:@"random" withInterval:(int)interval withRepeat:1 withVisible:NO withVibrate:NO withSoundId:nil];
 	Image *curAnimationImage = curImage;
 	for(int i=0; i < numberFrames; i++)
@@ -370,7 +370,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		return;
     @autoreleasepool {
         CGFloat idleTime = [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp;
-        NSLog(@"ping: idle for %.2f seconds. Animation running? %s. duration=%.2f, animation images=%d, image=%@, repeat=%d", idleTime, [animationHandler isAnimationRunning]? "true" : "false",mainView.animationDuration, (mainView.animationImages == nil ? -1 :[mainView.animationImages count]), mainView.image, mainView.animationRepeatCount);
+		NSLog(@"ping: idle for %.2f seconds. Animation running? %s. duration=%.2f, animation images=%lud, image=%@, repeat=%ld", idleTime, [animationHandler isAnimationRunning]? "true" : "false",mainView.animationDuration, (mainView.animationImages == nil ? -1 :[mainView.animationImages count]), mainView.image, (long)mainView.animationRepeatCount);
         
         if([self isIdleForSleepAnimation])
         {
