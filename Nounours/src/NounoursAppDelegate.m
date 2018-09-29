@@ -66,7 +66,9 @@
 	[viewController.nounours savePreferences];
 	
 }
-
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+	return UIInterfaceOrientationMaskPortrait;
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
