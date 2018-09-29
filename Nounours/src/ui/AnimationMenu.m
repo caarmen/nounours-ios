@@ -21,62 +21,25 @@
 #include <stdlib.h>
 
 @implementation AnimationMenu
--(AnimationMenu*) initAnimationMenu:(MainView*) pmainView
-{
-	self = [super init];
-	mainView = pmainView;
-	return self;
-}
--(void) reset {
-	if(animationList != nil)
-	{
-		animationList = nil;
-	}
-}
--(IBAction)showActionSheet:(id)sender{
-	if(animationList == nil)
-	{
-		animationList = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"actions",@"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-		[animationList addButtonWithTitle:NSLocalizedString(@"random",@"")];
-		for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
-		{
-			if(animation.visible)
-				[animationList addButtonWithTitle:animation.label];
+
+-(UIAlertController*)createAnimationList:(Nounours*) nounours{
+	UIAlertController * animationList = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions",@"") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+	[animationList addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"random",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		NSArray *animationLabels = [nounours.curTheme.animations allKeys];
+		int random = arc4random()%[animationLabels count];
+		NSString *randomAnimationLabel = [animationLabels objectAtIndex:random];
+		Animation *animation = nounours.curTheme.animations[randomAnimationLabel];
+		[nounours doAnimation:animation.uid];
+	}]];
+	for(Animation * animation in [nounours.curTheme.animations allValues]) {
+		if(animation.visible) {
+			[animationList addAction:[UIAlertAction actionWithTitle:animation.label style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+				[nounours doAnimation:animation.uid];
+			}]];
 		}
-		animationList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-		[animationList addButtonWithTitle:NSLocalizedString(@"cancel",@"")];
-		animationList.cancelButtonIndex = animationList.numberOfButtons - 1;
 	}
-    [animationList showInView:mainView];
+	[animationList addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"") style:UIAlertActionStyleCancel handler:nil]];
+	return animationList;
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == actionSheet.cancelButtonIndex)
-		return;
-	NSInteger animationIndex = buttonIndex;
-	if(animationIndex == 0)
-	{
-		animationIndex = (arc4random() %(actionSheet.numberOfButtons - 2)) +1;
-	}
-	NSString *animationLabel = [actionSheet buttonTitleAtIndex:(animationIndex)];
-	[self performSelectorInBackground:@selector(doAnimation:) withObject:animationLabel];
-	
-}
--(void) doAnimation:(NSString*)panimationLabel{
-    @autoreleasepool {
-        Animation *selectedAnimation = nil;
-        for(Animation * animation in [mainView.nounours.curTheme.animations allValues])
-        {
-            if([panimationLabel isEqualToString:animation.label])
-            {
-                selectedAnimation = animation;
-                break;
-            }
-        }
-        if(selectedAnimation != nil)
-        {
-            [mainView.nounours doAnimation:selectedAnimation.uid];
-        }
-    }
-}
 @end

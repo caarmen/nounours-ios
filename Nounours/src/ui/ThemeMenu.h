@@ -20,11 +20,8 @@
 #import <Foundation/Foundation.h>
 #import "../Nounours.h"
 #import "MainView.h"
-@class MainView;
 
 @interface ThemeMenu : UIViewController<UIActionSheetDelegate> {
-@private MainView *mainView;
 }
--(ThemeMenu*) initThemeMenu:(MainView*) pmainView;
--(IBAction)showActionSheet:(id)sender;
+-(UIAlertController*)createThemeList:(Nounours*)nounours;
 @end

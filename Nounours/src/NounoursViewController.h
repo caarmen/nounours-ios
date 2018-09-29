@@ -25,6 +25,7 @@
 #import "Nounours.h"
 #import "InAppSettingsKit/IASKAppSettingsViewController.h"
 #import "NounoursSettingsDelegate.h"
+@class MainView;
 @class NounoursSettingsDelegate;
 
 @interface NounoursViewController : UIViewController {

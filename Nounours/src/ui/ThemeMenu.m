@@ -21,40 +21,15 @@
 #import "../data/Theme.h"
 
 @implementation ThemeMenu
--(ThemeMenu*) initThemeMenu:(MainView*) pmainView
-{
-	self = [super init];
-	mainView = pmainView;
-	return self;
-}
--(IBAction)showActionSheet:(id)sender{
-	UIActionSheet *themeList = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"themes",@"") delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+
+-(UIAlertController*) createThemeList:(Nounours*)nounours{
+	UIAlertController *themeList = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"themes",@"") message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
 	
-	for(Theme* theme in [mainView.nounours.themes allValues])
-	{
-		[themeList addButtonWithTitle:theme.name];
+	for(Theme* theme in [nounours.themes allValues]) {
+		[themeList addAction:[UIAlertAction actionWithTitle:theme.name style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){[nounours useTheme:theme.uid];}]];
 	}
-	themeList.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[themeList addButtonWithTitle:NSLocalizedString(@"cancel",@"")];
-	themeList.cancelButtonIndex = themeList.numberOfButtons - 1;
-    [themeList showInView:mainView];	
+	[themeList addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cancel",@"") style:UIAlertActionStyleCancel handler:nil]];
+	return themeList;
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if(buttonIndex == actionSheet.cancelButtonIndex)
-		return;
-	NSString *themeName = [actionSheet buttonTitleAtIndex:(buttonIndex)];
-	Theme *selectedTheme = nil;
-	for(Theme * theme in [mainView.nounours.themes allValues])
-	{
-		if([themeName isEqualToString:theme.name])
-		{
-			selectedTheme = theme;
-			break;
-		}
-	}
-	if(selectedTheme != nil)
-		[mainView.nounours useTheme:selectedTheme.uid];
-	
-}
 @end

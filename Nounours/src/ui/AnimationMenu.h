@@ -20,14 +20,9 @@
 #import <Foundation/Foundation.h>
 #import "../Nounours.h"
 #import "MainView.h"
-@class MainView;
 @interface AnimationMenu : UIViewController<UIActionSheetDelegate> {
-@private MainView *mainView;
-@private UIActionSheet *animationList;
+@private UIAlertController *animationList;
 }
--(AnimationMenu*) initAnimationMenu:(MainView*) pmainView;
--(void) doAnimation:(NSString*)panimationLabel;
--(IBAction)showActionSheet:(id)sender;
--(void) reset;
+-(UIAlertController*)createAnimationList:(Nounours*) nounours;
 
 @end

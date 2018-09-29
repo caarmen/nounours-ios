@@ -43,8 +43,8 @@
 		UIMenuItem *themeMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"themes",@"") action:@selector(themeMenuItemSelected:)];
 		UIMenuItem *aboutMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"about",@"") action:@selector(aboutMenuItemSelected:)];
 		menu.menuItems = [NSArray arrayWithObjects:animationMenuItem, themeMenuItem, helpMenuItem,aboutMenuItem,nil];
-		animationMenu = [[AnimationMenu alloc] initAnimationMenu:self];
-		themeMenu = [[ThemeMenu alloc] initThemeMenu:self];
+		animationMenu = [AnimationMenu alloc];
+		themeMenu = [ThemeMenu alloc];
 		//aboutView = [[AboutView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 		NSLog(@"MainView init end");
     }
@@ -52,7 +52,6 @@
 }
 -(void) useTheme:(Theme*) ptheme{
 	[imageCache removeAllObjects];
-	[animationMenu reset];
 	for(Image *image in [ptheme.images allValues])
 	{
 		[self setImageFromFilename:image.filename];
@@ -120,13 +119,16 @@
 	
 }
 -(void) animationMenuItemSelected:(id) sender{
-	[animationMenu showActionSheet:sender];
+	UIAlertController *animationList = [animationMenu createAnimationList:nounours];
+	[nounoursViewController presentViewController: animationList animated:YES completion:nil];
 }
+
 -(void) helpMenuItemSelected:(id)sender{
 	[nounours displayImage:nounours.curTheme.helpImage];
 }
 -(void) themeMenuItemSelected:(id) sender{
-	[themeMenu showActionSheet:sender];
+	UIAlertController *themeList = [themeMenu createThemeList:nounours];
+	[nounoursViewController presentViewController:themeList animated:YES completion:nil];
 }
 -(void) aboutMenuItemSelected:(id)sender{
 	[nounoursViewController showAbout];

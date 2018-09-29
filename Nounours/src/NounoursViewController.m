@@ -103,12 +103,6 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-	NSLog(@"viewDidUnload");
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 	[super touchesBegan:touches withEvent:event];
 	
