@@ -171,13 +171,13 @@
 	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
 	[self.appSettingsViewController setShowCreditsFooter:NO];
 	self.appSettingsViewController.showDoneButton = YES;
-	[self presentModalViewController:aNavController animated:YES];
+	[self presentViewController:aNavController animated:YES completion: nil];
 }
 -(void) showAbout
 {
 
 	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.aboutViewController];
-	[self presentModalViewController:aNavController animated:YES];
+	[self presentViewController:aNavController animated:YES completion: nil];
 }
 
 @end
