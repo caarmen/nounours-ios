@@ -19,9 +19,8 @@
 
 #import <Foundation/Foundation.h>
 #import "../Nounours.h"
-#import "MainView.h"
 
-@interface ThemeMenu : UIViewController<UIActionSheetDelegate> {
+@interface ThemeMenu : NSObject {
 }
--(UIAlertController*)createThemeList:(Nounours*)nounours;
++(UIAlertController*)createThemeList:(Nounours*)nounours;
 @end

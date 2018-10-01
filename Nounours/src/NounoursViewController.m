@@ -21,48 +21,55 @@
 
 #import "Nounours.h"
 #import "ui/AboutView.h"
+#import "Nounours-Swift.h"
+
 @implementation NounoursViewController
 @synthesize nounours;
 @synthesize appSettingsViewController;
 @synthesize aboutViewController;
 @synthesize aboutView;
-
+/*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         // Custom initialization
     }
     return self;
+}*/
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+	return YES;
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.destinationViewController isKindOfClass:[SettingsTableViewController class]]) {
+		SettingsTableViewController *settingsController = (SettingsTableViewController*) segue.destinationViewController;
+		settingsController.delegate = nounoursSettingsDelegate;
+	}
 }
 
-
-
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
+/*
 - (void)loadView {
 
 }
 
-
-
+*/
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	NSLog(@"viewDidLoad begin");
     [super viewDidLoad];
-	CGRect screenBounds = [UIScreen mainScreen].bounds;
-	CGFloat activityViewSize = 32;
-	activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(screenBounds.size.width/2 - activityViewSize/2, screenBounds.size.height/2 - activityViewSize, activityViewSize,activityViewSize)];
-	mainView = [[MainView alloc]initMainView:[UIScreen mainScreen].bounds withController:self];
-	self.view =mainView;
-	[self.view setAlpha:0.5];
-	[self.view addSubview:activityView];
-	[self.view bringSubviewToFront:activityView];
-	[activityView startAnimating];
-	[self performSelector:@selector(doLoad:) withObject:self afterDelay:0];
+	//CGRect screenBounds = [UIScreen mainScreen].bounds;
+	//CGFloat activityViewSize = 32;
+	//activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(screenBounds.size.width/2 - activityViewSize/2, screenBounds.size.height/2 - activityViewSize, activityViewSize,activityViewSize)];
+	//[self.view setAlpha:0.5];
+	//[self.view addSubview:activityView];
+	//[self.view bringSubviewToFront:activityView];
+	//[activityView startAnimating];
+	//[self performSelector:@selector(doLoad:) withObject:self afterDelay:0];
 	NSLog(@"viewDidLoad end");
 
 }
-
 
 -(void) doLoad:(id) sender{
 	nounours = [[Nounours alloc] initNounours:mainView];
@@ -84,9 +91,9 @@
 		aboutViewController.navigationItem.title = NSLocalizedString(@"about",@"");
 		aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	}
-	[activityView stopAnimating];
-	[self.view setAlpha:1.0];
-	[activityView removeFromSuperview];
+	//[activityView stopAnimating];
+	//[self.view setAlpha:1.0];
+	//[activityView removeFromSuperview];
 	if ([self isViewLoaded]) {
 		[nounours onShown];
 	}
@@ -98,14 +105,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
+/*
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
-
+*/
+/*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 	[super touchesBegan:touches withEvent:event];
 	
@@ -142,6 +150,8 @@
 		[nounours onShake];
 	}
 }
+ */
+/*
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -172,20 +182,24 @@
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
+ */
 
 -(void) showSettings
 {
+	/*
 	[nounours stopAnimation];
 	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.appSettingsViewController];
 	[self.appSettingsViewController setShowCreditsFooter:NO];
 	self.appSettingsViewController.showDoneButton = YES;
 	[self presentViewController:aNavController animated:YES completion: nil];
+	 */
 }
 -(void) showAbout
 {
-
+/*
 	UINavigationController *aNavController = [[UINavigationController alloc] initWithRootViewController:self.aboutViewController];
 	[self presentViewController:aNavController animated:YES completion: nil];
+ */
 }
 
 @end

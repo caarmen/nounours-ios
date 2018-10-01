@@ -22,9 +22,9 @@
 #import "Sound.h"
 #import "FlingAnimation.h"
 #import "Image.h"
-#import "Nounours.h"
+//#import "Nounours.h"
 #import "OrientationImage.h"
-
+@class Nounours;
 @interface Theme : NSObject {
 @private NSMutableDictionary *images;
 @private NSMutableDictionary *animations;
