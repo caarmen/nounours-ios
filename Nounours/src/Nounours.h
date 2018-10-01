@@ -77,6 +77,8 @@
 -(Image*) getRandomImage:(Image*) pfromImage;
 -(Animation*) createRandomAnimation;
 -(void) onIdle;
+-(void) onShown;
+-(void) onHidden;
 -(BOOL) isIdleForSleepAnimation;
 -(BOOL) isIdleForRandomAnimation;
 -(void) ping;

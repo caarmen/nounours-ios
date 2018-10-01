@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2925E27E753C67F733BA4D4F /* libPods-Nounours.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB2E28B8921EF0F2D455453 /* libPods-Nounours.a */; };
+		4F3E37662162802700FC0387 /* CMMotionManagerInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E37652162802700FC0387 /* CMMotionManagerInstance.swift */; };
 		4F5A760E1FAE685E007A78F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A760C1FAE685E007A78F6 /* Main.storyboard */; };
 		4F5A76101FAE685E007A78F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A760F1FAE685E007A78F6 /* Assets.xcassets */; };
 		4F5A76131FAE685E007A78F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76111FAE685E007A78F6 /* LaunchScreen.storyboard */; };
@@ -56,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		43636359D39921A477F984DA /* Pods-Nounours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nounours.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nounours/Pods-Nounours.release.xcconfig"; sourceTree = "<group>"; };
+		4F3E37642162802700FC0387 /* Nounours-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nounours-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F3E37652162802700FC0387 /* CMMotionManagerInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMMotionManagerInstance.swift; sourceTree = "<group>"; };
 		4F5A76031FAE685E007A78F6 /* Nounours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nounours.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5A760D1FAE685E007A78F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F5A760F1FAE685E007A78F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 				4F5A76711FAE6BDC007A78F6 /* Nounours.m */,
 				4F5A76701FAE6BDC007A78F6 /* NounoursAppDelegate.h */,
 				4F5A766E1FAE6BDB007A78F6 /* NounoursAppDelegate.m */,
+				4F3E37652162802700FC0387 /* CMMotionManagerInstance.swift */,
 				4F5A76721FAE6BDC007A78F6 /* NounoursIdlePinger.h */,
 				4F5A766B1FAE6BDB007A78F6 /* NounoursIdlePinger.m */,
 				4F5A766C1FAE6BDB007A78F6 /* NounoursSettingsDelegate.h */,
@@ -221,6 +225,7 @@
 				4F5A761F1FAE68DB007A78F6 /* io */,
 				4F5A761E1FAE68D6007A78F6 /* ui */,
 				4F5A761D1FAE68D0007A78F6 /* data */,
+				4F3E37642162802700FC0387 /* Nounours-Bridging-Header.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				TargetAttributes = {
 					4F5A76021FAE685E007A78F6 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -454,6 +460,7 @@
 				4F5A76541FAE6B30007A78F6 /* AnimationReader.m in Sources */,
 				4F5A76691FAE6BAF007A78F6 /* ThemeMenu.m in Sources */,
 				4F5A76361FAE69F9007A78F6 /* Animation.m in Sources */,
+				4F3E37662162802700FC0387 /* CMMotionManagerInstance.swift in Sources */,
 				4F5A76321FAE69F9007A78F6 /* FlingAnimation.m in Sources */,
 				4F5A76761FAE6BDC007A78F6 /* NounoursViewController.m in Sources */,
 				4F5A76861FAE6C3E007A78F6 /* Util.m in Sources */,
@@ -517,6 +524,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -536,6 +544,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Nounours;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -574,6 +583,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -586,6 +596,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Nounours;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -596,6 +607,7 @@
 			baseConfigurationReference = F35009A8F9865382B53FA824 /* Pods-Nounours.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Nounours/Info.plist";
@@ -611,6 +623,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Carmen.Nounours;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nounours/src/Nounours-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -620,6 +635,7 @@
 			baseConfigurationReference = 43636359D39921A477F984DA /* Pods-Nounours.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "$(SRCROOT)/Nounours/Info.plist";
@@ -635,6 +651,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Carmen.Nounours;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nounours/src/Nounours-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

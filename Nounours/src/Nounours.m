@@ -428,4 +428,10 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	}
 	
 }
+- (void)onShown {
+	[orientationHandler subscribeToAccelerometer];
+}
+- (void)onHidden {
+	[orientationHandler unsubscribeToAccelerometer];
+}
 @end

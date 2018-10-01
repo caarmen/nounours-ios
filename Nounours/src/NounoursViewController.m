@@ -87,6 +87,9 @@
 	[activityView stopAnimating];
 	[self.view setAlpha:1.0];
 	[activityView removeFromSuperview];
+	if ([self isViewLoaded]) {
+		[nounours onShown];
+	}
 }
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -141,6 +144,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	if(nounours != nil)
 	{
 		[mainView resizeView];
@@ -150,16 +154,20 @@
 	NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
     [self becomeFirstResponder];
-	if(nounours != nil)
+	if(nounours != nil) {
 		[nounours loadPreferences];
+		[nounours onShown];
+	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
 	NSLog(@"viewDidDisappear");
     [self resignFirstResponder];
     [super viewDidDisappear:animated];
-	if(nounours != nil)
+	if(nounours != nil) {
 		[nounours savePreferences];
+		[nounours onHidden];
+	}
 }
 - (BOOL)canBecomeFirstResponder {
     return YES;

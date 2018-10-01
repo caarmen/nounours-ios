@@ -18,6 +18,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreMotion/CoreMotion.h>
 #import "Nounours.h"
 
 @interface OrientationHandler : NSObject<UIAccelerometerDelegate> {
@@ -25,5 +26,7 @@
 @private BOOL isTiltImage;
 }
 -(OrientationHandler*) initOrientationHandler:(Nounours*) pnounours;
--(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration;
+-(void) subscribeToAccelerometer;
+-(void) unsubscribeToAccelerometer;
+-(void)didAccelerate:(CMAcceleration)acceleration;
 @end
