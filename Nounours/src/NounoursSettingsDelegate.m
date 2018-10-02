@@ -31,7 +31,7 @@
 #pragma mark -
 #pragma mark IASKAppSettingsViewControllerDelegate protocol
 - (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender {
-    [settingsViewController dismissViewControllerAnimated:YES completion:nil];
+    [sender dismissViewControllerAnimated:YES completion:nil];
 	[nounours loadPreferences];
 }
 @end

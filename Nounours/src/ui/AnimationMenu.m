@@ -16,13 +16,13 @@
 // You should have received a copy of the GNU General Public License
 // along with Nounours for iOS.  If not, see <http://www.gnu.org/licenses/>.
 //
-
+#import "Nounours-Swift.h"
 #import "AnimationMenu.h"
 #include <stdlib.h>
 
 @implementation AnimationMenu
 
--(UIAlertController*)createAnimationList:(Nounours*) nounours{
++(UIAlertController*)createAnimationList:(Nounours*) nounours{
 	UIAlertController * animationList = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"actions",@"") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 	[animationList addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"random",@"") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		NSArray *animationLabels = [nounours.curTheme.animations allKeys];

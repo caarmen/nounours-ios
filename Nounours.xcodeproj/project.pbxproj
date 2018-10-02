@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		2925E27E753C67F733BA4D4F /* libPods-Nounours.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB2E28B8921EF0F2D455453 /* libPods-Nounours.a */; };
 		4F3E37662162802700FC0387 /* CMMotionManagerInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E37652162802700FC0387 /* CMMotionManagerInstance.swift */; };
+		4F3E37862162A0F500FC0387 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E37852162A0F500FC0387 /* SettingsTableViewController.swift */; };
+		4F3E37912162BC3F00FC0387 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E37902162BC3F00FC0387 /* MainView.swift */; };
+		4F3E37952162C72A00FC0387 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E37942162C72A00FC0387 /* MyViewController.swift */; };
+		4F3E37972162DF9200FC0387 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3E37962162DF9200FC0387 /* AboutViewController.swift */; };
 		4F5A760E1FAE685E007A78F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A760C1FAE685E007A78F6 /* Main.storyboard */; };
 		4F5A76101FAE685E007A78F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A760F1FAE685E007A78F6 /* Assets.xcassets */; };
-		4F5A76131FAE685E007A78F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76111FAE685E007A78F6 /* LaunchScreen.storyboard */; };
 		4F5A76161FAE685E007A78F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76151FAE685E007A78F6 /* main.m */; };
 		4F5A76321FAE69F9007A78F6 /* FlingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76211FAE69F8007A78F6 /* FlingAnimation.m */; };
 		4F5A76331FAE69F9007A78F6 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76221FAE69F8007A78F6 /* Sound.m */; };
@@ -34,12 +37,9 @@
 		4F5A765C1FAE6B30007A78F6 /* ThemeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A764D1FAE6B30007A78F6 /* ThemeReader.m */; };
 		4F5A765D1FAE6B30007A78F6 /* ImageFeatureReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A764E1FAE6B30007A78F6 /* ImageFeatureReader.m */; };
 		4F5A765E1FAE6B30007A78F6 /* NounoursReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76501FAE6B30007A78F6 /* NounoursReader.m */; };
-		4F5A76671FAE6BAF007A78F6 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A765F1FAE6BAE007A78F6 /* AboutView.m */; };
-		4F5A76681FAE6BAF007A78F6 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76621FAE6BAE007A78F6 /* MainView.m */; };
 		4F5A76691FAE6BAF007A78F6 /* ThemeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76631FAE6BAF007A78F6 /* ThemeMenu.m */; };
 		4F5A766A1FAE6BAF007A78F6 /* AnimationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76641FAE6BAF007A78F6 /* AnimationMenu.m */; };
 		4F5A76751FAE6BDC007A78F6 /* NounoursIdlePinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A766B1FAE6BDB007A78F6 /* NounoursIdlePinger.m */; };
-		4F5A76761FAE6BDC007A78F6 /* NounoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A766D1FAE6BDB007A78F6 /* NounoursViewController.m */; };
 		4F5A76771FAE6BDC007A78F6 /* NounoursAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A766E1FAE6BDB007A78F6 /* NounoursAppDelegate.m */; };
 		4F5A76781FAE6BDC007A78F6 /* Nounours.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76711FAE6BDC007A78F6 /* Nounours.m */; };
 		4F5A76791FAE6BDC007A78F6 /* NounoursSettingsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76741FAE6BDC007A78F6 /* NounoursSettingsDelegate.m */; };
@@ -49,7 +49,6 @@
 		4F5A76871FAE6C3E007A78F6 /* OrientationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76811FAE6C3D007A78F6 /* OrientationHandler.m */; };
 		4F5A76881FAE6C3E007A78F6 /* VibrateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A76831FAE6C3E007A78F6 /* VibrateHandler.m */; };
 		4F5A76A51FAE80DD007A78F6 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76A01FAE80DD007A78F6 /* res */; };
-		4F5A76A61FAE80DD007A78F6 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76A11FAE80DD007A78F6 /* AboutView.xib */; };
 		4F5A76A71FAE80DD007A78F6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76A21FAE80DD007A78F6 /* Settings.bundle */; };
 		4F5A76A81FAE80DD007A78F6 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76A31FAE80DD007A78F6 /* fr.lproj */; };
 		4F5A76A91FAE80DD007A78F6 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4F5A76A41FAE80DD007A78F6 /* en.lproj */; };
@@ -59,10 +58,13 @@
 		43636359D39921A477F984DA /* Pods-Nounours.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nounours.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nounours/Pods-Nounours.release.xcconfig"; sourceTree = "<group>"; };
 		4F3E37642162802700FC0387 /* Nounours-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nounours-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F3E37652162802700FC0387 /* CMMotionManagerInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMMotionManagerInstance.swift; sourceTree = "<group>"; };
+		4F3E37852162A0F500FC0387 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		4F3E37902162BC3F00FC0387 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4F3E37942162C72A00FC0387 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		4F3E37962162DF9200FC0387 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4F5A76031FAE685E007A78F6 /* Nounours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nounours.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5A760D1FAE685E007A78F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F5A760F1FAE685E007A78F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4F5A76121FAE685E007A78F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F5A76151FAE685E007A78F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F5A76201FAE69F8007A78F6 /* AnimationImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationImage.h; sourceTree = "<group>"; };
 		4F5A76211FAE69F8007A78F6 /* FlingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlingAnimation.m; sourceTree = "<group>"; };
@@ -106,23 +108,17 @@
 		4F5A76501FAE6B30007A78F6 /* NounoursReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NounoursReader.m; sourceTree = "<group>"; };
 		4F5A76511FAE6B30007A78F6 /* OrientationImageReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientationImageReader.h; sourceTree = "<group>"; };
 		4F5A76521FAE6B30007A78F6 /* ThemeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeReader.h; sourceTree = "<group>"; };
-		4F5A765F1FAE6BAE007A78F6 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
-		4F5A76601FAE6BAE007A78F6 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
-		4F5A76611FAE6BAE007A78F6 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
-		4F5A76621FAE6BAE007A78F6 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		4F5A76631FAE6BAF007A78F6 /* ThemeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeMenu.m; sourceTree = "<group>"; };
 		4F5A76641FAE6BAF007A78F6 /* AnimationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationMenu.m; sourceTree = "<group>"; };
 		4F5A76651FAE6BAF007A78F6 /* AnimationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationMenu.h; sourceTree = "<group>"; };
 		4F5A76661FAE6BAF007A78F6 /* ThemeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeMenu.h; sourceTree = "<group>"; };
 		4F5A766B1FAE6BDB007A78F6 /* NounoursIdlePinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NounoursIdlePinger.m; sourceTree = "<group>"; };
 		4F5A766C1FAE6BDB007A78F6 /* NounoursSettingsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NounoursSettingsDelegate.h; sourceTree = "<group>"; };
-		4F5A766D1FAE6BDB007A78F6 /* NounoursViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NounoursViewController.m; sourceTree = "<group>"; };
 		4F5A766E1FAE6BDB007A78F6 /* NounoursAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NounoursAppDelegate.m; sourceTree = "<group>"; };
 		4F5A766F1FAE6BDB007A78F6 /* Nounours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nounours.h; sourceTree = "<group>"; };
 		4F5A76701FAE6BDC007A78F6 /* NounoursAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NounoursAppDelegate.h; sourceTree = "<group>"; };
 		4F5A76711FAE6BDC007A78F6 /* Nounours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nounours.m; sourceTree = "<group>"; };
 		4F5A76721FAE6BDC007A78F6 /* NounoursIdlePinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NounoursIdlePinger.h; sourceTree = "<group>"; };
-		4F5A76731FAE6BDC007A78F6 /* NounoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NounoursViewController.h; sourceTree = "<group>"; };
 		4F5A76741FAE6BDC007A78F6 /* NounoursSettingsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NounoursSettingsDelegate.m; sourceTree = "<group>"; };
 		4F5A767A1FAE6C3D007A78F6 /* VibrateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VibrateHandler.h; sourceTree = "<group>"; };
 		4F5A767B1FAE6C3D007A78F6 /* SoundHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundHandler.m; sourceTree = "<group>"; };
@@ -135,7 +131,6 @@
 		4F5A76821FAE6C3E007A78F6 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		4F5A76831FAE6C3E007A78F6 /* VibrateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VibrateHandler.m; sourceTree = "<group>"; };
 		4F5A76A01FAE80DD007A78F6 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
-		4F5A76A11FAE80DD007A78F6 /* AboutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		4F5A76A21FAE80DD007A78F6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4F5A76A31FAE80DD007A78F6 /* fr.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fr.lproj; sourceTree = "<group>"; };
 		4F5A76A41FAE80DD007A78F6 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
@@ -184,7 +179,6 @@
 		4F5A76051FAE685E007A78F6 /* Nounours */ = {
 			isa = PBXGroup;
 			children = (
-				4F5A76A11FAE80DD007A78F6 /* AboutView.xib */,
 				4F5A76A41FAE80DD007A78F6 /* en.lproj */,
 				4F5A76A31FAE80DD007A78F6 /* fr.lproj */,
 				4F5A76A01FAE80DD007A78F6 /* res */,
@@ -192,7 +186,6 @@
 				4F5A761C1FAE68BE007A78F6 /* src */,
 				4F5A760C1FAE685E007A78F6 /* Main.storyboard */,
 				4F5A760F1FAE685E007A78F6 /* Assets.xcassets */,
-				4F5A76111FAE685E007A78F6 /* LaunchScreen.storyboard */,
 				4F5A76151FAE685E007A78F6 /* main.m */,
 			);
 			path = Nounours;
@@ -201,6 +194,7 @@
 		4F5A761C1FAE68BE007A78F6 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				4F3E37942162C72A00FC0387 /* MyViewController.swift */,
 				4F5A767F1FAE6C3D007A78F6 /* AnimationHandler.h */,
 				4F5A767D1FAE6C3D007A78F6 /* AnimationHandler.m */,
 				4F5A767E1FAE6C3D007A78F6 /* OrientationHandler.h */,
@@ -220,12 +214,12 @@
 				4F5A766B1FAE6BDB007A78F6 /* NounoursIdlePinger.m */,
 				4F5A766C1FAE6BDB007A78F6 /* NounoursSettingsDelegate.h */,
 				4F5A76741FAE6BDC007A78F6 /* NounoursSettingsDelegate.m */,
-				4F5A76731FAE6BDC007A78F6 /* NounoursViewController.h */,
-				4F5A766D1FAE6BDB007A78F6 /* NounoursViewController.m */,
 				4F5A761F1FAE68DB007A78F6 /* io */,
 				4F5A761E1FAE68D6007A78F6 /* ui */,
 				4F5A761D1FAE68D0007A78F6 /* data */,
 				4F3E37642162802700FC0387 /* Nounours-Bridging-Header.h */,
+				4F3E37852162A0F500FC0387 /* SettingsTableViewController.swift */,
+				4F3E37962162DF9200FC0387 /* AboutViewController.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -258,12 +252,9 @@
 		4F5A761E1FAE68D6007A78F6 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				4F5A76611FAE6BAE007A78F6 /* AboutView.h */,
-				4F5A765F1FAE6BAE007A78F6 /* AboutView.m */,
 				4F5A76651FAE6BAF007A78F6 /* AnimationMenu.h */,
 				4F5A76641FAE6BAF007A78F6 /* AnimationMenu.m */,
-				4F5A76601FAE6BAE007A78F6 /* MainView.h */,
-				4F5A76621FAE6BAE007A78F6 /* MainView.m */,
+				4F3E37902162BC3F00FC0387 /* MainView.swift */,
 				4F5A76661FAE6BAF007A78F6 /* ThemeMenu.h */,
 				4F5A76631FAE6BAF007A78F6 /* ThemeMenu.m */,
 			);
@@ -371,10 +362,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5A76A61FAE80DD007A78F6 /* AboutView.xib in Resources */,
 				4F5A76A81FAE80DD007A78F6 /* fr.lproj in Resources */,
 				4F5A76A51FAE80DD007A78F6 /* res in Resources */,
-				4F5A76131FAE685E007A78F6 /* LaunchScreen.storyboard in Resources */,
 				4F5A76101FAE685E007A78F6 /* Assets.xcassets in Resources */,
 				4F5A76A71FAE80DD007A78F6 /* Settings.bundle in Resources */,
 				4F5A760E1FAE685E007A78F6 /* Main.storyboard in Resources */,
@@ -434,9 +423,9 @@
 				4F5A76581FAE6B30007A78F6 /* PropertiesReader.m in Sources */,
 				4F5A76161FAE685E007A78F6 /* main.m in Sources */,
 				4F5A76531FAE6B30007A78F6 /* AdjacentImageReader.m in Sources */,
-				4F5A76681FAE6BAF007A78F6 /* MainView.m in Sources */,
 				4F5A765D1FAE6B30007A78F6 /* ImageFeatureReader.m in Sources */,
 				4F5A765E1FAE6B30007A78F6 /* NounoursReader.m in Sources */,
+				4F3E37952162C72A00FC0387 /* MyViewController.swift in Sources */,
 				4F5A763A1FAE69F9007A78F6 /* OrientationImage.m in Sources */,
 				4F5A76591FAE6B30007A78F6 /* OrientationImageReader.m in Sources */,
 				4F5A76391FAE69F9007A78F6 /* ImageFeature.m in Sources */,
@@ -444,12 +433,14 @@
 				4F5A76781FAE6BDC007A78F6 /* Nounours.m in Sources */,
 				4F5A765A1FAE6B30007A78F6 /* CSVReader.m in Sources */,
 				4F5A76571FAE6B30007A78F6 /* ImageReader.m in Sources */,
+				4F3E37912162BC3F00FC0387 /* MainView.swift in Sources */,
+				4F3E37862162A0F500FC0387 /* SettingsTableViewController.swift in Sources */,
 				4F5A76841FAE6C3E007A78F6 /* SoundHandler.m in Sources */,
 				4F5A76331FAE69F9007A78F6 /* Sound.m in Sources */,
 				4F5A76341FAE69F9007A78F6 /* Feature.m in Sources */,
 				4F5A76851FAE6C3E007A78F6 /* AnimationHandler.m in Sources */,
 				4F5A76561FAE6B30007A78F6 /* FeatureReader.m in Sources */,
-				4F5A76671FAE6BAF007A78F6 /* AboutView.m in Sources */,
+				4F3E37972162DF9200FC0387 /* AboutViewController.swift in Sources */,
 				4F5A76381FAE69F9007A78F6 /* AnimationImage.m in Sources */,
 				4F5A76371FAE69F9007A78F6 /* Image.m in Sources */,
 				4F5A76881FAE6C3E007A78F6 /* VibrateHandler.m in Sources */,
@@ -462,7 +453,6 @@
 				4F5A76361FAE69F9007A78F6 /* Animation.m in Sources */,
 				4F3E37662162802700FC0387 /* CMMotionManagerInstance.swift in Sources */,
 				4F5A76321FAE69F9007A78F6 /* FlingAnimation.m in Sources */,
-				4F5A76761FAE6BDC007A78F6 /* NounoursViewController.m in Sources */,
 				4F5A76861FAE6C3E007A78F6 /* Util.m in Sources */,
 				4F5A76871FAE6C3E007A78F6 /* OrientationHandler.m in Sources */,
 			);
@@ -477,14 +467,6 @@
 				4F5A760D1FAE685E007A78F6 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F5A76111FAE685E007A78F6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F5A76121FAE685E007A78F6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

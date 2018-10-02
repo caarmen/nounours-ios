@@ -32,6 +32,8 @@
 #import "data/Theme.h"
 #import "io/SoundReader.h"
 #import "io/ThemeReader.h"
+#import "Nounours-Swift.h"
+
 
 @implementation Nounours
 
@@ -104,8 +106,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		}
 		
 		mainView = pmainView;
-		mainView.nounours = self;
-		[mainView setImageFromFilename:initialTheme.defaultImage.filename];
+		[mainView setImageFromFilenameWithFilename:initialTheme.defaultImage.filename];
 		soundHandler = [[SoundHandler alloc] initSoundHandler];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
 		vibrateHandler = [[VibrateHandler alloc] initVibrateHandler];
@@ -119,22 +120,24 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		[self resetIdle];
 		nounoursIdlePinger = [[NounoursIdlePinger alloc] initNounoursIdlePinger:self withPingInterval:pingInterval];
 		[nounoursIdlePinger performSelectorInBackground:@selector(run:) withObject:nil];
+		mainView.clipsToBounds = YES;
+		mainView.contentMode = UIViewContentModeScaleAspectFit;
 		
 	}
 	return self;
 }
 
 -(CGFloat) getDeviceWidth{
-	CGRect rect = [[UIScreen mainScreen] bounds] ;
+	CGRect rect = [mainView bounds] ;
 	return rect.size.width;
 }
 -(CGFloat) getDeviceHeight{
-	CGRect rect = [[UIScreen mainScreen] bounds] ;
+	CGRect rect = [mainView bounds] ;
 	return rect.size.height;
 }
 
 -(void) displayImage:(Image*)pimage{
-	[mainView setImageFromFilename:[pimage filename]];
+	[mainView setImageFromFilenameWithFilename:[pimage filename]];
 }
 
 -(void) onPress:(CGFloat)px withY:(CGFloat)py{
@@ -143,7 +146,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	BOOL wasIdle = ([animationHandler isAnimationRunning] && curAnimation != nil
 					&& curAnimation == curTheme.idleAnimation);
 	[self stopAnimation];
-	CGSize imageSize = [mainView getImageSize];
+	CGSize imageSize = mainView.image.size;
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
 	//[self debug:[NSString stringWithFormat:@"onPress %f,%f=>%f,%f",px,py,translatedPoint.x,translatedPoint.y]];
 	
@@ -191,7 +194,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 }
 -(void) onMove:(CGFloat)px withY:(CGFloat)py{
 	BOOL doRefresh = YES;
-	CGSize imageSize = [mainView getImageSize];
+	CGSize imageSize = mainView.image.size;
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
 	if(curFeature != nil)
 	{
@@ -216,7 +219,8 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	CGPoint velocity = [pgestureRecognizer velocityInView:mainView];
 	if(pgestureRecognizer.state == UIGestureRecognizerStateEnded)
 	{
-		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:[mainView getImageSize].width withImageHeight:[mainView getImageSize].height]; 
+		CGSize size = mainView.image.size;
+		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:size.width withImageHeight:size.height];
 		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
 		for(FlingAnimation* flingAnimation in curTheme.flingAnimations )
 		{
@@ -303,10 +307,10 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	curTheme = [themes objectForKey:pthemeId];
 	[curTheme load:self];
 	curFeature = nil;
-	[mainView useTheme:curTheme];
+	[mainView useThemeWithTheme:curTheme];
 	[soundHandler loadSounds:curTheme.sounds];
 	[self setImage:curTheme.defaultImage];
-	[mainView resizeView];
+	//[mainView resizeView];
 	isLoading = NO;
 	return YES;
 }
@@ -368,24 +372,27 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 -(void) ping{
 	if(isLoading)
 		return;
-    @autoreleasepool {
-        CGFloat idleTime = [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp;
+	[NSOperationQueue.mainQueue addOperationWithBlock:^{[self pingImpl];}];
+}
+
+-(void) pingImpl {
+	@autoreleasepool {
+		CGFloat idleTime = [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp;
 		NSLog(@"ping: idle for %.2f seconds. Animation running? %s. duration=%.2f, animation images=%lud, image=%@, repeat=%ld", idleTime, [animationHandler isAnimationRunning]? "true" : "false",mainView.animationDuration, (mainView.animationImages == nil ? -1 :[mainView.animationImages count]), mainView.image, (long)mainView.animationRepeatCount);
-        
-        if([self isIdleForSleepAnimation])
-        {
-            [self onIdle];
-        }
-        else {
-            if([self isIdleForRandomAnimation] && ![animationHandler isAnimationRunning])
-            {
-                Animation *randomAnimation = [self createRandomAnimation];
-                if(randomAnimation != nil)
-                    [self doAnimation:randomAnimation withIsDynamicAction:YES];
-            }
-            
-        }
-    }
+
+		if([self isIdleForSleepAnimation])
+		{
+			[self onIdle];
+		}
+		else {
+			if([self isIdleForRandomAnimation] && ![animationHandler isAnimationRunning])
+			{
+				Animation *randomAnimation = [self createRandomAnimation];
+				if(randomAnimation != nil)
+					[self doAnimation:randomAnimation withIsDynamicAction:YES];
+			}
+		}
+	}
 }
 -(void) reset{
 	[self resetIdle];

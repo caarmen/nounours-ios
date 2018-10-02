@@ -23,19 +23,17 @@
 #import "AnimationHandler.h"
 #import "SoundHandler.h"
 #import "VibrateHandler.h"
-#import "ui/MainView.h"
 #import "data/Image.h"
 #import "data/Feature.h"
 #import "data/FlingAnimation.h"
 #import "data/Sound.h"
-#import "data/Theme.h"
 #import "OrientationHandler.h"
 #import "NounoursIdlePinger.h"
 
 @class MainView;
 @class OrientationHandler;
 @class NounoursIdlePinger;
-
+@class Theme;
 @interface Nounours : NSObject {
 @private MainView* mainView;
 @private Image *curImage;

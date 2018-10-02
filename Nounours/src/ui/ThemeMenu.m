@@ -22,7 +22,7 @@
 
 @implementation ThemeMenu
 
--(UIAlertController*) createThemeList:(Nounours*)nounours{
++(UIAlertController*) createThemeList:(Nounours*)nounours{
 	UIAlertController *themeList = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"themes",@"") message:nil preferredStyle:(UIAlertControllerStyleActionSheet)];
 	
 	for(Theme* theme in [nounours.themes allValues]) {

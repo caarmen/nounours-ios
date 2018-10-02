@@ -19,10 +19,6 @@
 
 #import <Foundation/Foundation.h>
 #import "../Nounours.h"
-#import "MainView.h"
-@interface AnimationMenu : UIViewController<UIActionSheetDelegate> {
-@private UIAlertController *animationList;
-}
--(UIAlertController*)createAnimationList:(Nounours*) nounours;
-
+@interface AnimationMenu : NSObject
++(UIAlertController*)createAnimationList:(Nounours*) nounours;
 @end

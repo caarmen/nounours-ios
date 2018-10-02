@@ -22,6 +22,7 @@
 #import "data/Image.h"
 #import "data/Animation.h"
 #import "Nounours.h"
+#import "Nounours-Swift.h"
 
 @implementation AnimationHandler
 
