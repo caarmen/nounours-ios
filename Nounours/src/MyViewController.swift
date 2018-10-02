@@ -65,12 +65,18 @@ class MyViewController: UIViewController {
 		becomeFirstResponder()
 		nounours?.loadPreferences()
 		nounours?.onShown()
+		NotificationCenter.default.addObserver(self, selector: #selector(onResignActive), name: UIApplication.didEnterBackgroundNotification, object: nil)
+	}
+	@objc
+	private func onResignActive() {
+		nounours?.savePreferences()
 	}
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		resignFirstResponder()
 		nounours?.savePreferences()
 		nounours?.onHidden()
+		NotificationCenter.default.removeObserver(#selector(onResignActive))
 	}
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		super.touchesBegan(touches, with: event)

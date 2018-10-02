@@ -310,8 +310,8 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	[mainView useThemeWithTheme:curTheme];
 	[soundHandler loadSounds:curTheme.sounds];
 	[self setImage:curTheme.defaultImage];
-	//[mainView resizeView];
 	isLoading = NO;
+	[self savePreferences];
 	return YES;
 }
 
