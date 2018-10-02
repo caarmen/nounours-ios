@@ -373,24 +373,27 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 -(void) ping{
 	if(isLoading)
 		return;
-    @autoreleasepool {
-        CGFloat idleTime = [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp;
+	[NSOperationQueue.mainQueue addOperationWithBlock:^{[self pingImpl];}];
+}
+
+-(void) pingImpl {
+	@autoreleasepool {
+		CGFloat idleTime = [NSDate timeIntervalSinceReferenceDate] - lastActionTimestamp;
 		NSLog(@"ping: idle for %.2f seconds. Animation running? %s. duration=%.2f, animation images=%lud, image=%@, repeat=%ld", idleTime, [animationHandler isAnimationRunning]? "true" : "false",mainView.animationDuration, (mainView.animationImages == nil ? -1 :[mainView.animationImages count]), mainView.image, (long)mainView.animationRepeatCount);
-        
-        if([self isIdleForSleepAnimation])
-        {
-            [self onIdle];
-        }
-        else {
-            if([self isIdleForRandomAnimation] && ![animationHandler isAnimationRunning])
-            {
-                Animation *randomAnimation = [self createRandomAnimation];
-                if(randomAnimation != nil)
-                    [self doAnimation:randomAnimation withIsDynamicAction:YES];
-            }
-            
-        }
-    }
+
+		if([self isIdleForSleepAnimation])
+		{
+			[self onIdle];
+		}
+		else {
+			if([self isIdleForRandomAnimation] && ![animationHandler isAnimationRunning])
+			{
+				Animation *randomAnimation = [self createRandomAnimation];
+				if(randomAnimation != nil)
+					[self doAnimation:randomAnimation withIsDynamicAction:YES];
+			}
+		}
+	}
 }
 -(void) reset{
 	[self resetIdle];
