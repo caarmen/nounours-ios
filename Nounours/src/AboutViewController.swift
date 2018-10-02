@@ -10,11 +10,6 @@ import UIKit
 
 class AboutViewController: UIViewController {
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-	}
-	
 	@IBOutlet weak var appVersion: UILabel!
 	@IBOutlet weak var authorName: UILabel!
 	@IBOutlet weak var email: UILabel!

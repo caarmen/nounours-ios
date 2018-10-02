@@ -18,7 +18,7 @@
 //
 
 "hello" = "Hello World, NounoursActivity";
-"app_name" = "Nounours v 1.0.3 for iPhone";
+"app_name" = "Nounours v 1.1.0 for iPhone";
 "spin" = "Tourniquet";
 "cartwheel" = "La roue";
 "headbang" = "Hardos";
@@ -49,7 +49,7 @@
 "rainbow" = "Fond arc-en-ciel";
 "halloween" = "Halloween";
 "greenshirtbluebkg" = "Pull vert, fond bleu";
-"abouttextversion" = "Nounours v 1.0.3";
+"abouttextversion" = "Nounours v 1.1.0";
 "abouttextauthor" = "Par Carmen Alvarez";
 "abouttextemail" = "c@rmen.ca";
 "abouttextcredits" = "Musique:";
