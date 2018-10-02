@@ -8,7 +8,7 @@
 import UIKit
 
 class MyViewController: UIViewController {
-
+	
 	private var nounours : Nounours?
 	private var nounoursSettingsDelegate: NounoursSettingsDelegate?
 	
@@ -17,6 +17,8 @@ class MyViewController: UIViewController {
 			nounours = Nounours(nounours: mainView)
 		}
 	}
+	
+	// MARK: Button actions
 	@IBAction func showHelp(_ sender: UIBarButtonItem) {
 		nounours?.display(nounours?.curTheme.helpImage)
 	}
@@ -37,52 +39,18 @@ class MyViewController: UIViewController {
 			}
 		}
 	}
-
+	// MARK: Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		DispatchQueue.main.async  { [weak self] in
 			self?.doLoad()
 		}
 	}
-	override var canBecomeFirstResponder: Bool {
-		return true
-	}
-
+	
 	private func doLoad() {
 		nounoursSettingsDelegate = NounoursSettingsDelegate()
 		if (isViewLoaded) {
 			nounours?.onShown()
-		}
-	}
-	
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		super.touchesBegan(touches, with: event)
-		if let touch = touches.first {
-			let point = touch.location(in: mainView)
-			if (touch.view == mainView) {
-				nounours?.onPress(point.x, withY: point.y)
-			}
-		}
-	}
-
-	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-		nounours?.onRelease()
-	}
-	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-		if let touch = touches.first {
-			let point = touch.location(in: mainView)
-			nounours?.onMove(point.x, withY:point.y)
-		}
-	}
-	override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-		if (motion == .motionShake) {
-			nounours?.onShake()
-		}
-	}
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		if (nounours != nil) {
-			//mainView?.resize()
 		}
 	}
 	override func viewDidAppear(_ animated: Bool) {
@@ -96,6 +64,31 @@ class MyViewController: UIViewController {
 		resignFirstResponder()
 		nounours?.savePreferences()
 		nounours?.onHidden()
+	}
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		super.touchesBegan(touches, with: event)
+		if let touch = touches.first {
+			let point = touch.location(in: mainView)
+			if (touch.view == mainView) {
+				nounours?.onPress(point.x, withY: point.y)
+			}
+		}
+	}
+	
+	// MARK: Touch events
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		nounours?.onRelease()
+	}
+	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+		if let touch = touches.first {
+			let point = touch.location(in: mainView)
+			nounours?.onMove(point.x, withY:point.y)
+		}
+	}
+	override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+		if (motion == .motionShake) {
+			nounours?.onShake()
+		}
 	}
 
 }

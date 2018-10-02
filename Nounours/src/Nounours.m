@@ -106,7 +106,6 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		}
 		
 		mainView = pmainView;
-		//mainView.nounours = self;
 		[mainView setImageFromFilenameWithFilename:initialTheme.defaultImage.filename];
 		soundHandler = [[SoundHandler alloc] initSoundHandler];
 		animationHandler = [[AnimationHandler alloc] initAnimationHandler:self];
@@ -121,17 +120,19 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 		[self resetIdle];
 		nounoursIdlePinger = [[NounoursIdlePinger alloc] initNounoursIdlePinger:self withPingInterval:pingInterval];
 		[nounoursIdlePinger performSelectorInBackground:@selector(run:) withObject:nil];
+		mainView.clipsToBounds = YES;
+		mainView.contentMode = UIViewContentModeScaleAspectFit;
 		
 	}
 	return self;
 }
 
 -(CGFloat) getDeviceWidth{
-	CGRect rect = [[UIScreen mainScreen] bounds] ;
+	CGRect rect = [mainView bounds] ;
 	return rect.size.width;
 }
 -(CGFloat) getDeviceHeight{
-	CGRect rect = [[UIScreen mainScreen] bounds] ;
+	CGRect rect = [mainView bounds] ;
 	return rect.size.height;
 }
 
@@ -145,8 +146,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	BOOL wasIdle = ([animationHandler isAnimationRunning] && curAnimation != nil
 					&& curAnimation == curTheme.idleAnimation);
 	[self stopAnimation];
-	//CGSize imageSize = [mainView getImageSize];
-	CGSize imageSize = mainView.bounds.size;
+	CGSize imageSize = mainView.image.size;
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
 	//[self debug:[NSString stringWithFormat:@"onPress %f,%f=>%f,%f",px,py,translatedPoint.x,translatedPoint.y]];
 	
@@ -194,8 +194,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 }
 -(void) onMove:(CGFloat)px withY:(CGFloat)py{
 	BOOL doRefresh = YES;
-	//CGSize imageSize = [mainView getImageSize];
-	CGSize imageSize = mainView.bounds.size;
+	CGSize imageSize = mainView.image.size;
 	CGPoint translatedPoint = [Util translate:px withDeviceY:py withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:imageSize.width withImageHeight:imageSize.height];
 	if(curFeature != nil)
 	{
@@ -220,7 +219,7 @@ NSString * const PREF_IDLE_TIMEOUT = @"PREF_IDLE_TIMEOUT";
 	CGPoint velocity = [pgestureRecognizer velocityInView:mainView];
 	if(pgestureRecognizer.state == UIGestureRecognizerStateEnded)
 	{
-		CGSize size = mainView.bounds.size;
+		CGSize size = mainView.image.size;
 		CGPoint translatedPoint = [Util translate:lastLocation.x withDeviceY:lastLocation.y withDeviceWidth:[self getDeviceWidth] withDeviceHeight:[self getDeviceHeight] withImageWidth:size.width withImageHeight:size.height];
 		[self debug:[NSString stringWithFormat:@"onFling:Pan started at (%f,%f). velocity:(%f,%f)",translatedPoint.x,translatedPoint.y, velocity.x, velocity.y]];
 		for(FlingAnimation* flingAnimation in curTheme.flingAnimations )

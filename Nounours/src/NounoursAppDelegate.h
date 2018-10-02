@@ -18,7 +18,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NounoursViewController.h"
 @interface NounoursAppDelegate : NSObject <UIApplicationDelegate> {
 }
 @property (strong, nonatomic) UIWindow *window;

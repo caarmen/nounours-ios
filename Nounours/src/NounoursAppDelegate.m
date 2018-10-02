@@ -18,10 +18,7 @@
 //
 
 #import "NounoursAppDelegate.h"
-#import "NounoursViewController.h"
-//#import "ui/MainView.h"
-#import "Nounours.h"
-@implementation NounoursAppDelegate
 
+@implementation NounoursAppDelegate
 
 @end
