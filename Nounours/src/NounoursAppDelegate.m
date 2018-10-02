@@ -20,5 +20,7 @@
 #import "NounoursAppDelegate.h"
 
 @implementation NounoursAppDelegate
-
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+	return UIInterfaceOrientationMaskPortrait;
+}
 @end
