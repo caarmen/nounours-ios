@@ -24,13 +24,19 @@ class MyViewController: UIViewController {
 	}
 	@IBAction func showAnimations(_ sender: UIBarButtonItem) {
 		if let animationAlertController = AnimationMenu.createAnimationList(nounours) {
-			present(animationAlertController, animated:true)
+			showAlertController(alertController: animationAlertController, sender: sender)
 		}
 	}
 	@IBAction func showThemes(_ sender: UIBarButtonItem) {
 		if let themeAlertController = ThemeMenu.createThemeList(nounours) {
-			present(themeAlertController, animated:true)
+			showAlertController(alertController: themeAlertController, sender: sender)
 		}
+	}
+	private func showAlertController(alertController: UIAlertController, sender: UIBarButtonItem) {
+		if let popoverController = alertController.popoverPresentationController {
+			popoverController.barButtonItem = sender
+		}
+		present(alertController, animated:true)
 	}
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let navController = segue.destination as? UINavigationController {
@@ -39,6 +45,7 @@ class MyViewController: UIViewController {
 			}
 		}
 	}
+
 	// MARK: Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
